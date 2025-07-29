@@ -1,19 +1,70 @@
 @import "tailwindcss";
 
 @theme {
-    --color-yellow-base: #efb419;
-    --color-yellow-bright: #fdfe7e;
-    --color-yellow-dark: #fc9f01;
+    --color-yellow-base: #ffc01a;
+    --color-off-white: #fff6d4;
+    --color-orange-base: #fc9f01;
+    --color-orange-dark: #f77a03;
+    --color-tan-base: #877254;
+    --color-tan-dark: #68583f;
     --color-blue-highlight: #7fe6ef;
     --color-red-highlight: #c22303;
-    --color-white: #ffffff;
+    --color-white: #fff;
     --color-gray: #7f7f7f;
     --color-black: #252525;
-
-    --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);;
+    --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
 ::selection {
     background-color: var(--color-red-highlight);
     color: var(--color-white);
+}
+
+.ease-out-back {
+    transition-timing-function: var(--ease-out-back);
+}
+
+.ease-in-out-back {
+    transition-timing-function: var(--ease-in-out-back);
+}
+
+.animated-underline {
+    position: relative;
+    cursor: pointer;
+}
+
+.animated-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: calc(1em / 16);
+    width: 0;
+    background-color: currentcolor;
+    transform: translateX(-50%);
+    transition: width 0.3s var(--ease-in-out-back);
+}
+
+.animated-underline:hover::after {
+    width: 100%;
+}
+
+.dotted-background-yellow {
+    background-color: var(--color-yellow-base);
+    background-image: radial-gradient(var(--color-orange-base) 1px, transparent 1px);
+    background-size: 16px 16px;
+}
+
+.dotted-background-tan {
+    background-color: var(--color-tan-dark);
+    background-image: radial-gradient(var(--color-tan-base) 1px, transparent 1px);
+    background-size: 16px 16px;
+}
+
+.dotted-background-white {
+    background-color: var(--color-off-white);
+    background-image: linear-gradient(var(--color-white) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-white) 1px, transparent 1px);
+    background-size: 16px 16px;
 }
