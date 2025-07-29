@@ -14,7 +14,7 @@ export default function NavButtons({
   return (
     <>
       <div
-        className="relative flex h-full transition-all ease-out-back"
+        className="relative flex h-full transition-all ease-out-back duration-300"
         style={{
           width: `${displayMedian}%`,
         }}
@@ -39,7 +39,7 @@ export default function NavButtons({
         </button>
       </div>
       <div
-        className="relative flex h-full transition-all ease-out-back"
+        className="relative flex h-full transition-all ease-out-back duration-300"
         style={{
           width: `${100 - displayMedian}%`,
         }}

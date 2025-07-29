@@ -10,13 +10,29 @@ export default function Main() {
   const [median, setMedian] = useState(70);
   const [displayMedian, setDisplayMedian] = useState(70);
   const [radiusVh, setRadiusVh] = useState(60);
-  const [items, setItems] = useState(['Item 1', 'Item 2', 'Item 3']);
+
+  const stats = [
+    '8x (consecutive) hackathon wins out of 13 attended',
+    '3 years with Python and machine learning/artificial intelligence',
+    '6 years with object-oriented-programming, C#, and Unity',
+  ];
+  const projects = [
+    'built a blazingly-fast hashing tool to group photos by visual similarity, saving photographers (myself included!) hours of culling photos',
+    'designed an animal species classification pipeline from photos using visual descriptions + semantic search; capable of identifying animals without needing to individually train on photos of species',
+    'used Nintendo Switch Joy-Con accelerometers to create a tool for home physiotherapy, including heart-rate measurement via IR camera',
+  ];
+  const positions = [
+    'idk man is hack:peel worth putting',
+    'president of cs club and math club exec',
+    "maybe i'll apply to jamhacks",
+    'uhhh ontario competitive mathematics committee',
+  ];
 
   return (
     <div
-      className={`${dmSans.className} dotted-background-yellow flex min-h-screen items-start justify-center overflow-auto font-medium text-black`}
+      className={`${dmSans.className} dotted-background-yellow flex min-h-screen items-start justify-center overflow-auto font-normal text-black`}
     >
-      <div className="z-0 flex h-[800px] w-full flex-col gap-2 p-4 md:max-w-[700px] md:p-12">
+      <div className="z-0 flex h-[800px] w-full flex-col gap-2 p-4 md:max-w-[750px] md:p-12">
         <BackgroundCircle radiusVh={radiusVh} setRadiusVh={setRadiusVh} />
         <div className="flex flex-col items-center gap-2 px-4">
           <h1
@@ -42,16 +58,45 @@ export default function Main() {
           </div>
         </div>
         <div>
-          <div className="p-4 text-lg">
-            <ul className="list-none space-y-2 pl-6">
-              {items.map((item, index) => (
-                <li
-                  key={index}
-                  className="group ease-out-back relative transform transition before:absolute before:-left-6 before:transition before:content-['⬥'] hover:translate-x-1 hover:before:rotate-45"
-                >
-                  {item}
-                </li>
-              ))}
+          <div className="p-2 text-lg">
+            <ul className="list-none space-y-1 pl-8 leading-relaxed">
+              <li className="group ease-out-back diamond-list-decoration relative leading-normal transition hover:translate-x-1">
+                16-year-old programmer from Toronto with interests in photography, urban planning,
+                and politics.
+              </li>
+              <li className="group ease-out-back diamond-list-decoration relative pr-4 transition hover:translate-x-1">
+                stats breakdown:
+                {stats.map((stat, index) => (
+                  <p
+                    key={index}
+                    className="group ease-out-back arrow-list-decoration relative translate-x-4 leading-normal transition hover:translate-x-5"
+                  >
+                    {stat}
+                  </p>
+                ))}
+              </li>
+              <li className="group ease-out-back diamond-list-decoration relative pr-4 transition hover:translate-x-1">
+                recently, i&#39;ve...
+                {projects.map((project, index) => (
+                  <p
+                    key={index}
+                    className="group ease-out-back arrow-list-decoration animated-underline relative translate-x-4 leading-normal transition hover:translate-x-5"
+                  >
+                    {project}
+                  </p>
+                ))}
+              </li>
+              <li className="group ease-out-back diamond-list-decoration relative pr-4 transition hover:translate-x-1">
+                currently i&#39;m...
+                {positions.map((position, index) => (
+                  <p
+                    key={index}
+                    className="group ease-out-back arrow-list-decoration relative translate-x-4 leading-normal transition hover:translate-x-5"
+                  >
+                    {position}
+                  </p>
+                ))}
+              </li>
             </ul>
           </div>
         </div>

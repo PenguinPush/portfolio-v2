@@ -68,3 +68,31 @@
     linear-gradient(90deg, var(--color-white) 1px, transparent 1px);
     background-size: 16px 16px;
 }
+
+.arrow-list-decoration {
+    position: relative;
+}
+
+.arrow-list-decoration::before {
+    content: '⤿';
+    font-weight: bold;
+    position: absolute;
+    left: -1.5rem;
+    transition: transform 0.3s var(--ease-out-back);
+}
+
+.diamond-list-decoration {
+    position: relative;
+}
+
+.diamond-list-decoration::before {
+    content: '⟡';
+    font-weight: bold;
+    position: absolute;
+    left: -1.5rem;
+    transition: transform 0.3s var(--ease-out-back);
+}
+
+.diamond-list-decoration:hover::before {
+    transform: rotate(90deg);
+}
