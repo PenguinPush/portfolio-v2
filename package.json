@@ -9,7 +9,7 @@
     "lint": "next lint",
     "build": "next build",
     "export": "next build && next export && touch out/.nojekyll",
-    "deploy": "npm run export && gh-pages -d out",
+    "deploy": "npm run export && gh-pages -d out"
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",

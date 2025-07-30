@@ -4,7 +4,9 @@ import BackgroundCircle from '@/components/backgroundCircle';
 import AndrewPortrait from '@/components/andrewPortrait';
 import { DM_Sans } from 'next/font/google';
 
-const dmSans = DM_Sans();
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+});
 
 export default function Main() {
   const hoverOffset = 2.5;
@@ -102,7 +104,7 @@ export default function Main() {
           </div>
         </div>
       </div>
-      <AndrewPortrait/>
+      <AndrewPortrait />
     </div>
   );
 }
