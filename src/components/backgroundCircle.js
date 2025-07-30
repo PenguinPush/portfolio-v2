@@ -56,7 +56,7 @@ export default function BackgroundCircle({ radiusVh, setRadiusVh }) {
   return (
     <>
       <div
-        className="dotted-background-white ease-out-back pointer-events-none fixed top-0 left-1/2 -z-10 h-full w-full -translate-x-1/2 transition-[clip-path] duration-300"
+        className="dotted-background-white ease-out-back pointer-events-none fixed top-0 left-1/2 -z-10 h-full w-full -translate-x-1/2 transition-[clip-path] duration-300 scale-125 md:scale-100"
         style={{
           clipPath: `circle(${radiusVh}vh at 50% 50%)`,
         }}

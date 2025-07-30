@@ -19,16 +19,22 @@ const portraits = [
   ],
 ];
 
+const getImagePath = (path) => {
+  // made for compatibility between localhost and github pages
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  const basePath = process.env.NODE_ENV === 'production' ? '/portfolio-v2' : '';
+  return `${basePath}/${cleanPath}`;
+};
+
 export default function AndrewPortrait() {
-  const [activeIndex, setActiveIndex] = useState([1, 1]); // [row, col]
+  const [activeIndex, setActiveIndex] = useState([0, 2]);
   const containerRef = useRef(null);
   const imageRefs = useRef({});
 
-  // Preload all images
   useEffect(() => {
     portraits.flat().forEach((src) => {
       const img = new window.Image();
-      img.src = src;
+      img.src = getImagePath(src);
     });
   }, []);
 
@@ -37,12 +43,12 @@ export default function AndrewPortrait() {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
+      const centerY = rect.top + rect.height / 3;
       const dx = e.clientX - centerX;
       const dy = e.clientY - centerY;
 
-      // Determine direction
-      let row = 1, col = 1;
+      let row = 1,
+        col = 1;
       if (dy < -rect.height / 6) row = 0;
       else if (dy > rect.height / 6) row = 2;
 
@@ -59,25 +65,30 @@ export default function AndrewPortrait() {
   }, [activeIndex]);
 
   return (
-    <div ref={containerRef} className="absolute bottom-0 left-0 z-20 w-[700px]">
-      {portraits.map((row, rowIndex) => (
-        row.map((src, colIndex) => (
+    <div
+      ref={containerRef}
+      className="portrait-gradient-background md:bg-none-override pointer-events-none fixed bottom-0 left-[-40%] z-20 w-[180%] translate-y-[62%] md:left-0 md:w-[35vw] md:translate-y-0"
+    >
+      {portraits.map((rows, row) =>
+        rows.map((src, col) => (
           <div
-            key={`${rowIndex}-${colIndex}`}
+            key={`${row}${col}`}
             style={{
-              display: activeIndex[0] === rowIndex && activeIndex[1] === colIndex ? 'block' : 'none'
+              display: activeIndex[0] === row && activeIndex[1] === col ? 'block' : 'none',
             }}
           >
             <Image
-              ref={el => imageRefs.current[`${rowIndex}-${colIndex}`] = el}
-              src={src}
-              alt={`Andrew Dai ${rowIndex}-${colIndex}`}
-              width={1000}
-              height={1000}
+              ref={(el) => (imageRefs.current[`${row}${col}`] = el)}
+              src={getImagePath(src)}
+              alt={`Andrew Dai ${row}, ${col}`}
+              width={500}
+              height={500}
+              priority={row === 0 && col === 2}
+              className="h-full w-full"
             />
           </div>
-        ))
-      ))}
+        )),
+      )}
     </div>
   );
 }

@@ -4,12 +4,12 @@ export default function NavButtons({
   displayMedian,
   setMedian,
   setDisplayMedian,
-  hoverOffset,
   leftLabel,
   rightLabel,
 }) {
   const leftLabelColor = median > 50 ? 'bg-orange-base' : 'bg-yellow-base';
   const rightLabelColor = median < 50 ? 'bg-orange-base' : 'bg-yellow-base';
+  const hoverOffset = 2.5;
 
   return (
     <>
@@ -27,10 +27,15 @@ export default function NavButtons({
         ></div>
         <button
           className="relative z-1 h-full w-full cursor-pointer bg-transparent"
-          onMouseEnter={() => setDisplayMedian(median + hoverOffset)}
-          onMouseLeave={() => setDisplayMedian(median)}
+          onPointerEnter={() => setDisplayMedian(median + hoverOffset)}
+          onPointerLeave={() => setDisplayMedian(median)}
           onMouseDown={() => setDisplayMedian(displayMedian + hoverOffset)}
           onMouseUp={() => {
+            setMedian(70);
+            setDisplayMedian(70 + hoverOffset);
+          }}
+          onTouchStart={() => setDisplayMedian(displayMedian + hoverOffset)}
+          onTouchEnd={() => {
             setMedian(70);
             setDisplayMedian(70 + hoverOffset);
           }}
@@ -52,10 +57,15 @@ export default function NavButtons({
         ></div>
         <button
           className="relative z-1 h-full w-full cursor-pointer bg-transparent"
-          onMouseEnter={() => setDisplayMedian(median - hoverOffset)}
-          onMouseLeave={() => setDisplayMedian(median)}
+          onPointerEnter={() => setDisplayMedian(median - hoverOffset)}
+          onPointerLeave={() => setDisplayMedian(median)}
           onMouseDown={() => setDisplayMedian(displayMedian - hoverOffset)}
           onMouseUp={() => {
+            setMedian(30);
+            setDisplayMedian(30 - hoverOffset);
+          }}
+          onTouchStart={() => setDisplayMedian(displayMedian - hoverOffset)}
+          onTouchEnd={() => {
             setMedian(30);
             setDisplayMedian(30 - hoverOffset);
           }}
