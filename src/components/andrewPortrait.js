@@ -30,6 +30,7 @@ export default function AndrewPortrait() {
   const [activeIndex, setActiveIndex] = useState([0, 2]);
   const containerRef = useRef(null);
   const imageRefs = useRef({});
+  const [portraitY, setPortraitY] = useState('100%');
 
   useEffect(() => {
     portraits.flat().forEach((src) => {
@@ -48,6 +49,8 @@ export default function AndrewPortrait() {
       const rect = containerRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 3;
+
+      setPortraitY(isMobile ? '62%' : '0%');
 
       let dx, dy;
       if (e.touches && e.touches.length > 0) {
@@ -82,7 +85,11 @@ export default function AndrewPortrait() {
   return (
     <div
       ref={containerRef}
-      className="portrait-gradient-background md:bg-none-override pointer-events-none fixed bottom-0 left-[-40%] z-20 w-[180%] translate-y-[62%] md:left-0 md:w-[35vw] md:translate-y-0"
+      className="portrait-gradient-background md:bg-none-override pointer-events-none fixed bottom-0 left-[-40%] z-20 w-[180%] md:left-0 md:w-[35vw]"
+      style={{
+        transform: `translateY(${portraitY})`,
+        transition: 'transform 0.3s var(--ease-out)',
+      }}
     >
       {portraits.map((rows, row) =>
         rows.map((src, col) => (
