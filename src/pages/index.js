@@ -39,7 +39,7 @@ export default function Main() {
     <div
       className={`${dmSans.className} dotted-background-yellow flex min-h-screen items-start justify-center overflow-auto font-normal text-black`}
     >
-      <div className="relative z-0 flex w-full flex-col gap-2 p-4 pb-[60vw] text-sm tracking-tight md:max-w-[750px] md:p-12 md:text-lg md:tracking-normal">
+      <div className="relative z-0 flex w-full flex-col gap-2 p-4 pb-[60vw] text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
         <BackgroundCircle radiusVh={radiusVh} setRadiusVh={setRadiusVh} />
         <div className="flex flex-col items-center gap-2 px-4">
           <h1
