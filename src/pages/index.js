@@ -15,12 +15,12 @@ export default function Main() {
 
   const stats = [
     '8x (consecutive) hackathon wins out of 13 attended',
-    '3 years with Python and machine learning/artificial intelligence',
-    '6 years with object-oriented-programming, C#, and Unity',
+    '3 yrs of experience w/ Python and ML/AI libraries',
+    '6 yrs w/ object-oriented-programming, C#, & Unity',
   ];
   const projects = [
-    'built a blazingly-fast hashing tool to group photos by visual similarity, saving photographers (myself included!) hours of culling photos',
-    'designed an animal species classification pipeline from photos using visual descriptions + semantic search; capable of identifying animals without needing to individually train on photos of species',
+    'built a hashing tool to group photos by visual similarity, saving photographers like me hours of culling photos',
+    'designed an animal species classification pipeline using visual descriptions + semantic search; can classify without individually training on photos of each species',
     'used Nintendo Switch Joy-Con accelerometers to create a tool for home physiotherapy, including heart-rate measurement via IR camera',
   ];
   const positions = [
@@ -39,7 +39,7 @@ export default function Main() {
     <div
       className={`${dmSans.className} dotted-background-yellow flex min-h-screen items-start justify-center overflow-auto font-normal text-black`}
     >
-      <div className="text-md relative z-0 flex w-full flex-col gap-2 p-4 pb-[60vw] md:max-w-[750px] md:p-12 md:text-lg">
+      <div className="relative z-0 flex w-full flex-col gap-2 p-4 pb-[60vw] text-sm tracking-tight md:max-w-[750px] md:p-12 md:text-lg md:tracking-normal">
         <BackgroundCircle radiusVh={radiusVh} setRadiusVh={setRadiusVh} />
         <div className="flex flex-col items-center gap-2 px-4">
           <h1
@@ -70,38 +70,46 @@ export default function Main() {
         </div>
         <div>
           <div className="p-2">
-            <ul className="list-none space-y-1 pl-4 md:pl-8 md:leading-relaxed">
+            <ul className="list-none space-y-1 pl-4 leading-relaxed md:pl-8">
               <li className={diamondListClass}>
                 16-year-old programmer from Toronto with interests in photography, urban planning,
                 and politics.
               </li>
               <li className={diamondListClass}>
                 stats breakdown:
-                {stats.map((stat, index) => (
-                  <p key={index} className={arrowListClass}>
-                    {stat}
-                  </p>
-                ))}
+                <p className={arrowListClass}>8x (consecutive) hackathon wins out of 13 attended</p>
+                <p className={arrowListClass}>3 yrs of experience w/ Python and ML/AI libraries</p>
+                <p className={arrowListClass}>
+                  6 yrs w/ object-oriented-programming, C#, &amp; Unity
+                </p>
               </li>
               <li className={diamondListClass}>
                 recently, i&#39;ve...
-                {projects.map((project, index) => (
-                  <p
-                    key={index}
-                    className={`${arrowListClass} hover-highlight`}
-                    data-content={project}
-                  >
-                    {project}
-                  </p>
-                ))}
+                <p className={arrowListClass}>
+                  built a hashing tool to group photos by visual similarity, saving photographers
+                  like me hours of culling photos
+                </p>
+                <p className={arrowListClass}>
+                  designed an animal species classification pipeline using visual descriptions +
+                  semantic search; can classify without individually training on photos of each
+                  species
+                </p>
+                <p className={arrowListClass}>
+                  used Nintendo Switch Joy-Con accelerometers to create a tool for home
+                  physiotherapy, including heart-rate measurement via IR camera
+                </p>
               </li>
               <li className={diamondListClass}>
                 currently i&#39;m...
-                {positions.map((position, index) => (
-                  <p key={index} className={arrowListClass}>
-                    {position}
-                  </p>
-                ))}
+                <p className={arrowListClass}>
+                  sponsorship director @ ontario competitive mathematics committee
+                </p>
+                <p className={arrowListClass}>
+                  president and exec of my high school&#39;s CS and math club respectively
+                </p>
+                <p className={arrowListClass}>
+                  member of the advocacy group More Transit Southern Ontario
+                </p>
               </li>
             </ul>
           </div>

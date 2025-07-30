@@ -40,7 +40,7 @@ export default function NavButtons({
             setDisplayMedian(70 + hoverOffset);
           }}
         >
-          <i className="text-md relative right-[5px] font-normal">{leftLabel}</i>
+          <i className="text-md relative right-[5px] font-normal select-none">{leftLabel}</i>
         </button>
       </div>
       <div
@@ -70,7 +70,7 @@ export default function NavButtons({
             setDisplayMedian(30 - hoverOffset);
           }}
         >
-          <i className="text-md relative left-[5px] font-normal">{rightLabel}</i>
+          <i className="text-md relative left-[5px] font-normal select-none">{rightLabel}</i>
         </button>
       </div>
     </>

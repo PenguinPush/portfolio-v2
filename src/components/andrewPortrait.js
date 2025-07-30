@@ -39,29 +39,44 @@ export default function AndrewPortrait() {
   }, []);
 
   useEffect(() => {
-    const onMouseMove = (e) => {
+    const onPointerMove = (e) => {
       if (!containerRef.current) return;
+
+      const isMobile = window.innerWidth < 768;
+      const centerFactor = isMobile ? 8 : 3;
+
       const rect = containerRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 3;
-      const dx = e.clientX - centerX;
-      const dy = e.clientY - centerY;
+
+      let dx, dy;
+      if (e.touches && e.touches.length > 0) {
+        dx = e.touches.item(0).clientX - centerX;
+        dy = e.touches.item(0).clientY - centerY;
+      } else {
+        dx = e.clientX - centerX;
+        dy = e.clientY - centerY;
+      }
 
       let row = 1,
         col = 1;
-      if (dy < -rect.height / 6) row = 0;
-      else if (dy > rect.height / 6) row = 2;
+      if (dy < -rect.height / centerFactor) row = 0;
+      else if (dy > rect.height / centerFactor) row = 2;
 
-      if (dx < -rect.width / 6) col = 0;
-      else if (dx > rect.width / 6) col = 2;
+      if (dx < -rect.width / centerFactor) col = 0;
+      else if (dx > rect.width / centerFactor) col = 2;
 
       if (row !== activeIndex[0] || col !== activeIndex[1]) {
         setActiveIndex([row, col]);
       }
     };
 
-    window.addEventListener('mousemove', onMouseMove);
-    return () => window.removeEventListener('mousemove', onMouseMove);
+    window.addEventListener('mousemove', onPointerMove);
+    window.addEventListener('touchmove', onPointerMove);
+    return () => {
+      window.removeEventListener('mousemove', onPointerMove);
+      window.removeEventListener('touchmove', onPointerMove);
+    };
   }, [activeIndex]);
 
   return (
