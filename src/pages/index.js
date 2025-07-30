@@ -72,8 +72,19 @@ export default function Main() {
           <div className="p-2">
             <ul className="list-none space-y-1 pl-4 leading-relaxed md:pl-8">
               <li className={diamondListClass}>
-                16-year-old programmer from Toronto with interests in photography, urban planning,
-                and politics.
+                16-year-old programmer from Toronto with interests in{' '}
+                <b className="hover-highlight" content="photography">
+                  photography
+                </b>
+                ,{' '}
+                <b className="hover-highlight" content="urban planning">
+                  urban planning
+                </b>
+                , and{' '}
+                <b className="hover-highlight" content="politics">
+                  politics
+                </b>
+                .
               </li>
               <li className={diamondListClass}>
                 stats breakdown:
@@ -86,29 +97,51 @@ export default function Main() {
               <li className={diamondListClass}>
                 recently, i&#39;ve...
                 <p className={arrowListClass}>
-                  built a hashing tool to group photos by visual similarity, saving photographers
-                  like me hours of culling photos
+                  built a{' '}
+                  <b className="hover-highlight" content="hashing tool">
+                    hashing tool
+                  </b>{' '}
+                  to group photos by visual similarity, saving photographers like me hours of
+                  culling photos
                 </p>
                 <p className={arrowListClass}>
-                  designed an animal species classification pipeline using visual descriptions +
-                  semantic search; can classify without individually training on photos of each
-                  species
+                  designed an animal species{' '}
+                  <b className="hover-highlight" content="classification pipeline">
+                    classification pipeline
+                  </b>{' '}
+                  using visual descriptions + semantic search; can classify without individually
+                  training on photos of each species
                 </p>
                 <p className={arrowListClass}>
-                  used Nintendo Switch Joy-Con accelerometers to create a tool for home
-                  physiotherapy, including heart-rate measurement via IR camera
+                  made{' '}
+                  <b className="hover-highlight" content="a tool">
+                    a tool
+                  </b>{' '}
+                  for home physiotherapy, using Nintendo Switch controllers to track movements &
+                  monitor heart rate (with the built-in IR Camera!)
                 </p>
               </li>
               <li className={diamondListClass}>
                 currently i&#39;m...
                 <p className={arrowListClass}>
-                  sponsorship director @ ontario competitive mathematics committee
+                  {' '}
+                  <b
+                    className="hover-highlight"
+                    content="Ontario Competitive Mathematics Committee"
+                  >
+                    Ontario Competitive Mathematics Committee
+                  </b>{' '}
+                  sponsorship lead
                 </p>
                 <p className={arrowListClass}>
-                  president and exec of my high school&#39;s CS and math club respectively
+                  president and exec of my school&#39;s CS and math clubs
                 </p>
                 <p className={arrowListClass}>
-                  member of the advocacy group More Transit Southern Ontario
+                  head organizer @ {' '}
+                  <b className="hover-highlight" content="hack::peel">
+                    hack::peel
+                  </b>
+                  {''}, hosting 100+ hackers
                 </p>
               </li>
             </ul>

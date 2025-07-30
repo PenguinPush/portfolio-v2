@@ -53,14 +53,19 @@
 .hover-highlight {
     position: relative;
     cursor: pointer;
+    text-decoration: underline;
+    display: inline-block;
 }
 
-.hover-highlight::after {
-    content: attr(data-content);
+.hover-highlight::before {
+    content: attr(content);
+    text-decoration: underline;
     position: absolute;
+    text-align: center;
+    left: -2px;
     bottom: 0;
-    left: 0;
     height: 100%;
+    width: calc(100% + 4px);
     clip-path: inset(0 100% 0 0);
     color: var(--color-white);
     background-color: var(--color-red-highlight);
@@ -69,7 +74,7 @@
     pointer-events: none;
 }
 
-.hover-highlight:hover::after {
+.hover-highlight:hover::before {
     clip-path: inset(0 0 0 0)
 }
 

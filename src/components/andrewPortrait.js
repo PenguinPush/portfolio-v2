@@ -43,7 +43,7 @@ export default function AndrewPortrait() {
       if (!containerRef.current) return;
 
       const isMobile = window.innerWidth < 768;
-      const centerFactor = isMobile ? 8 : 3;
+      const centerFactor = isMobile ? 12 : 8;
 
       const rect = containerRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
