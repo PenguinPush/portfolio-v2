@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build": "next build",
+    "export": "next build && next export && touch out/.nojekyll",
+    "deploy": "npm run export && gh-pages -d out",
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",
@@ -19,6 +22,7 @@
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.4.4",
+    "gh-pages": "^6.3.0",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "stylelint": "^16.22.0",
