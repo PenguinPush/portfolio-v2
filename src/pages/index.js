@@ -49,7 +49,7 @@ export default function Main() {
       className={`${dmSans.className} dotted-background-yellow flex min-h-screen items-start justify-center overflow-x-clip overflow-y-auto font-normal text-black`}
     >
       <div className="relative z-0 flex min-h-screen w-full flex-col gap-2 p-4 pb-[65vw] text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
-        <BackgroundCircle radiusVh={radiusVh} setRadiusVh={setRadiusVh} isMobile={isMobile}/>
+        <BackgroundCircle radiusVh={radiusVh} setRadiusVh={setRadiusVh} isMobile={isMobile} />
         <div className="flex flex-col items-center gap-2 px-4">
           <h1
             className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
@@ -88,7 +88,7 @@ export default function Main() {
           {/*<Projects />*/}
         </div>
         <div className="flex justify-center gap-4 pt-2 text-xs md:items-end md:text-lg">
-          <b className="hover-highlight" content="📩 email">
+          <b className="hover-highlight" content="💌 email">
             📧 email
           </b>
           <b className="hover-highlight" content="🦑 github">

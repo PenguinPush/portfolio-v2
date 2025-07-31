@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 const portraits = [
@@ -36,13 +36,12 @@ export default function AndrewPortrait({ getImagePath, isMobile }) {
     const onResize = () => {
       setPortraitY(isMobile ? '62%' : '0%');
     };
-
     window.addEventListener('resize', onResize);
 
     return () => {
       window.removeEventListener('resize', onResize);
     };
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     const onPointerMove = (e) => {
@@ -92,6 +91,7 @@ export default function AndrewPortrait({ getImagePath, isMobile }) {
       style={{
         transform: `translateY(${portraitY})`,
         transition: 'transform 0.3s var(--ease-out)',
+        transitionDelay: '300ms',
       }}
     >
       {portraits.map((rows, row) =>

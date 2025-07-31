@@ -58,7 +58,7 @@ export default function BackgroundCircle({ radiusVh, setRadiusVh, isMobile }) {
       <div
         className="dotted-background-white ease-out-back pointer-events-none fixed top-0 left-1/2 -z-10 h-full w-full -translate-x-1/2 transition-[clip-path] duration-300"
         style={{
-          clipPath: `${isMobile ? "" : `circle(${radiusVh}vh at 50% 50%)`}`,
+          clipPath: `${isMobile ? '' : `circle(${radiusVh}vh at 50% 50%)`}`,
         }}
       ></div>
     </>
