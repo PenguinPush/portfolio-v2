@@ -40,6 +40,19 @@ export default function AndrewPortrait() {
   }, []);
 
   useEffect(() => {
+  const handleResize = () => {
+    const isMobile = window.innerWidth < 768;
+    setPortraitY(isMobile ? '62%' : '0%');
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, []);
+
+  useEffect(() => {
     const onPointerMove = (e) => {
       if (!containerRef.current) return;
 

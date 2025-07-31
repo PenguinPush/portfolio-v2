@@ -1,11 +1,8 @@
-
 export default function NavButtons({
   median,
   displayMedian,
-  setMedian,
   setDisplayMedian,
-  leftLabel,
-  rightLabel,
+  setPageState,
 }) {
   const leftLabelColor = median > 50 ? 'bg-orange-base' : 'bg-yellow-base';
   const rightLabelColor = median < 50 ? 'bg-orange-base' : 'bg-yellow-base';
@@ -14,7 +11,7 @@ export default function NavButtons({
   return (
     <>
       <div
-        className="relative flex h-full transition-all ease-out-back duration-300"
+        className="ease-out-back relative flex h-full transition-all duration-300"
         style={{
           width: `${displayMedian}%`,
         }}
@@ -31,20 +28,20 @@ export default function NavButtons({
           onPointerLeave={() => setDisplayMedian(median)}
           onMouseDown={() => setDisplayMedian(displayMedian + hoverOffset)}
           onMouseUp={() => {
-            setMedian(70);
+            setPageState(0);
             setDisplayMedian(70 + hoverOffset);
           }}
           onTouchStart={() => setDisplayMedian(displayMedian + hoverOffset)}
           onTouchEnd={() => {
-            setMedian(70);
+            setPageState(0);
             setDisplayMedian(70 + hoverOffset);
           }}
         >
-          <i className="text-md relative right-[5px] font-normal select-none">{leftLabel}</i>
+          <i className="text-md relative right-[5px] font-normal select-none">About</i>
         </button>
       </div>
       <div
-        className="relative flex h-full transition-all ease-out-back duration-300"
+        className="ease-out-back relative flex h-full transition-all duration-300"
         style={{
           width: `${100 - displayMedian}%`,
         }}
@@ -61,16 +58,16 @@ export default function NavButtons({
           onPointerLeave={() => setDisplayMedian(median)}
           onMouseDown={() => setDisplayMedian(displayMedian - hoverOffset)}
           onMouseUp={() => {
-            setMedian(30);
+            setPageState(1);
             setDisplayMedian(30 - hoverOffset);
           }}
           onTouchStart={() => setDisplayMedian(displayMedian - hoverOffset)}
           onTouchEnd={() => {
-            setMedian(30);
+            setPageState(1);
             setDisplayMedian(30 - hoverOffset);
           }}
         >
-          <i className="text-md relative left-[5px] font-normal select-none">{rightLabel}</i>
+          <i className="text-md relative left-[5px] font-normal select-none">Projects</i>
         </button>
       </div>
     </>
