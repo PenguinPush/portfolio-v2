@@ -101,9 +101,9 @@
 }
 
 .hover-underline-evil:hover::before {
-    transition: clip-path 3s var(--ease-out);
+    transition: clip-path 3s var(--ease-in);
     clip-path: inset(81.25% 0 12.5% 0);
-    animation: evil-highlight 0.3s var(--ease-out-back);
+    animation: evil-highlight 0.3s var(--ease-out);
     animation-delay: 3s;
     animation-fill-mode: forwards;
 }

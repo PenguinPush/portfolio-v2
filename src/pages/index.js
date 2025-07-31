@@ -46,9 +46,9 @@ export default function Main() {
 
   return (
     <div
-      className={`${dmSans.className} dotted-background-yellow flex min-h-screen items-start justify-center overflow-x-clip overflow-y-auto font-normal text-black`}
+      className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-clip overflow-y-auto overscroll-contain font-normal text-black`}
     >
-      <div className="relative z-0 flex min-h-screen w-full flex-col gap-2 p-4 pb-[65vw] text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
+      <div className="relative z-0 flex min-h-[100dvh] w-full flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
         <BackgroundCircle radiusVh={radiusVh} setRadiusVh={setRadiusVh} isMobile={isMobile} />
         <div className="flex flex-col items-center gap-2 px-4">
           <h1
@@ -72,6 +72,7 @@ export default function Main() {
               displayMedian={displayMedian}
               setMedian={setMedian}
               setDisplayMedian={setDisplayMedian}
+              pageState={pageState}
               setPageState={setPageState}
             />
           </div>
@@ -104,8 +105,9 @@ export default function Main() {
             📁 repo
           </b>
         </div>
+        <div className="h-[65vw] md:h-0" aria-hidden="true"></div>
       </div>
-      <AndrewPortrait getImagePath={getImagePath} isMobile={isMobile} />
+      <AndrewPortrait getImagePath={getImagePath} aria-hidden="true" />
     </div>
   );
 }

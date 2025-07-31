@@ -17,13 +17,6 @@ export default function About({
   const [buttonScale, setButtonScale] = useState(1);
   const [gradientPosition, setGradientPosition] = useState('-110%');
   const [evilMode, setEvilMode] = useState(false);
-  const [evilTimer, setEvilTimer] = useState(null);
-
-  useEffect(() => {
-    return () => {
-      if (evilTimer) clearTimeout(evilTimer);
-    };
-  }, [evilTimer]);
 
   return (
     <div className="p-2">
@@ -140,7 +133,7 @@ export default function About({
             ></div>
           </div>
           <button className="relative z-1 h-full w-full cursor-pointer bg-transparent">
-            <i className="relative font-normal select-none md:text-xl">
+            <i className="relative font-normal select-none md:text-lg">
               see what else i&#39;ve made
             </i>
           </button>
@@ -150,16 +143,11 @@ export default function About({
           content="or check out my links!"
           onMouseEnter={() => {
             if (!isMobile) {
-              const timer = setTimeout(() => {
-                setEvilMode(true);
-              }, 3000);
-              setEvilTimer(timer);
+              setEvilMode(true);
             }
           }}
           onMouseLeave={() => {
             if (!isMobile) {
-              if (evilTimer) clearTimeout(evilTimer);
-              setEvilTimer(null);
               setEvilMode(false);
             }
           }}
@@ -168,7 +156,8 @@ export default function About({
         </p>
       </div>
       <div
-        className="pointer-events-none absolute bottom-10 z-10 h-[60vh] w-[50vh] transition-all ease-out"
+        className="pointer-events-none absolute bottom-10 z-10 h-[60dvh] w-[50dvh] transition-all ease-out"
+        aria-hidden="true"
         style={{
           transitionDuration: evilMode ? '3s' : '150ms',
           left: evilMode ? 'calc(50% + 250px)' : '100vw',

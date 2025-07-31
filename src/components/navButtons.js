@@ -1,20 +1,27 @@
-export default function NavButtons({ median, displayMedian, setDisplayMedian, setPageState }) {
-  const leftLabelColor = median > 50 ? 'bg-orange-base' : 'bg-yellow-base';
-  const rightLabelColor = median < 50 ? 'bg-orange-base' : 'bg-yellow-base';
+export default function NavButtons({
+  median,
+  displayMedian,
+  setDisplayMedian,
+  pageState,
+  setPageState,
+}) {
+  const labelColors = ['bg-orange-base', 'bg-yellow-base'];
+  const labelHeights = [1, 1];
   const hoverOffset = 2.5;
 
   return (
     <>
       <div
-        className="ease-out-back relative flex h-full transition-all duration-300"
+        className="ease-out-back relative flex transition-all duration-300"
         style={{
+          height: `${100 * labelHeights[pageState]}%`,
           width: `${displayMedian}%`,
         }}
       >
         <div
-          className={`${leftLabelColor} clip-path-left absolute inset-0 rounded-l-lg transition-all`}
+          className={`${labelColors[pageState]} clip-path-left absolute inset-0 rounded-l-lg transition-all`}
           style={{
-            clipPath: 'polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0% 100%)',
+            clipPath: `polygon(0 0, 100% 0, calc(100% - ${16 * labelHeights[pageState]}px) 100%, 0% 100%)`,
           }}
         ></div>
         <button
@@ -32,19 +39,20 @@ export default function NavButtons({ median, displayMedian, setDisplayMedian, se
             setDisplayMedian(70 + hoverOffset);
           }}
         >
-          <i className="text-md relative right-[5px] font-normal select-none">about</i>
+          <i className={`text-md relative right-[5px] font-normal select-none`}>about</i>
         </button>
       </div>
       <div
-        className="ease-out-back relative flex h-full transition-all duration-300"
+        className="ease-out-back relative flex transition-all duration-300"
         style={{
+          height: `${100 * labelHeights[(pageState + 1) % 2]}%`,
           width: `${100 - displayMedian}%`,
         }}
       >
         <div
-          className={`${rightLabelColor} clip-path-left absolute inset-0 rounded-r-lg transition-all`}
+          className={`${labelColors[(pageState + 1) % 2]} clip-path-left absolute inset-0 rounded-r-lg transition-all`}
           style={{
-            clipPath: 'polygon(16px 0, 100% 0, 100% 100%, 0% 100%)',
+            clipPath: `polygon(${16 * labelHeights[(pageState + 1) % 2]}px 0, 100% 0, 100% 100%, 0% 100%)`,
           }}
         ></div>
         <button
@@ -62,7 +70,7 @@ export default function NavButtons({ median, displayMedian, setDisplayMedian, se
             setDisplayMedian(30 - hoverOffset);
           }}
         >
-          <i className="text-md relative left-[5px] font-normal select-none">projects</i>
+          <i className={`text-md relative left-[5px] font-normal select-none`}>projects</i>
         </button>
       </div>
     </>
