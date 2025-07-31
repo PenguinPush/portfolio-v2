@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
-export default function About({}) {
+export default function About({ displayMedian, setDisplayMedian, setPageState, getImagePath }) {
   const diamondListClass =
     'group ease-out-back diamond-list-decoration relative pr-2 transition duration-300 hover:translate-x-1 active:translate-x-1 md:pr-4';
 
   const arrowListClass =
     'group ease-out-back arrow-list-decoration relative translate-x-4 transition duration-300 hover:translate-x-5 active:translate-x-5';
+
+  const [buttonScale, setButtonScale] = useState(1);
+  const [gradientPosition, setGradientPosition] = useState('-110%');
+  const [evilMode, setEvilMode] = useState(false);
+  const [evilTimer, setEvilTimer] = useState(null);
+
+  useEffect(() => {
+    return () => {
+      if (evilTimer) clearTimeout(evilTimer);
+    };
+  }, [evilTimer]);
 
   return (
     <div className="p-2">
@@ -77,6 +89,90 @@ export default function About({}) {
           </p>
         </li>
       </ul>
+      <div className="flex flex-col items-center justify-center gap-1 pt-6 md:gap-2">
+        <div
+          className="relative flex h-12 w-[50%]"
+          onPointerEnter={() => {
+            setGradientPosition('-12.5%');
+            setButtonScale(1.05);
+          }}
+          onPointerLeave={() => {
+            setGradientPosition('-110%');
+            setButtonScale(1.0);
+          }}
+          onMouseDown={() => {
+            setButtonScale(1.1);
+            setDisplayMedian(displayMedian - 2.5);
+          }}
+          onMouseUp={() => {
+            setButtonScale(1.05);
+            setPageState(1);
+            setDisplayMedian(30 - 2.5);
+          }}
+          onTouchStart={() => {
+            setButtonScale(1.1);
+            setDisplayMedian(displayMedian - 2.5);
+          }}
+          onTouchEnd={() => {
+            setButtonScale(1.0);
+            setPageState(1);
+            setDisplayMedian(30 - 2.5);
+          }}
+        >
+          <div
+            className="ease-out-back bg-yellow-base pointer-events-none absolute inset-0 overflow-hidden rounded-lg transition-all duration-300"
+            style={{
+              transform: `scale(${buttonScale}, ${2 - buttonScale})`,
+            }}
+          >
+            <div
+              className="bg-orange-base ease-out-back absolute inset-0 transition-all duration-300"
+              style={{
+                transform: `translateX(${gradientPosition}) skewX(-25deg)`,
+                width: '120%',
+              }}
+            ></div>
+          </div>
+          <button className="relative z-1 h-full w-full cursor-pointer bg-transparent">
+            <i className="relative font-normal select-none md:text-xl">
+              see what else i&#39;ve made
+            </i>
+          </button>
+        </div>
+        <p
+          className="hover-underline-evil inline-block text-xs italic md:text-sm"
+          content="or check out my links!"
+          onMouseEnter={() => {
+            const timer = setTimeout(() => {
+              setEvilMode(true);
+            }, 3000);
+            setEvilTimer(timer);
+          }}
+          onMouseLeave={() => {
+            if (evilTimer) clearTimeout(evilTimer);
+            setEvilTimer(null);
+            setEvilMode(false);
+          }}
+        >
+          or check out my links !
+        </p>
+      </div>
+      <div
+        className="ease-out pointer-events-none absolute bottom-10 z-10 h-[60vh] w-[50vh] transition-all"
+        style={{
+          transitionDuration: evilMode ? '3s' : '150ms',
+          left: evilMode ? 'calc(50% + 250px)' : '100vw',
+          animation: evilMode ? 'shake 3s step-start' : 'none',
+        }}
+      >
+        <Image
+          src={getImagePath('/images/big_evil_arrow.png')}
+          alt={`BIG EVIL ARROW`}
+          width={500}
+          height={500}
+          className="h-full w-full"
+        />
+      </div>
     </div>
   );
 }

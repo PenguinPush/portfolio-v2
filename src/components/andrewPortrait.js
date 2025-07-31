@@ -19,14 +19,7 @@ const portraits = [
   ],
 ];
 
-const getImagePath = (path) => {
-  // made for compatibility between localhost and github pages
-  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-  const basePath = process.env.NODE_ENV === 'production' ? '/portfolio-v2' : '';
-  return `${basePath}/${cleanPath}`;
-};
-
-export default function AndrewPortrait() {
+export default function AndrewPortrait({ getImagePath }) {
   const [activeIndex, setActiveIndex] = useState([0, 2]);
   const containerRef = useRef(null);
   const imageRefs = useRef({});
@@ -40,17 +33,17 @@ export default function AndrewPortrait() {
   }, []);
 
   useEffect(() => {
-  const handleResize = () => {
-    const isMobile = window.innerWidth < 768;
-    setPortraitY(isMobile ? '62%' : '0%');
-  };
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 768;
+      setPortraitY(isMobile ? '62%' : '0%');
+    };
 
-  window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize);
 
-  return () => {
-    window.removeEventListener('resize', handleResize);
-  };
-}, []);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const onPointerMove = (e) => {

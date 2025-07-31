@@ -5,6 +5,7 @@ import NavButtons from '@/components/navButtons';
 import BackgroundCircle from '@/components/backgroundCircle';
 import AndrewPortrait from '@/components/andrewPortrait';
 import { DM_Sans } from 'next/font/google';
+import Image from 'next/image';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -22,11 +23,18 @@ export default function Main() {
     } else if (pageState === 1) {
       setMedian(30);
     }
-  });
+  }, [pageState]);
+
+  const getImagePath = (path) => {
+    // made for compatibility between localhost and github pages
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    const basePath = process.env.NODE_ENV === 'production' ? '/portfolio-v2' : '';
+    return `${basePath}/${cleanPath}`;
+  };
 
   return (
     <div
-      className={`${dmSans.className} dotted-background-yellow flex min-h-screen items-start justify-center overflow-auto font-normal text-black`}
+      className={`${dmSans.className} dotted-background-yellow flex min-h-screen items-start justify-center overflow-y-auto overflow-x-clip font-normal text-black`}
     >
       <div className="relative z-0 flex min-h-screen w-full flex-col gap-2 p-4 pb-[65vw] text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
         <BackgroundCircle radiusVh={radiusVh} setRadiusVh={setRadiusVh} />
@@ -57,10 +65,16 @@ export default function Main() {
           </div>
         </div>
         <div className="flex flex-1">
-          <About />
+          <About
+            displayMedian={displayMedian}
+            setMedian={setMedian}
+            setDisplayMedian={setDisplayMedian}
+            setPageState={setPageState}
+            getImagePath={getImagePath}
+          />
           {/*<Projects />*/}
         </div>
-        <div className="md:text-lg flex justify-center gap-4 pt-8 text-xs md:items-end">
+        <div className="flex justify-center gap-4 pt-4 text-xs md:items-end md:text-lg">
           <b className="hover-highlight" content="📩 email">
             📧 email
           </b>
@@ -78,7 +92,7 @@ export default function Main() {
           </b>
         </div>
       </div>
-      <AndrewPortrait />
+      <AndrewPortrait getImagePath={getImagePath} />
     </div>
   );
 }

@@ -10,10 +10,11 @@
     --color-blue-highlight: #87f3ff;
     --color-red-highlight: #c22303;
     --color-white: #fff;
-    --color-gray: #7f7f7f;
+    --color-gray: #4f4f4f;
     --color-black: #252525;
     --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
     --ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);;
 }
 
 ::selection {
@@ -27,6 +28,10 @@
 
 .ease-in-out-back {
     transition-timing-function: var(--ease-in-out-back);
+}
+
+.ease-out-expo {
+    transition-timing-function: var(--ease-out-expo);
 }
 
 .hover-underline {
@@ -48,6 +53,80 @@
 
 .hover-underline:hover::after {
     width: 100%;
+}
+
+.hover-underline-evil {
+    position: relative;
+    display: inline-block;
+    text-wrap: nowrap;
+    cursor: default;
+}
+
+.hover-underline-evil::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 100%;
+    clip-path: inset(81.25% 0 12.5% 0);
+    width: 100%;
+    background: var(--color-black);
+    transform: translateX(-50%);
+    z-index: -1;
+}
+
+.hover-underline-evil:hover::after {
+    animation: evil-white 0s linear;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+}
+
+.hover-underline-evil::before {
+    content: attr(content);
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    bottom: 0;
+    height: 100%;
+    width: calc(100% + 4px);
+    clip-path: inset(81.25% 50% 12.5% 50%);
+    color: var(--color-red-highlight);
+    background: var(--color-red-highlight);
+    transform: translateX(-50%);
+    z-index: 1;
+    pointer-events: none;
+    transition: none;
+}
+
+.hover-underline-evil:hover::before {
+    transition: clip-path 3s var(--ease-out);
+    clip-path: inset(81.25% 0 12.5% 0);
+    animation: evil-highlight 0.3s var(--ease-out-back);
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes evil-highlight {
+    0% {
+        clip-path: inset(100% 0 0 0);
+        color: var(--color-white);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 0);
+        color: var(--color-white);
+    }
+}
+
+@keyframes evil-white {
+    to {
+        z-index: 2;
+        background: var(--color-white);
+    }
+}
+
+.hover-highlight:hover::before {
+    clip-path: inset(0 0 0 0)
 }
 
 .hover-highlight {
@@ -150,7 +229,64 @@
     );
 }
 
-@media (min-width: 768px) {
+@keyframes shake {
+  0%, 16.6% { transform: translateX(0) translateY(0); }
+  1.6% { transform: translateX(-5px) translateY(3px); }
+  3.3% { transform: translateX(4px) translateY(-2px); }
+  5% { transform: translateX(-2px) translateY(-5px); }
+  6.6% { transform: translateX(5px) translateY(1px); }
+  8.3% { transform: translateX(-4px) translateY(4px); }
+  10% { transform: translateX(2px) translateY(-4px); }
+  11.6% { transform: translateX(5px) translateY(3px); }
+  13.3% { transform: translateX(-3px) translateY(-2px); }
+  15% { transform: translateX(1px) translateY(5px); }
+  18.2% { transform: translateX(-4px) translateY(2.4px); }
+  19.9% { transform: translateX(3.2px) translateY(-1.6px); }
+  21.6% { transform: translateX(-1.6px) translateY(-4px); }
+  23.2% { transform: translateX(4px) translateY(0.8px); }
+  24.9% { transform: translateX(-3.2px) translateY(3.2px); }
+  26.6% { transform: translateX(1.6px) translateY(-3.2px); }
+  28.2% { transform: translateX(4px) translateY(2.4px); }
+  29.9% { transform: translateX(-2.4px) translateY(-1.6px); }
+  31.6% { transform: translateX(0.8px) translateY(4px); }
+  34.8% { transform: translateX(-3px) translateY(1.8px); }
+  36.5% { transform: translateX(2.4px) translateY(-1.2px); }
+  38.2% { transform: translateX(-1.2px) translateY(-3px); }
+  39.8% { transform: translateX(3px) translateY(0.6px); }
+  41.5% { transform: translateX(-2.4px) translateY(2.4px); }
+  43.2% { transform: translateX(1.2px) translateY(-2.4px); }
+  44.8% { transform: translateX(3px) translateY(1.8px); }
+  46.5% { transform: translateX(-1.8px) translateY(-1.2px); }
+  48.2% { transform: translateX(0.6px) translateY(3px); }
+  51.4% { transform: translateX(-2px) translateY(1.2px); }
+  53.1% { transform: translateX(1.6px) translateY(-0.8px); }
+  54.8% { transform: translateX(-0.8px) translateY(-2px); }
+  56.4% { transform: translateX(2px) translateY(0.4px); }
+  58.1% { transform: translateX(-1.6px) translateY(1.6px); }
+  59.8% { transform: translateX(0.8px) translateY(-1.6px); }
+  61.4% { transform: translateX(2px) translateY(1.2px); }
+  63.1% { transform: translateX(-1.2px) translateY(-0.8px); }
+  64.8% { transform: translateX(0.4px) translateY(2px); }
+  68% { transform: translateX(-1px) translateY(0.6px); }
+  69.7% { transform: translateX(0.8px) translateY(-0.4px); }
+  71.4% { transform: translateX(-0.4px) translateY(-1px); }
+  73% { transform: translateX(1px) translateY(0.2px); }
+  74.7% { transform: translateX(-0.8px) translateY(0.8px); }
+  76.4% { transform: translateX(0.4px) translateY(-0.8px); }
+  78% { transform: translateX(1px) translateY(0.6px); }
+  79.7% { transform: translateX(-0.6px) translateY(-0.4px); }
+  81.4% { transform: translateX(0.2px) translateY(1px); }
+  84.6% { transform: translateX(-0.5px) translateY(0.3px); }
+  86.3% { transform: translateX(0.4px) translateY(-0.2px); }
+  88% { transform: translateX(-0.2px) translateY(-0.5px); }
+  89.6% { transform: translateX(0.5px) translateY(0.1px); }
+  91.3% { transform: translateX(-0.4px) translateY(0.4px); }
+  93% { transform: translateX(0.2px) translateY(-0.4px); }
+  94.6% { transform: translateX(0.5px) translateY(0.3px); }
+  96.3% { transform: translateX(-0.3px) translateY(-0.2px); }
+  98% { transform: translateX(0.1px) translateY(0.5px); }
+}
+@media (width >= 768px) {
     .md\:bg-none-override {
         background: none !important;
     }

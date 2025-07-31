@@ -1,9 +1,4 @@
-export default function NavButtons({
-  median,
-  displayMedian,
-  setDisplayMedian,
-  setPageState,
-}) {
+export default function NavButtons({ median, displayMedian, setDisplayMedian, setPageState }) {
   const leftLabelColor = median > 50 ? 'bg-orange-base' : 'bg-yellow-base';
   const rightLabelColor = median < 50 ? 'bg-orange-base' : 'bg-yellow-base';
   const hoverOffset = 2.5;
@@ -37,7 +32,7 @@ export default function NavButtons({
             setDisplayMedian(70 + hoverOffset);
           }}
         >
-          <i className="text-md relative right-[5px] font-normal select-none">About</i>
+          <i className="text-md relative right-[5px] font-normal select-none">about</i>
         </button>
       </div>
       <div
@@ -67,7 +62,7 @@ export default function NavButtons({
             setDisplayMedian(30 - hoverOffset);
           }}
         >
-          <i className="text-md relative left-[5px] font-normal select-none">Projects</i>
+          <i className="text-md relative left-[5px] font-normal select-none">projects</i>
         </button>
       </div>
     </>
