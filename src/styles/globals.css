@@ -136,6 +136,7 @@
     cursor: pointer;
     text-decoration: underline;
     display: inline-block;
+    font-weight: bold;
 }
 
 .hover-highlight::before {

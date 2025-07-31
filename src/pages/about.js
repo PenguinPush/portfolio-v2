@@ -16,24 +16,23 @@ export default function About({
 
   const [buttonScale, setButtonScale] = useState(1);
   const [gradientPosition, setGradientPosition] = useState('-110%');
-  const [evilMode, setEvilMode] = useState(false);
 
   return (
     <div className="p-2">
       <ul className="list-none space-y-1 pl-4 leading-relaxed md:pl-8">
         <li className={diamondListClass}>
           16-year-old programmer from Toronto with interests in{' '}
-          <b className="hover-highlight" content="📸 photography">
+          <a className="hover-highlight" content="📸 photography">
             📷 photography
-          </b>
+          </a>
           ,{' '}
-          <b className="hover-highlight" content="🌆 urban planning">
+          <a className="hover-highlight" content="🌆 urban planning">
             🏙️ urban planning
-          </b>
+          </a>
           , and{' '}
-          <b className="hover-highlight" content="🌍 politics">
+          <a className="hover-highlight" content="🌍 politics">
             🌎 politics
-          </b>
+          </a>
           .
         </li>
         <li className={diamondListClass}>
@@ -46,25 +45,25 @@ export default function About({
           recently, i&#39;ve...
           <p className={arrowListClass}>
             built a{' '}
-            <b className="hover-highlight" content="💽 hashing tool">
+            <a className="hover-highlight" content="💽 hashing tool">
               💾 hashing tool
-            </b>{' '}
+            </a>{' '}
             to group photos by visual similarity, saving photographers like me hours of culling
             photos
           </p>
           <p className={arrowListClass}>
             designed an animal species{' '}
-            <b className="hover-highlight" content="🐼️ classification pipeline">
+            <a className="hover-highlight" content="🐼️ classification pipeline">
               🐻 classification pipeline
-            </b>{' '}
+            </a>{' '}
             using visual descriptions + semantic search; can classify without individually training
             on photos of each species
           </p>
           <p className={arrowListClass}>
             made{' '}
-            <b className="hover-highlight" content="🦾 a tool">
+            <a className="hover-highlight" content="🦾 a tool">
               💪 a tool
-            </b>{' '}
+            </a>{' '}
             for home physiotherapy, using Nintendo Switch controllers to track movements & monitor
             heart rate (with the built-in IR Camera!)
           </p>
@@ -73,17 +72,17 @@ export default function About({
           currently i&#39;m...
           <p className={arrowListClass}>
             {' '}
-            <b className="hover-highlight" content="Ontario Competitive Mathematics Committee">
+            <a className="hover-highlight" content="Ontario Competitive Mathematics Committee">
               Ontario Competitive Mathematics Committee
-            </b>{' '}
+            </a>{' '}
             sponsorship lead
           </p>
           <p className={arrowListClass}>president and exec of my school&#39;s CS and math clubs</p>
           <p className={arrowListClass}>
             head organizer @{' '}
-            <b className="hover-highlight" content="hack::peel">
+            <a className="hover-highlight" content="hack::peel">
               hack::peel
-            </b>
+            </a>
             {''}, hosting 100+ hackers
           </p>
         </li>
@@ -138,39 +137,6 @@ export default function About({
             </i>
           </button>
         </div>
-        <p
-          className={`${isMobile ? '' : 'hover-underline-evil'} inline-block text-xs italic md:text-sm`}
-          content="or check out my links!"
-          onMouseEnter={() => {
-            if (!isMobile) {
-              setEvilMode(true);
-            }
-          }}
-          onMouseLeave={() => {
-            if (!isMobile) {
-              setEvilMode(false);
-            }
-          }}
-        >
-          or check out my links !
-        </p>
-      </div>
-      <div
-        className="pointer-events-none absolute bottom-10 z-10 h-[60dvh] w-[50dvh] transition-all ease-out"
-        aria-hidden="true"
-        style={{
-          transitionDuration: evilMode ? '3s' : '150ms',
-          left: evilMode ? 'calc(50% + 250px)' : '100vw',
-          animation: evilMode ? 'shake 3s step-start' : 'none',
-        }}
-      >
-        <Image
-          src={getImagePath('/images/big_evil_arrow.png')}
-          alt={`BIG EVIL ARROW`}
-          width={500}
-          height={500}
-          className="h-full w-full"
-        />
       </div>
     </div>
   );

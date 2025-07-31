@@ -4,6 +4,7 @@ import Projects from '@/pages/projects';
 import NavButtons from '@/components/navButtons';
 import BackgroundCircle from '@/components/backgroundCircle';
 import AndrewPortrait from '@/components/andrewPortrait';
+import Footer from '@/components/footer';
 import { DM_Sans } from 'next/font/google';
 import Image from 'next/image';
 
@@ -17,6 +18,7 @@ export default function Main() {
   const [displayMedian, setDisplayMedian] = useState(70);
   const [radiusVh, setRadiusVh] = useState(60);
   const [isMobile, setIsMobile] = useState(false);
+  const [evilMode, setEvilMode] = useState(false);
 
   useEffect(() => {
     if (pageState === 0) {
@@ -46,7 +48,7 @@ export default function Main() {
 
   return (
     <div
-      className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-clip overflow-y-auto overscroll-contain font-normal text-black`}
+      className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}
     >
       <div className="relative z-0 flex min-h-[100dvh] w-full flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
         <BackgroundCircle radiusVh={radiusVh} setRadiusVh={setRadiusVh} isMobile={isMobile} />
@@ -77,37 +79,41 @@ export default function Main() {
             />
           </div>
         </div>
-        <div className="flex flex-1">
-          <About
-            displayMedian={displayMedian}
-            setMedian={setMedian}
-            setDisplayMedian={setDisplayMedian}
-            setPageState={setPageState}
-            getImagePath={getImagePath}
-            isMobile={isMobile}
-          />
-          {/*<Projects />*/}
-        </div>
-        <div className="flex justify-center gap-4 pt-2 text-xs md:items-end md:text-lg">
-          <b className="hover-highlight" content="💌 email">
-            📧 email
-          </b>
-          <b className="hover-highlight" content="🦑 github">
-            🐙 github
-          </b>
-          <b className="hover-highlight" content="⛓️‍💥 linkedin">
-            🔗 linkedin
-          </b>{' '}
-          <b className="hover-highlight" content="📜 resume">
-            📃 resume
-          </b>{' '}
-          <b className="hover-highlight" content="📂 repo">
-            📁 repo
-          </b>
+        <div className="flex flex-grow flex-col items-center gap-2">
+          <div className="flex flex-grow flex-col">
+            <About
+              displayMedian={displayMedian}
+              setMedian={setMedian}
+              setDisplayMedian={setDisplayMedian}
+              setPageState={setPageState}
+              getImagePath={getImagePath}
+              isMobile={isMobile}
+            />
+            {/*<Projects />*/}
+          </div>
+          <Footer isMobile={isMobile} setEvilMode={setEvilMode} />
+          <div
+            className="pointer-events-none absolute bottom-10 z-10 h-[60dvh] w-[45dvh] transition-all ease-out"
+            aria-hidden="true"
+            style={{
+              transitionDuration: evilMode ? '3s' : '150ms',
+              left: evilMode ? 'calc(50% + 270px)' : '100vw',
+              animation: evilMode ? 'shake 3s step-start' : 'none',
+              imageRendering: 'pixelated',
+            }}
+          >
+            <Image
+              src={getImagePath('/images/big_evil_arrow.png')}
+              alt={`BIG EVIL ARROW`}
+              width={500}
+              height={500}
+              className="h-full w-full"
+            />
+          </div>
         </div>
         <div className="h-[65vw] md:h-0" aria-hidden="true"></div>
+        <AndrewPortrait getImagePath={getImagePath} aria-hidden="true" />
       </div>
-      <AndrewPortrait getImagePath={getImagePath} aria-hidden="true" />
     </div>
   );
 }
