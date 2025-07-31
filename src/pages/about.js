@@ -13,14 +13,14 @@ export default function About({}) {
         <li className={diamondListClass}>
           16-year-old programmer from Toronto with interests in{' '}
           <b className="hover-highlight" content="📸 photography">
-            📸 photography
+            📷 photography
           </b>
           ,{' '}
-          <b className="hover-highlight" content="🏙️ urban planning">
+          <b className="hover-highlight" content="🌆 urban planning">
             🏙️ urban planning
           </b>
           , and{' '}
-          <b className="hover-highlight" content="🌎 politics">
+          <b className="hover-highlight" content="🌍 politics">
             🌎 politics
           </b>
           .
@@ -35,23 +35,23 @@ export default function About({}) {
           recently, i&#39;ve...
           <p className={arrowListClass}>
             built a{' '}
-            <b className="hover-highlight" content="💾️ hashing tool">
-              💾️ hashing tool
+            <b className="hover-highlight" content="💽 hashing tool">
+              💾 hashing tool
             </b>{' '}
             to group photos by visual similarity, saving photographers like me hours of culling
             photos
           </p>
           <p className={arrowListClass}>
             designed an animal species{' '}
-            <b className="hover-highlight" content="🐼 classification pipeline">
-              🐼 classification pipeline
+            <b className="hover-highlight" content="🐼️ classification pipeline">
+              🐻 classification pipeline
             </b>{' '}
             using visual descriptions + semantic search; can classify without individually training
             on photos of each species
           </p>
           <p className={arrowListClass}>
             made{' '}
-            <b className="hover-highlight" content="💪 a tool">
+            <b className="hover-highlight" content="🦾 a tool">
               💪 a tool
             </b>{' '}
             for home physiotherapy, using Nintendo Switch controllers to track movements & monitor

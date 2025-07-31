@@ -61,19 +61,19 @@ export default function Main() {
           {/*<Projects />*/}
         </div>
         <div className="md:text-lg flex justify-center gap-4 pt-8 text-xs md:items-end">
-          <b className="hover-highlight" content="📧 email">
+          <b className="hover-highlight" content="📩 email">
             📧 email
           </b>
-          <b className="hover-highlight" content="🐙 github">
+          <b className="hover-highlight" content="🦑 github">
             🐙 github
           </b>
-          <b className="hover-highlight" content="🔗 linkedin">
+          <b className="hover-highlight" content="⛓️‍💥 linkedin">
             🔗 linkedin
           </b>{' '}
           <b className="hover-highlight" content="📜 resume">
-            📜 resume
+            📃 resume
           </b>{' '}
-          <b className="hover-highlight" content="📁 repo">
+          <b className="hover-highlight" content="📂 repo">
             📁 repo
           </b>
         </div>
