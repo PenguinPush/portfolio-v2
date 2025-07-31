@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-export default function About({ displayMedian, setDisplayMedian, setPageState, getImagePath }) {
+export default function About({
+  displayMedian,
+  setDisplayMedian,
+  setPageState,
+  getImagePath,
+  isMobile,
+}) {
   const diamondListClass =
     'group ease-out-back diamond-list-decoration relative pr-2 transition duration-300 hover:translate-x-1 active:translate-x-1 md:pr-4';
 
@@ -93,12 +99,12 @@ export default function About({ displayMedian, setDisplayMedian, setPageState, g
         <div
           className="relative flex h-12 w-[50%]"
           onPointerEnter={() => {
-            setGradientPosition('-12.5%');
             setButtonScale(1.05);
+            setGradientPosition('-12.5%');
           }}
           onPointerLeave={() => {
-            setGradientPosition('-110%');
             setButtonScale(1.0);
+            setGradientPosition('-110%');
           }}
           onMouseDown={() => {
             setButtonScale(1.1);
@@ -140,25 +146,29 @@ export default function About({ displayMedian, setDisplayMedian, setPageState, g
           </button>
         </div>
         <p
-          className="hover-underline-evil inline-block text-xs italic md:text-sm"
+          className={`${isMobile ? '' : 'hover-underline-evil'} inline-block text-xs italic md:text-sm`}
           content="or check out my links!"
           onMouseEnter={() => {
-            const timer = setTimeout(() => {
-              setEvilMode(true);
-            }, 3000);
-            setEvilTimer(timer);
+            if (!isMobile) {
+              const timer = setTimeout(() => {
+                setEvilMode(true);
+              }, 3000);
+              setEvilTimer(timer);
+            }
           }}
           onMouseLeave={() => {
-            if (evilTimer) clearTimeout(evilTimer);
-            setEvilTimer(null);
-            setEvilMode(false);
+            if (!isMobile) {
+              if (evilTimer) clearTimeout(evilTimer);
+              setEvilTimer(null);
+              setEvilMode(false);
+            }
           }}
         >
           or check out my links !
         </p>
       </div>
       <div
-        className="ease-out pointer-events-none absolute bottom-10 z-10 h-[60vh] w-[50vh] transition-all"
+        className="pointer-events-none absolute bottom-10 z-10 h-[60vh] w-[50vh] transition-all ease-out"
         style={{
           transitionDuration: evilMode ? '3s' : '150ms',
           left: evilMode ? 'calc(50% + 250px)' : '100vw',

@@ -19,7 +19,7 @@ const portraits = [
   ],
 ];
 
-export default function AndrewPortrait({ getImagePath }) {
+export default function AndrewPortrait({ getImagePath, isMobile }) {
   const [activeIndex, setActiveIndex] = useState([0, 2]);
   const containerRef = useRef(null);
   const imageRefs = useRef({});
@@ -33,15 +33,14 @@ export default function AndrewPortrait({ getImagePath }) {
   }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      const isMobile = window.innerWidth < 768;
+    const onResize = () => {
       setPortraitY(isMobile ? '62%' : '0%');
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', onResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', onResize);
     };
   }, []);
 
@@ -49,9 +48,7 @@ export default function AndrewPortrait({ getImagePath }) {
     const onPointerMove = (e) => {
       if (!containerRef.current) return;
 
-      const isMobile = window.innerWidth < 768;
       const centerFactor = isMobile ? 12 : 8;
-
       const rect = containerRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 3;

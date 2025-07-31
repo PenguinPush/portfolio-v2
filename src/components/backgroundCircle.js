@@ -11,7 +11,7 @@ export function isMouseInCircle(e, radiusVh) {
   return distancePx <= radiusPx;
 }
 
-export default function BackgroundCircle({ radiusVh, setRadiusVh }) {
+export default function BackgroundCircle({ radiusVh, setRadiusVh, isMobile }) {
   const [mouseDown, setMouseDown] = useState(false);
   const radiusDefault = 60;
   const radiusHover = 62;
@@ -56,9 +56,9 @@ export default function BackgroundCircle({ radiusVh, setRadiusVh }) {
   return (
     <>
       <div
-        className="dotted-background-white ease-out-back pointer-events-none fixed top-0 left-1/2 -z-10 h-full w-full -translate-x-1/2 scale-125 transition-[clip-path] duration-300 md:scale-100"
+        className="dotted-background-white ease-out-back pointer-events-none fixed top-0 left-1/2 -z-10 h-full w-full -translate-x-1/2 transition-[clip-path] duration-300"
         style={{
-          clipPath: `circle(${radiusVh}vh at 50% 50%)`,
+          clipPath: `${isMobile ? "" : `circle(${radiusVh}vh at 50% 50%)`}`,
         }}
       ></div>
     </>
