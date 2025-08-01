@@ -1,4 +1,4 @@
-export default function NavButtons({
+export default function NavButtonPair({
   median,
   displayMedian,
   setDisplayMedian,

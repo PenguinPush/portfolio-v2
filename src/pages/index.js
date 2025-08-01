@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import About from '@/pages/about';
-import Projects from '@/pages/projects';
-import NavButtons from '@/components/navButtons';
+import About from '@/components/about';
+import Projects from '@/components/projects';
+import NavButtonPair from '@/components/navButtonPair';
 import BackgroundCircle from '@/components/backgroundCircle';
 import AndrewPortrait from '@/components/andrewPortrait';
+import NavButtonLarge from '@/components/navButtonLarge';
 import Footer from '@/components/footer';
 import { DM_Sans } from 'next/font/google';
 import Image from 'next/image';
@@ -69,7 +70,7 @@ export default function Main() {
             Andrew Dai
           </h1>
           <div className="flex h-8 w-full flex-row items-center">
-            <NavButtons
+            <NavButtonPair
               median={median}
               displayMedian={displayMedian}
               setMedian={setMedian}
@@ -81,15 +82,42 @@ export default function Main() {
         </div>
         <div className="flex flex-grow flex-col items-center gap-2">
           <div className="flex flex-grow flex-col">
-            <About
-              displayMedian={displayMedian}
-              setMedian={setMedian}
-              setDisplayMedian={setDisplayMedian}
-              setPageState={setPageState}
-              getImagePath={getImagePath}
-              isMobile={isMobile}
-            />
-            {/*<Projects />*/}
+            <div
+              className="ease-out-back flex-col items-center gap-2"
+              style={{
+                animation:
+                  pageState === 0 ? 'bounce-in-right 0.3s var(--ease-out-back) forwards' : 'none',
+                display: pageState === 0 ? 'flex' : 'none',
+              }}
+            >
+              <About />
+              <NavButtonLarge
+                className="flex"
+                buttonText={"see what else i've made"}
+                targetPage={1}
+                displayMedian={displayMedian}
+                setDisplayMedian={setDisplayMedian}
+                setPageState={setPageState}
+              />
+            </div>
+            <div
+              className="flex-col items-center gap-2"
+              style={{
+                animation:
+                  pageState === 1 ? 'bounce-in-left 0.3s var(--ease-out-back) forwards' : 'none',
+                display: pageState === 1 ? 'flex' : 'none',
+              }}
+            >
+              <Projects />
+              <NavButtonLarge
+                className="flex"
+                buttonText={'learn more about me'}
+                targetPage={0}
+                displayMedian={displayMedian}
+                setDisplayMedian={setDisplayMedian}
+                setPageState={setPageState}
+              />
+            </div>
           </div>
           <Footer isMobile={isMobile} setEvilMode={setEvilMode} />
           <div

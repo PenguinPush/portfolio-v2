@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 
-export default function About({
-  displayMedian,
-  setDisplayMedian,
-  setPageState,
-  getImagePath,
-  isMobile,
-}) {
+export default function About({}) {
   const diamondListClass =
     'group ease-out-back diamond-list-decoration relative pr-2 transition duration-300 hover:translate-x-1 active:translate-x-1 md:pr-4';
 
   const arrowListClass =
     'group ease-out-back arrow-list-decoration relative translate-x-4 transition duration-300 hover:translate-x-5 active:translate-x-5';
-
-  const [buttonScale, setButtonScale] = useState(1);
-  const [gradientPosition, setGradientPosition] = useState('-110%');
 
   return (
     <div className="p-2">
@@ -30,7 +20,7 @@ export default function About({
             🏙️ urban planning
           </a>
           , and{' '}
-          <a className="hover-highlight" content="🌍 politics">
+          <a className="hover-highlight" content="🌏 politics">
             🌎 politics
           </a>
           .
@@ -87,57 +77,6 @@ export default function About({
           </p>
         </li>
       </ul>
-      <div className="flex flex-col items-center justify-center gap-1 pt-6 md:gap-2">
-        <div
-          className="relative flex h-12 w-[50%]"
-          onPointerEnter={() => {
-            setButtonScale(1.05);
-            setGradientPosition('-12.5%');
-          }}
-          onPointerLeave={() => {
-            setButtonScale(1.0);
-            setGradientPosition('-110%');
-          }}
-          onMouseDown={() => {
-            setButtonScale(1.1);
-            setDisplayMedian(displayMedian - 2.5);
-          }}
-          onMouseUp={() => {
-            setButtonScale(1.05);
-            setPageState(1);
-            setDisplayMedian(30 - 2.5);
-          }}
-          onTouchStart={() => {
-            setButtonScale(1.1);
-            setDisplayMedian(displayMedian - 2.5);
-          }}
-          onTouchEnd={() => {
-            setButtonScale(1.0);
-            setPageState(1);
-            setDisplayMedian(30 - 2.5);
-          }}
-        >
-          <div
-            className="ease-out-back bg-yellow-base pointer-events-none absolute inset-0 overflow-hidden rounded-lg transition-all duration-300"
-            style={{
-              transform: `scale(${buttonScale}, ${2 - buttonScale})`,
-            }}
-          >
-            <div
-              className="bg-orange-base ease-out-back absolute inset-0 transition-all duration-300"
-              style={{
-                transform: `translateX(${gradientPosition}) skewX(-25deg)`,
-                width: '120%',
-              }}
-            ></div>
-          </div>
-          <button className="relative z-1 h-full w-full cursor-pointer bg-transparent">
-            <i className="relative font-normal select-none md:text-lg">
-              see what else i&#39;ve made
-            </i>
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

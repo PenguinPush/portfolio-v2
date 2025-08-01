@@ -30,7 +30,7 @@ export default function AndrewPortrait({ getImagePath }) {
       const img = new window.Image();
       img.src = getImagePath(src);
     });
-  }, []);
+  }, [getImagePath]);
 
   useEffect(() => {
     const onResize = () => {

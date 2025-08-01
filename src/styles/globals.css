@@ -289,6 +289,25 @@
   96.3% { transform: translateX(-0.3px) translateY(-0.2px); }
   98% { transform: translateX(0.1px) translateY(0.5px); }
 }
+
+@keyframes bounce-in-right {
+  0% {
+    transform: translateX(-20%)
+  }
+  100% {
+    transform: translateX(0)
+  }
+}
+
+@keyframes bounce-in-left {
+  0% {
+    transform: translateX(20%)
+  }
+  100% {
+    transform: translateX(0)
+  }
+}
+
 @media (width >= 768px) {
     .md\:bg-none-override {
         background: none !important;

@@ -1,7 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 export default function About({ isMobile, setEvilMode }) {
+  const defaultLinkMessage = 'or check out my links !';
   const [linkBoxText, setLinkBoxText] = useState('or check out my links !');
+  const linkTimeout = useRef(null);
+
+  const setLinkMessage = (text) => {
+    if (linkTimeout.current) {
+      clearTimeout(linkTimeout.current);
+      linkTimeout.current = null;
+    }
+    setLinkBoxText(text);
+  };
+
+  const resetLinkMessage = () => {
+    linkTimeout.current = setTimeout(() => {
+      setLinkBoxText(defaultLinkMessage);
+      linkTimeout.current = null;
+    }, 70);
+  };
 
   return (
     <>
@@ -28,8 +45,8 @@ export default function About({ isMobile, setEvilMode }) {
           href="mailto:andrewdai.dev@gmail.com"
           target="_blank"
           rel="noopener noreferrer"
-          onMouseEnter={() => setLinkBoxText('andrewdai.dev@gmail.com')}
-          onMouseLeave={() => setLinkBoxText('or check out my links !')}
+          onMouseEnter={() => setLinkMessage('andrewdai.dev@gmail.com')}
+          onMouseLeave={() => resetLinkMessage()}
         >
           📧 email
         </a>
@@ -39,8 +56,8 @@ export default function About({ isMobile, setEvilMode }) {
           href="https://github.com/PenguinPush"
           target="_blank"
           rel="noopener noreferrer"
-          onMouseEnter={() => setLinkBoxText('github.com/PenguinPush')}
-          onMouseLeave={() => setLinkBoxText('or check out my links !')}
+          onMouseEnter={() => setLinkMessage('github.com/PenguinPush')}
+          onMouseLeave={() => resetLinkMessage()}
         >
           🐙 github
         </a>
@@ -50,8 +67,8 @@ export default function About({ isMobile, setEvilMode }) {
           href="https://www.linkedin.com/in/andrewdai-dev"
           target="_blank"
           rel="noopener noreferrer"
-          onMouseEnter={() => setLinkBoxText('linkedin.com/in/andrewdai-dev')}
-          onMouseLeave={() => setLinkBoxText('or check out my links !')}
+          onMouseEnter={() => setLinkMessage('linkedin.com/in/andrewdai-dev')}
+          onMouseLeave={() => resetLinkMessage()}
         >
           🔗 linkedin
         </a>{' '}
@@ -61,8 +78,10 @@ export default function About({ isMobile, setEvilMode }) {
           href="https://penguinpush.github.io/PenguinPush/Andrew_Dai_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          onMouseEnter={() => setLinkBoxText('penguinpush.github.io/PenguinPush/Andrew_Dai_Resume.pdf')}
-          onMouseLeave={() => setLinkBoxText('or check out my links !')}
+          onMouseEnter={() =>
+            setLinkMessage('penguinpush.github.io/PenguinPush/Andrew_Dai_Resume.pdf')
+          }
+          onMouseLeave={() => resetLinkMessage()}
         >
           📃 resume
         </a>{' '}
@@ -72,8 +91,8 @@ export default function About({ isMobile, setEvilMode }) {
           href="https://github.com/PenguinPush/portfolio-v2"
           target="_blank"
           rel="noopener noreferrer"
-          onMouseEnter={() => setLinkBoxText('github.com/PenguinPush/portfolio-v2')}
-          onMouseLeave={() => setLinkBoxText('or check out my links !')}
+          onMouseEnter={() => setLinkMessage('github.com/PenguinPush/portfolio-v2')}
+          onMouseLeave={() => resetLinkMessage()}
         >
           📁 repo
         </a>
