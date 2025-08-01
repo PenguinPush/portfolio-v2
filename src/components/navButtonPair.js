@@ -33,8 +33,12 @@ export default function NavButtonPair({
             setPageState(0);
             setDisplayMedian(70 + hoverOffset);
           }}
-          onTouchStart={() => setDisplayMedian(displayMedian + hoverOffset)}
-          onTouchEnd={() => {
+          onTouchStart={(e) => {
+            e.preventDefault();
+            setDisplayMedian(displayMedian + hoverOffset);
+          }}
+          onTouchEnd={(e) => {
+            e.preventDefault();
             setPageState(0);
             setDisplayMedian(70 + hoverOffset);
           }}
@@ -64,8 +68,12 @@ export default function NavButtonPair({
             setPageState(1);
             setDisplayMedian(30 - hoverOffset);
           }}
-          onTouchStart={() => setDisplayMedian(displayMedian - hoverOffset)}
-          onTouchEnd={() => {
+          onTouchStart={(e) => {
+            e.preventDefault();
+            setDisplayMedian(displayMedian - hoverOffset);
+          }}
+          onTouchEnd={(e) => {
+            e.preventDefault();
             setPageState(1);
             setDisplayMedian(30 - hoverOffset);
           }}

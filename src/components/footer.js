@@ -22,22 +22,24 @@ export default function About({ isMobile, setEvilMode }) {
 
   return (
     <>
-      <p
-        className={`${isMobile ? '' : 'hover-underline-evil'} inline-block pt-2 text-xs italic md:pt-0 md:text-sm`}
-        content="or check out my links!"
-        onMouseEnter={() => {
-          if (!isMobile) {
-            setEvilMode(true);
-          }
-        }}
-        onMouseLeave={() => {
-          if (!isMobile) {
-            setEvilMode(false);
-          }
-        }}
-      >
-        {linkBoxText}
-      </p>
+      <div className="flex w-full justify-center">
+        <p
+          className={`${isMobile ? '' : 'hover-underline-evil'} inline-block pt-2 text-xs italic md:pt-0 md:text-sm`}
+          content="or check out my links!"
+          onMouseEnter={() => {
+            if (!isMobile) {
+              setEvilMode(true);
+            }
+          }}
+          onMouseLeave={() => {
+            if (!isMobile) {
+              setEvilMode(false);
+            }
+          }}
+        >
+          {linkBoxText}
+        </p>
+      </div>
       <div className="flex justify-center gap-4 text-xs md:items-end md:text-lg">
         <a
           className="hover-highlight"

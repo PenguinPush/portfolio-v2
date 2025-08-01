@@ -7,7 +7,6 @@ export default function NavButtonLarge({
   setDisplayMedian,
   setPageState,
 }) {
-
   const medians = [70, 30];
   const hovers = [2.5, -2.5];
   const [buttonScale, setButtonScale] = useState(1);
@@ -33,11 +32,13 @@ export default function NavButtonLarge({
         setPageState(targetPage);
         setDisplayMedian(medians[targetPage]);
       }}
-      onTouchStart={() => {
+      onTouchStart={(e) => {
+        e.preventDefault();
         setButtonScale(1.1);
         setDisplayMedian(displayMedian + hovers[targetPage]);
       }}
-      onTouchEnd={() => {
+      onTouchEnd={(e) => {
+        e.preventDefault();
         setButtonScale(1.0);
         setPageState(targetPage);
         setDisplayMedian(medians[targetPage]);
@@ -58,9 +59,7 @@ export default function NavButtonLarge({
         ></div>
       </div>
       <button className="relative z-1 h-full w-full cursor-pointer bg-transparent">
-        <i className="relative font-normal select-none md:text-lg">
-          {buttonText}
-        </i>
+        <i className="relative font-normal select-none md:text-lg">{buttonText}</i>
       </button>
     </div>
   );

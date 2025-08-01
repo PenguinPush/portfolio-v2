@@ -61,8 +61,12 @@ export default function Main() {
               setPageState(0);
               setDisplayMedian(70);
             }}
-            onTouchStart={() => setDisplayMedian(displayMedian + 2.5)}
-            onTouchEnd={() => {
+            onTouchStart={(e) => {
+              e.preventDefault();
+              setDisplayMedian(displayMedian + 2.5);
+            }}
+            onTouchEnd={(e) => {
+              e.preventDefault();
               setPageState(0);
               setDisplayMedian(70);
             }}
@@ -80,10 +84,10 @@ export default function Main() {
             />
           </div>
         </div>
-        <div className="flex flex-grow flex-col items-center gap-2">
+        <div className="flex flex-grow flex-col gap-2">
           <div className="flex flex-grow flex-col">
             <div
-              className="ease-out-back flex-col items-center gap-2"
+              className="flex-col gap-2"
               style={{
                 animation:
                   pageState === 0 ? 'bounce-in-right 0.3s var(--ease-out-back) forwards' : 'none',
@@ -91,17 +95,19 @@ export default function Main() {
               }}
             >
               <About />
-              <NavButtonLarge
-                className="flex"
-                buttonText={"see what else i've made"}
-                targetPage={1}
-                displayMedian={displayMedian}
-                setDisplayMedian={setDisplayMedian}
-                setPageState={setPageState}
-              />
+              <div className="flex w-full justify-center">
+                <NavButtonLarge
+                  className="flex"
+                  buttonText={"see what else i've made"}
+                  targetPage={1}
+                  displayMedian={displayMedian}
+                  setDisplayMedian={setDisplayMedian}
+                  setPageState={setPageState}
+                />
+              </div>
             </div>
             <div
-              className="flex-col items-center gap-2"
+              className="flex-col gap-2"
               style={{
                 animation:
                   pageState === 1 ? 'bounce-in-left 0.3s var(--ease-out-back) forwards' : 'none',
@@ -109,14 +115,16 @@ export default function Main() {
               }}
             >
               <Projects />
-              <NavButtonLarge
-                className="flex"
-                buttonText={'learn more about me'}
-                targetPage={0}
-                displayMedian={displayMedian}
-                setDisplayMedian={setDisplayMedian}
-                setPageState={setPageState}
-              />
+              <div className="flex w-full justify-center">
+                <NavButtonLarge
+                  className="flex"
+                  buttonText={"rats guess i'll go back"}
+                  targetPage={0}
+                  displayMedian={displayMedian}
+                  setDisplayMedian={setDisplayMedian}
+                  setPageState={setPageState}
+                />
+              </div>
             </div>
           </div>
           <Footer isMobile={isMobile} setEvilMode={setEvilMode} />
