@@ -51,7 +51,7 @@ export default function Project({
   return (
     <div
       ref={projectRef}
-      className="ease-out-back relative left-1/2 flex h-48 md:h-64 -translate-x-1/2 flex-col overflow-hidden rounded-lg transition-all duration-300"
+      className="ease-out-back relative left-1/2 flex h-48 -translate-x-1/2 flex-col overflow-hidden rounded-lg transition-all duration-300 md:h-64"
       style={{
         width: `${100 + hoverModifier + clickModifier}%`,
         willChange: 'width',
@@ -79,13 +79,20 @@ export default function Project({
         }}
       >
         <div
-          className="bg-red-highlight ease-out-back h-full w-full p-2 text-sm text-white transition-all duration-300 md:px-4 md:text-lg opacity-100 mix-blend-hard-light"
+          className="bg-red-highlight ease-out-back h-full w-full p-2 text-sm text-white transition-all duration-300 md:px-4 md:text-lg"
           style={{
             clipPath: `polygon(0 0, ${index === activeProject ? '110%' : '0'} 0, ${index === activeProject ? '100%' : '0'} 100%, 0 100%)`,
             willChange: 'clip-path',
           }}
         >
-          <p>{description}</p>
+          <p
+            className="ease-out-back transition-all duration-300"
+            style={{
+              width: `${100 / ((100 + hoverModifier + clickModifier) / 100)}%`,
+            }}
+          >
+            {description}
+          </p>
         </div>
       </div>
 

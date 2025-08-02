@@ -9,7 +9,7 @@ export default function ProjectsPage({
   const projectData = [
     [
       '📸 Cullergrader',
-      '',
+      'wait i promise this one is pretty cool it uses perceptual hashes to group images by similarity so you can easily sort through thousands of photos if youre like me and have the habit of taking too many photos at once',
       getImagePath('/images/projects/placeholder.png'),
       ['Java', 'Swing UI'],
       'https://github.com/PenguinPush/cullergrader',
@@ -17,7 +17,7 @@ export default function ProjectsPage({
     ],
     [
       '🐻 FaunaDex',
-      '',
+      'this one is cool but maybe i should deploy it somewhere so its actually usable and refine the pipeline part a bit, someone remind me to add a readme to the github',
       getImagePath('/images/projects/placeholder.png'),
       ['NumPy', 'GCP', 'OpenAI', 'React'],
       'https://github.com/PenguinPush/faunadex',
@@ -25,7 +25,7 @@ export default function ProjectsPage({
     ],
     [
       '💪 Physiotherapy Tool',
-      '',
+      'cant really deploy this one LOL but at least i can add the demo video https://devpost.com/software/the-exercists',
       getImagePath('/images/projects/physiotherapy.png'),
       ['C++', 'Python', 'Arduino'],
       'https://github.com/iantang08/UTRAHacks2025',
@@ -33,7 +33,7 @@ export default function ProjectsPage({
     ],
     [
       '🗼 Pickle',
-      '',
+      'this one is pretty awesome i can probably deploy this one too so you can like give the sms stuff a shot which i think would be kinda impressive',
       getImagePath('/images/projects/pickle.png'),
       ['Flask', 'Twilio', 'MongoDB', 'Cohere'],
       'https://github.com/PenguinPush/deltahacks-xi',
@@ -41,15 +41,15 @@ export default function ProjectsPage({
     ],
     [
       '🎸 Vivid Bedroom',
-      '',
+      'the only one currently with a demo https://penguinpush.github.io/mikucontest-2024 i think its pretty awesome',
       getImagePath('/images/projects/miku.png'),
       ['HTML', 'three.js', 'TextAlive'],
-      'https://github.com/PenguinPush/mikucontest-2024',
+      'https://penguinpush.github.io/mikucontest-2024',
       'https://github.com/PenguinPush/mikucontest-2024',
     ],
     [
       '👉 TableTablet',
-      '',
+      'tabletablet i can probably make downloadable but this also deserves a demo video tbh, i will make demo videos for all of them along with download links n stuff. should they be youtube or hosted here (implementing a video player sounds hard maybe just yt)',
       getImagePath('/images/projects/tabletablet.png'),
       ['Python', 'MediaPipe', 'OpenCV'],
       'https://github.com/PenguinPush/cullergrader',
@@ -57,7 +57,7 @@ export default function ProjectsPage({
     ],
     [
       '🤖 DYLAN.AI',
-      '',
+      'this one is really old and ill probably do a demo video with download link this is the one that uses voice commands and stuff its cool its cool',
       getImagePath('/images/projects/placeholder.png'),
       ['OpenAI', 'Cohere', 'GCP'],
       'https://github.com/PenguinPush/DylanAI',
