@@ -23,7 +23,9 @@ export default function AndrewPortrait({ getImagePath }) {
   const [activeIndex, setActiveIndex] = useState([0, 2]);
   const containerRef = useRef(null);
   const imageRefs = useRef({});
-  const [portraitY, setPortraitY] = useState('100%');
+  const [isMobile, setIsMobile] = useState(false);
+  const [isDucked, setIsDucked] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     portraits.flat().forEach((src) => {
@@ -34,10 +36,10 @@ export default function AndrewPortrait({ getImagePath }) {
 
   useEffect(() => {
     const onResize = () => {
-      const isMobile = window.innerWidth < 768;
-      setPortraitY(isMobile ? '62%' : '0%');
+      setIsMobile(window.innerWidth < 768);
     };
 
+    onResize();
     window.addEventListener('resize', onResize);
 
     return () => {
@@ -48,15 +50,18 @@ export default function AndrewPortrait({ getImagePath }) {
   useEffect(() => {
     const onPointerMove = (e) => {
       if (!containerRef.current) return;
+      if (!isActive) {
+        setTimeout(() => {
+          setIsActive(true);
+        }, 300);
+      }
 
       const isMobile = window.innerWidth < 768;
-
       const rect = containerRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 3;
 
       const centerFactor = isMobile ? 12 : 8;
-      setPortraitY(isMobile ? '62%' : '0%');
 
       let dx, dy;
       if (e.touches && e.touches.length > 0) {
@@ -93,9 +98,8 @@ export default function AndrewPortrait({ getImagePath }) {
       ref={containerRef}
       className="portrait-gradient-background md:bg-none-override pointer-events-none fixed bottom-0 left-[-40%] z-20 w-[180%] md:left-0 md:w-[35vw]"
       style={{
-        transform: `translateY(${portraitY})`,
+        transform: `translateY(${isActive ? (isMobile || isDucked ? '62%' : '0%') : '100%'})`,
         transition: 'transform 0.3s var(--ease-out)',
-        transitionDelay: '300ms',
       }}
     >
       {portraits.map((rows, row) =>
@@ -118,6 +122,10 @@ export default function AndrewPortrait({ getImagePath }) {
           </div>
         )),
       )}
+      <div onClick={() => setIsDucked(!isDucked)}>
+        <div className="pointer-events-auto absolute top-[33%] left-[50%] z-30 h-[50%] w-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full md:cursor-pointer"></div>
+        <div className="pointer-events-auto absolute bottom-[0%] left-[54%] z-30 h-[45%] w-[85%] -translate-x-1/2 rounded-t-full md:cursor-pointer"></div>
+      </div>
     </div>
   );
 }
