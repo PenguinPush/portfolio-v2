@@ -57,7 +57,9 @@ export default function NavButtonPair({ hoverMods, clickMods, pageState }) {
           onMouseDown={() => setClickModifier(-2.5)}
           onTouchStart={() => setClickModifier(-2.5)}
           onClick={() => {
-            window.location.hash = 'projects';
+            if (pageState !== 1) {
+              window.location.hash = 'projects';
+            }
             setClickModifier(0);
           }}
         >

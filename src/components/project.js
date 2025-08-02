@@ -5,6 +5,8 @@ export default function Project({
   description,
   image,
   techStack,
+  demo,
+  repo,
   hash,
   index,
   activeProject,
@@ -32,10 +34,11 @@ export default function Project({
   useEffect(() => {
     if (index === activeProject && projectRef.current && scrollTargetRef.current) {
       const rect = projectRef.current.getBoundingClientRect();
-      const margin = isMobile ? projectRef.current.offsetHeight : projectRef.current.offsetHeight / 2;
+      const margin = isMobile
+        ? projectRef.current.offsetHeight
+        : projectRef.current.offsetHeight / 2;
       const isVisible =
-        rect.top >= margin &&
-        rect.bottom <= window.innerHeight - (isMobile ? margin * 2: margin);
+        rect.top >= margin && rect.bottom <= window.innerHeight - (isMobile ? margin * 2 : margin);
       if (!isVisible) {
         scrollTargetRef.current.scrollIntoView({
           behavior: 'smooth',
@@ -71,7 +74,7 @@ export default function Project({
         onMouseDown={() => setClickModifier(2.5)}
         onTouchStart={() => setClickModifier(2.5)}
         onClick={() => {
-          window.location.hash = (index !== activeProject ? hash : 'projects');
+          window.location.hash = index !== activeProject ? hash : 'projects';
           setClickModifier(0);
         }}
       >
@@ -87,7 +90,7 @@ export default function Project({
       </div>
 
       <div className="ease-out-back z-1 flex w-full flex-row items-center justify-between bg-black px-2 py-1 font-bold text-white transition-all duration-300 md:px-4">
-        <a className="hover-highlight" content={name}>
+        <a className="hover-highlight" content={`${name}`} href={demo} target="_blank">
           {name}
         </a>
         <div className="flex flex-row items-center space-x-2">
@@ -99,9 +102,9 @@ export default function Project({
               {value}
             </spasn>
           ))}
-          <span className="hover-highlight cursor-pointer" content="📂">
-            📁
-          </span>
+          {/*<span className="hover-highlight cursor-pointer" content="📂">*/}
+          {/*  📁*/}
+          {/*</span>*/}
         </div>
       </div>
     </div>
