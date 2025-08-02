@@ -67,10 +67,10 @@ export default function About({ isMobile, setEvilMode }) {
         <a
           className="hover-highlight"
           content="⛓️‍💥 linkedin"
-          href="https://www.linkedin.com/in/andrewdai-dev"
+          href="https://www.linkedin.com/in/andrew-dai-dev"
           target="_blank"
           rel="noopener noreferrer"
-          onMouseEnter={() => setLinkMessage('linkedin.com/in/andrewdai-dev')}
+          onMouseEnter={() => setLinkMessage('linkedin.com/in/andrew-dai-dev')}
           onMouseLeave={() => resetLinkMessage()}
         >
           🔗 linkedin

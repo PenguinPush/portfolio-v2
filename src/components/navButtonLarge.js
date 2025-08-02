@@ -23,12 +23,12 @@ export default function NavButtonLarge({ buttonText, targetPage, clickMods, chan
         setButtonScale(1.1);
         setClickModifier(clickModifiers[targetPage]);
       }}
-      onTouchStart={(e) => {
+      onTouchStart={() => {
         setButtonScale(1.1);
         setClickModifier(clickModifiers[targetPage]);
       }}
       onClick={() => {
-        setButtonScale(1.0);
+        setButtonScale(1.00);
         changePage(targetPage);
       }}
     >

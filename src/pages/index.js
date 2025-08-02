@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import About from '@/components/about';
-import Projects from '@/components/projects';
+import AboutPage from '@/components/aboutPage';
+import ProjectsPage from '@/components/projectsPage';
 import NavButtonPair from '@/components/navButtonPair';
 import BackgroundCircle from '@/components/backgroundCircle';
 import AndrewPortrait from '@/components/andrewPortrait';
@@ -94,7 +94,7 @@ export default function Main() {
                 display: pageState === 0 ? 'flex' : 'none',
               }}
             >
-              <About />
+              <AboutPage />
               <div className="flex w-full justify-center">
                 <NavButtonLarge
                   className="flex"
@@ -112,11 +112,11 @@ export default function Main() {
                 display: pageState === 1 ? 'flex' : 'none',
               }}
             >
-              <Projects />
+              <ProjectsPage getImagePath={getImagePath}/>
               <div className="flex w-full justify-center">
                 <NavButtonLarge
                   className="flex"
-                  buttonText={"rats guess i'll go back"}
+                  buttonText={"learn more about me"}
                   targetPage={0}
                   clickMods={clickMods}
                   pageState={pageState}

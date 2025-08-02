@@ -4,7 +4,7 @@ const diamondListClass =
 const arrowListClass =
   'group ease-out-back arrow-list-decoration relative translate-x-4 transition duration-300 hover:translate-x-5 active:translate-x-5';
 
-export default function About({}) {
+export default function AboutPage({}) {
   return (
     <div className="p-2">
       <ul className="list-none space-y-1 pl-4 leading-relaxed md:pl-8">

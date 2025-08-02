@@ -98,7 +98,7 @@ export default function AndrewPortrait({ getImagePath }) {
       ref={containerRef}
       className="portrait-gradient-background md:bg-none-override pointer-events-none fixed bottom-0 left-[-40%] z-20 w-[180%] md:left-0 md:w-[35vw]"
       style={{
-        transform: `translateY(${isActive ? (isMobile || isDucked ? '62%' : '0%') : '100%'})`,
+        transform: `translateY(${isActive || isMobile  ? (isMobile || isDucked ? '62%' : '0%') : '100%'})`,
         transition: 'transform 0.3s var(--ease-out)',
       }}
     >
@@ -123,7 +123,7 @@ export default function AndrewPortrait({ getImagePath }) {
         )),
       )}
       <div onClick={() => setIsDucked(!isDucked)}>
-        <div className="pointer-events-auto absolute top-[33%] left-[50%] z-30 h-[50%] w-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full md:cursor-pointer"></div>
+        <div className="pointer-events-auto absolute top-[34%] left-[50%] z-30 h-[50%] w-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full md:cursor-pointer"></div>
         <div className="pointer-events-auto absolute bottom-[0%] left-[54%] z-30 h-[45%] w-[85%] -translate-x-1/2 rounded-t-full md:cursor-pointer"></div>
       </div>
     </div>
