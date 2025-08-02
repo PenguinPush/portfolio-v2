@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 
-export function isMouseInCircle(e, radiusVh) {
+const radiusDefault = 60;
+const radiusHover = 62;
+const radiusClick = 62.5;
+
+const isMouseInCircle = (e, radiusVh) => {
   const { clientX, clientY } = e;
   const centerX = window.innerWidth / 2;
   const centerY = window.innerHeight / 2;
@@ -9,13 +13,11 @@ export function isMouseInCircle(e, radiusVh) {
   const distancePx = Math.sqrt((clientX - centerX) ** 2 + (clientY - centerY) ** 2);
 
   return distancePx <= radiusPx;
-}
+};
 
-export default function BackgroundCircle({ radiusVh, setRadiusVh, isMobile }) {
+export default function BackgroundCircle({ isMobile }) {
+  const [radiusVh, setRadiusVh] = useState(60);
   const [mouseDown, setMouseDown] = useState(false);
-  const radiusDefault = 60;
-  const radiusHover = 62;
-  const radiusClick = 62.5;
 
   useEffect(() => {
     const onMouseMove = (e) => {
@@ -59,6 +61,7 @@ export default function BackgroundCircle({ radiusVh, setRadiusVh, isMobile }) {
         className="dotted-background-white ease-out-back pointer-events-none fixed top-0 left-1/2 -z-10 h-full w-full -translate-x-1/2 transition-[clip-path] duration-300"
         style={{
           clipPath: `${isMobile ? '' : `circle(${radiusVh}vh at 50% 50%)`}`,
+          willChange: 'clip-path',
         }}
       ></div>
     </>

@@ -1,13 +1,10 @@
-export default function NavButtonPair({
-  median,
-  displayMedian,
-  setDisplayMedian,
-  pageState,
-  setPageState,
-}) {
-  const labelColors = ['bg-orange-base', 'bg-yellow-base'];
-  const labelHeights = [1, 1];
-  const hoverOffset = 2.5;
+const medians = [70, 30];
+const labelColors = ['bg-orange-base', 'bg-yellow-base'];
+const labelHeights = [1, 1];
+
+export default function NavButtonPair({ hoverMods, clickMods, pageState, changePage }) {
+  const [hoverModifier, setHoverModifier] = hoverMods;
+  const [clickModifier, setClickModifier] = clickMods;
 
   return (
     <>
@@ -15,7 +12,8 @@ export default function NavButtonPair({
         className="ease-out-back relative flex transition-all duration-300"
         style={{
           height: `${100 * labelHeights[pageState]}%`,
-          width: `${displayMedian}%`,
+          width: `${medians[pageState] + hoverModifier + clickModifier}%`,
+          willChange: 'width',
         }}
       >
         <div
@@ -26,22 +24,11 @@ export default function NavButtonPair({
         ></div>
         <button
           className="relative z-1 h-full w-full cursor-pointer bg-transparent"
-          onPointerEnter={() => setDisplayMedian(median + hoverOffset)}
-          onPointerLeave={() => setDisplayMedian(median)}
-          onMouseDown={() => setDisplayMedian(displayMedian + hoverOffset)}
-          onMouseUp={() => {
-            setPageState(0);
-            setDisplayMedian(70 + hoverOffset);
-          }}
-          onTouchStart={(e) => {
-            e.preventDefault();
-            setDisplayMedian(displayMedian + hoverOffset);
-          }}
-          onTouchEnd={(e) => {
-            e.preventDefault();
-            setPageState(0);
-            setDisplayMedian(70 + hoverOffset);
-          }}
+          onPointerEnter={() => setHoverModifier(2.5)}
+          onPointerLeave={() => setHoverModifier(0)}
+          onMouseDown={() => setClickModifier(2.5)}
+          onTouchStart={() => setClickModifier(2.5)}
+          onClick={() => changePage(0)}
         >
           <i className={`text-md relative right-[5px] font-normal select-none`}>about</i>
         </button>
@@ -50,7 +37,8 @@ export default function NavButtonPair({
         className="ease-out-back relative flex transition-all duration-300"
         style={{
           height: `${100 * labelHeights[(pageState + 1) % 2]}%`,
-          width: `${100 - displayMedian}%`,
+          width: `${medians[(pageState + 1) % 2] - hoverModifier - clickModifier}%`,
+          willChange: 'width',
         }}
       >
         <div
@@ -61,22 +49,11 @@ export default function NavButtonPair({
         ></div>
         <button
           className="relative z-1 h-full w-full cursor-pointer bg-transparent"
-          onPointerEnter={() => setDisplayMedian(median - hoverOffset)}
-          onPointerLeave={() => setDisplayMedian(median)}
-          onMouseDown={() => setDisplayMedian(displayMedian - hoverOffset)}
-          onMouseUp={() => {
-            setPageState(1);
-            setDisplayMedian(30 - hoverOffset);
-          }}
-          onTouchStart={(e) => {
-            e.preventDefault();
-            setDisplayMedian(displayMedian - hoverOffset);
-          }}
-          onTouchEnd={(e) => {
-            e.preventDefault();
-            setPageState(1);
-            setDisplayMedian(30 - hoverOffset);
-          }}
+          onPointerEnter={() => setHoverModifier(-2.5)}
+          onPointerLeave={() => setHoverModifier(0)}
+          onMouseDown={() => setClickModifier(-2.5)}
+          onTouchStart={() => setClickModifier(-2.5)}
+          onClick={() => changePage(1)}
         >
           <i className={`text-md relative left-[5px] font-normal select-none`}>projects</i>
         </button>

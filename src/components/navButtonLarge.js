@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 
-export default function NavButtonLarge({
-  buttonText,
-  targetPage,
-  displayMedian,
-  setDisplayMedian,
-  setPageState,
-}) {
-  const medians = [70, 30];
-  const hovers = [2.5, -2.5];
+const clickModifiers = [2.5, -2.5];
+
+export default function NavButtonLarge({ buttonText, targetPage, clickMods, changePage }) {
+  const [clickModifier, setClickModifier] = clickMods;
   const [buttonScale, setButtonScale] = useState(1);
   const [gradientPosition, setGradientPosition] = useState('-110%');
 
@@ -22,32 +17,26 @@ export default function NavButtonLarge({
       onPointerLeave={() => {
         setButtonScale(1.0);
         setGradientPosition('-110%');
+        setClickModifier(0);
       }}
       onMouseDown={() => {
         setButtonScale(1.1);
-        setDisplayMedian(displayMedian + hovers[targetPage]);
-      }}
-      onMouseUp={() => {
-        setButtonScale(1.05);
-        setPageState(targetPage);
-        setDisplayMedian(medians[targetPage]);
+        setClickModifier(clickModifiers[targetPage]);
       }}
       onTouchStart={(e) => {
-        e.preventDefault();
         setButtonScale(1.1);
-        setDisplayMedian(displayMedian + hovers[targetPage]);
+        setClickModifier(clickModifiers[targetPage]);
       }}
-      onTouchEnd={(e) => {
-        e.preventDefault();
+      onClick={() => {
         setButtonScale(1.0);
-        setPageState(targetPage);
-        setDisplayMedian(medians[targetPage]);
+        changePage(targetPage);
       }}
     >
       <div
         className="ease-out-back bg-yellow-base pointer-events-none absolute inset-0 overflow-hidden rounded-lg transition-all duration-300"
         style={{
           transform: `scale(${buttonScale}, ${2 - buttonScale})`,
+          willChange: 'transform',
         }}
       >
         <div
@@ -55,6 +44,7 @@ export default function NavButtonLarge({
           style={{
             transform: `translateX(${gradientPosition}) skewX(-25deg)`,
             width: '120%',
+            willChange: 'transform',
           }}
         ></div>
       </div>

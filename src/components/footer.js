@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 
+const defaultLinkMessage = 'or check out my links !';
+
 export default function About({ isMobile, setEvilMode }) {
-  const defaultLinkMessage = 'or check out my links !';
   const [linkBoxText, setLinkBoxText] = useState('or check out my links !');
   const linkTimeout = useRef(null);
 

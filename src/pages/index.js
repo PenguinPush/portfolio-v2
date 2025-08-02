@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import About from '@/components/about';
 import Projects from '@/components/projects';
 import NavButtonPair from '@/components/navButtonPair';
@@ -14,20 +14,35 @@ const dmSans = DM_Sans({
 });
 
 export default function Main() {
+  const aboutRef = useRef(null);
+  const projectsRef = useRef(null);
+
   const [pageState, setPageState] = useState(0);
-  const [median, setMedian] = useState(70);
-  const [displayMedian, setDisplayMedian] = useState(70);
-  const [radiusVh, setRadiusVh] = useState(60);
+  const [hoverModifier, setHoverModifier] = useState(0);
+  const [clickModifier, setClickModifier] = useState(0);
+
   const [isMobile, setIsMobile] = useState(false);
   const [evilMode, setEvilMode] = useState(false);
 
-  useEffect(() => {
-    if (pageState === 0) {
-      setMedian(70);
-    } else if (pageState === 1) {
-      setMedian(30);
+  const hoverMods = [hoverModifier, setHoverModifier];
+  const clickMods = [clickModifier, setClickModifier];
+
+  const changePage = (page) => {
+    setPageState(page);
+    setClickModifier(0);
+
+    if (page === 0) {
+      if (aboutRef.current) {
+        aboutRef.current.style.animation = 'bounce-in-right 0.3s var(--ease-out-back) forwards';
+        if (projectsRef.current) projectsRef.current.style.animation = 'none';
+      }
+    } else if (page === 1) {
+      if (projectsRef.current) {
+        projectsRef.current.style.animation = 'bounce-in-left 0.3s var(--ease-out-back) forwards';
+        if (aboutRef.current) aboutRef.current.style.animation = 'none';
+      }
     }
-  }, [pageState]);
+  };
 
   useEffect(() => {
     const onResize = () => {
@@ -35,7 +50,6 @@ export default function Main() {
     };
 
     onResize();
-
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
   }, [isMobile]);
@@ -52,45 +66,31 @@ export default function Main() {
       className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}
     >
       <div className="relative z-0 flex min-h-[100dvh] w-full flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
-        <BackgroundCircle radiusVh={radiusVh} setRadiusVh={setRadiusVh} isMobile={isMobile} />
+        <BackgroundCircle isMobile={isMobile} />
         <div className="flex flex-col items-center gap-2 px-4">
           <h1
             className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
-            onMouseDown={() => setDisplayMedian(displayMedian + 2.5)}
-            onMouseUp={() => {
-              setPageState(0);
-              setDisplayMedian(70);
-            }}
-            onTouchStart={(e) => {
-              e.preventDefault();
-              setDisplayMedian(displayMedian + 2.5);
-            }}
-            onTouchEnd={(e) => {
-              e.preventDefault();
-              setPageState(0);
-              setDisplayMedian(70);
-            }}
+            onMouseDown={() => setClickModifier(2.5)}
+            onTouchStart={() => setClickModifier(2.5)}
+            onClick={() => changePage(0)}
           >
             Andrew Dai
           </h1>
           <div className="flex h-8 w-full flex-row items-center">
             <NavButtonPair
-              median={median}
-              displayMedian={displayMedian}
-              setMedian={setMedian}
-              setDisplayMedian={setDisplayMedian}
+              hoverMods={hoverMods}
+              clickMods={clickMods}
               pageState={pageState}
-              setPageState={setPageState}
+              changePage={changePage}
             />
           </div>
         </div>
         <div className="flex flex-grow flex-col gap-2">
           <div className="flex flex-grow flex-col">
             <div
+              ref={aboutRef}
               className="flex-col gap-2"
               style={{
-                animation:
-                  pageState === 0 ? 'bounce-in-right 0.3s var(--ease-out-back) forwards' : 'none',
                 display: pageState === 0 ? 'flex' : 'none',
               }}
             >
@@ -100,17 +100,15 @@ export default function Main() {
                   className="flex"
                   buttonText={"see what else i've made"}
                   targetPage={1}
-                  displayMedian={displayMedian}
-                  setDisplayMedian={setDisplayMedian}
-                  setPageState={setPageState}
+                  clickMods={clickMods}
+                  changePage={changePage}
                 />
               </div>
             </div>
             <div
+              ref={projectsRef}
               className="flex-col gap-2"
               style={{
-                animation:
-                  pageState === 1 ? 'bounce-in-left 0.3s var(--ease-out-back) forwards' : 'none',
                 display: pageState === 1 ? 'flex' : 'none',
               }}
             >
@@ -120,9 +118,9 @@ export default function Main() {
                   className="flex"
                   buttonText={"rats guess i'll go back"}
                   targetPage={0}
-                  displayMedian={displayMedian}
-                  setDisplayMedian={setDisplayMedian}
-                  setPageState={setPageState}
+                  clickMods={clickMods}
+                  pageState={pageState}
+                  changePage={changePage}
                 />
               </div>
             </div>
@@ -136,6 +134,7 @@ export default function Main() {
               left: evilMode ? 'calc(50% + 270px)' : '100vw',
               animation: evilMode ? 'shake 3s step-start' : 'none',
               imageRendering: 'pixelated',
+              willChange: evilMode ? 'transform' : 'auto'
             }}
           >
             <Image
