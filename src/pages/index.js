@@ -17,10 +17,10 @@ const projectHashes = [
   'cullergrader',
   'faunadex',
   'physiotherapy',
-  'vivid',
-  'vivid2',
-  'vivid3',
-  'vivid4',
+  'pickle',
+  'miku',
+  'tabletablet',
+  'dylanai',
 ];
 
 export default function Main() {
@@ -112,17 +112,19 @@ export default function Main() {
       <div className="relative z-0 flex min-h-[100dvh] w-full flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
         <BackgroundCircle isMobile={isMobile} />
         <div className="flex flex-col items-center gap-2 px-4">
-          <h1
-            className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
-            onMouseDown={() => setClickModifier(2.5)}
-            onTouchStart={() => setClickModifier(2.5)}
-            onClick={() => {
-              window.location.hash = 'about';
-              setClickModifier(0);
-            }}
-          >
-            Andrew Dai
-          </h1>
+          <div>
+            <h1
+              className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
+              onMouseDown={() => setClickModifier(2.5)}
+              onTouchStart={() => setClickModifier(2.5)}
+              onClick={() => {
+                window.location.hash = 'about';
+                setClickModifier(0);
+              }}
+            >
+              Andrew Dai
+            </h1>
+          </div>
           <div className="flex h-8 w-full flex-row items-center">
             <NavButtonPair hoverMods={hoverMods} clickMods={clickMods} pageState={pageState} />
           </div>

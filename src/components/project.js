@@ -51,13 +51,13 @@ export default function Project({
   return (
     <div
       ref={projectRef}
-      className="ease-out-back relative left-1/2 flex h-48 -translate-x-1/2 flex-col overflow-hidden rounded-lg transition-all duration-300"
+      className="ease-out-back relative left-1/2 flex h-48 md:h-64 -translate-x-1/2 flex-col overflow-hidden rounded-lg transition-all duration-300"
       style={{
         width: `${100 + hoverModifier + clickModifier}%`,
         willChange: 'width',
       }}
     >
-      <div ref={scrollTargetRef} className="absolute -top-52 left-0"></div>
+      <div ref={scrollTargetRef} className="absolute -top-48 left-0"></div>
       <div
         className="ease-out-back relative flex h-full w-full flex-grow cursor-pointer flex-col justify-between transition-all duration-300"
         style={{
@@ -79,7 +79,7 @@ export default function Project({
         }}
       >
         <div
-          className="bg-red-highlight ease-out-back h-full w-full p-2 text-sm text-white transition-all duration-300 md:px-4 md:text-lg"
+          className="bg-red-highlight ease-out-back h-full w-full p-2 text-sm text-white transition-all duration-300 md:px-4 md:text-lg opacity-100 mix-blend-hard-light"
           style={{
             clipPath: `polygon(0 0, ${index === activeProject ? '110%' : '0'} 0, ${index === activeProject ? '100%' : '0'} 100%, 0 100%)`,
             willChange: 'clip-path',
@@ -89,18 +89,20 @@ export default function Project({
         </div>
       </div>
 
-      <div className="ease-out-back z-1 flex w-full flex-row items-center justify-between bg-black px-2 py-1 font-bold text-white transition-all duration-300 md:px-4">
-        <a className="hover-highlight" content={`${name}`} href={demo} target="_blank">
-          {name}
-        </a>
-        <div className="flex flex-row items-center space-x-2">
+      <div className="ease-out-back z-1 flex w-full flex-row items-center justify-between bg-black px-2 py-1 text-xs font-bold text-white transition-all duration-300 md:px-4 md:text-base">
+        <h3>
+          <a className="hover-highlight" content={`${name}`} href={demo} target="_blank">
+            {name}
+          </a>
+        </h3>
+        <div className="flex flex-row items-center space-x-1 md:space-x-2">
           {techStack.map((value, index) => (
-            <spasn
+            <span
               key={index}
-              className="bg-red-highlight rounded-xs px-2 text-xs md:rounded-sm md:text-sm"
+              className="bg-red-highlight rounded-xs px-1 text-xs md:rounded-sm md:px-2 md:text-sm"
             >
               {value}
-            </spasn>
+            </span>
           ))}
           {/*<span className="hover-highlight cursor-pointer" content="📂">*/}
           {/*  📁*/}
