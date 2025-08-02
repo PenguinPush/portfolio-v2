@@ -13,6 +13,8 @@ const dmSans = DM_Sans({
   subsets: ['latin'],
 });
 
+const projectHashes = ['cullergrader', 'faunadex', 'physiotherapy', 'vivid'];
+
 export default function Main() {
   const aboutRef = useRef(null);
   const projectsRef = useRef(null);
@@ -24,11 +26,21 @@ export default function Main() {
   const [isMobile, setIsMobile] = useState(false);
   const [evilMode, setEvilMode] = useState(false);
 
+  const [activeProject, setActiveProject] = useState(null);
+
   const hoverMods = [hoverModifier, setHoverModifier];
   const clickMods = [clickModifier, setClickModifier];
 
   const changePage = (page) => {
-    setPageState(page);
+    if (page === 1.5) {
+      setPageState(1);
+    } else {
+      setPageState(page);
+      window.scrollTo({
+        behavior: 'smooth',
+        top: 0,
+      });
+    }
     setClickModifier(0);
 
     if (page === 0) {
@@ -36,13 +48,30 @@ export default function Main() {
         aboutRef.current.style.animation = 'bounce-in-right 0.3s var(--ease-out-back) forwards';
         if (projectsRef.current) projectsRef.current.style.animation = 'none';
       }
-    } else if (page === 1) {
+    } else if (page === 1 || page === 1.5) {
       if (projectsRef.current) {
         projectsRef.current.style.animation = 'bounce-in-left 0.3s var(--ease-out-back) forwards';
         if (aboutRef.current) aboutRef.current.style.animation = 'none';
       }
     }
   };
+
+  useEffect(() => {
+    const onHashChange = () => {
+      const id = window.location.hash.replace('#', '');
+      if (id === 'projects') {
+        changePage(1);
+        setActiveProject(null);
+      } else if (projectHashes.includes(id) && activeProject !== projectHashes.indexOf(id)) {
+        changePage(1.5);
+        setActiveProject(projectHashes.indexOf(id));
+      } else changePage(0);
+    };
+
+    window.addEventListener('hashchange', onHashChange);
+    onHashChange();
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
 
   useEffect(() => {
     const onResize = () => {
@@ -55,7 +84,6 @@ export default function Main() {
   }, [isMobile]);
 
   const getImagePath = (path) => {
-    // made for compatibility between localhost and github pages
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
     const basePath = process.env.NODE_ENV === 'production' ? '/portfolio-v2' : '';
     return `${basePath}/${cleanPath}`;
@@ -72,17 +100,15 @@ export default function Main() {
             className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
             onMouseDown={() => setClickModifier(2.5)}
             onTouchStart={() => setClickModifier(2.5)}
-            onClick={() => changePage(0)}
+            onClick={() => {
+              window.location.hash = 'about';
+              setClickModifier(0);
+            }}
           >
             Andrew Dai
           </h1>
           <div className="flex h-8 w-full flex-row items-center">
-            <NavButtonPair
-              hoverMods={hoverMods}
-              clickMods={clickMods}
-              pageState={pageState}
-              changePage={changePage}
-            />
+            <NavButtonPair hoverMods={hoverMods} clickMods={clickMods} pageState={pageState} />
           </div>
         </div>
         <div className="flex flex-grow flex-col gap-2">
@@ -101,7 +127,6 @@ export default function Main() {
                   buttonText={"see what else i've made"}
                   targetPage={1}
                   clickMods={clickMods}
-                  changePage={changePage}
                 />
               </div>
             </div>
@@ -112,15 +137,19 @@ export default function Main() {
                 display: pageState === 1 ? 'flex' : 'none',
               }}
             >
-              <ProjectsPage getImagePath={getImagePath}/>
+              <ProjectsPage
+                activeProject={activeProject}
+                setActiveProject={setActiveProject}
+                projectHashes={projectHashes}
+                getImagePath={getImagePath}
+              />
               <div className="flex w-full justify-center">
                 <NavButtonLarge
                   className="flex"
-                  buttonText={"learn more about me"}
+                  buttonText={'learn more about me'}
                   targetPage={0}
                   clickMods={clickMods}
                   pageState={pageState}
-                  changePage={changePage}
                 />
               </div>
             </div>
@@ -134,7 +163,7 @@ export default function Main() {
               left: evilMode ? 'calc(50% + 270px)' : '100vw',
               animation: evilMode ? 'shake 3s step-start' : 'none',
               imageRendering: 'pixelated',
-              willChange: evilMode ? 'transform' : 'auto'
+              willChange: evilMode ? 'transform' : 'auto',
             }}
           >
             <Image

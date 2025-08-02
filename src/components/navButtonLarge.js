@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+const pageHashes = ['about', 'projects'];
 const clickModifiers = [2.5, -2.5];
 
 export default function NavButtonLarge({ buttonText, targetPage, clickMods, changePage }) {
@@ -28,8 +29,9 @@ export default function NavButtonLarge({ buttonText, targetPage, clickMods, chan
         setClickModifier(clickModifiers[targetPage]);
       }}
       onClick={() => {
-        setButtonScale(1.00);
-        changePage(targetPage);
+        setButtonScale(1.0);
+        window.location.hash = pageHashes[targetPage];
+        setClickModifier(0);
       }}
     >
       <div

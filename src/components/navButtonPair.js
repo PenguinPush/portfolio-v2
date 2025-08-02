@@ -2,7 +2,7 @@ const medians = [70, 30];
 const labelColors = ['bg-orange-base', 'bg-yellow-base'];
 const labelHeights = [1, 1];
 
-export default function NavButtonPair({ hoverMods, clickMods, pageState, changePage }) {
+export default function NavButtonPair({ hoverMods, clickMods, pageState }) {
   const [hoverModifier, setHoverModifier] = hoverMods;
   const [clickModifier, setClickModifier] = clickMods;
 
@@ -28,7 +28,10 @@ export default function NavButtonPair({ hoverMods, clickMods, pageState, changeP
           onPointerLeave={() => setHoverModifier(0)}
           onMouseDown={() => setClickModifier(2.5)}
           onTouchStart={() => setClickModifier(2.5)}
-          onClick={() => changePage(0)}
+          onClick={() => {
+            window.location.hash = 'about';
+            setClickModifier(0);
+          }}
         >
           <i className={`text-md relative right-[5px] font-normal select-none`}>about</i>
         </button>
@@ -53,7 +56,10 @@ export default function NavButtonPair({ hoverMods, clickMods, pageState, changeP
           onPointerLeave={() => setHoverModifier(0)}
           onMouseDown={() => setClickModifier(-2.5)}
           onTouchStart={() => setClickModifier(-2.5)}
-          onClick={() => changePage(1)}
+          onClick={() => {
+            window.location.hash = 'projects';
+            setClickModifier(0);
+          }}
         >
           <i className={`text-md relative left-[5px] font-normal select-none`}>projects</i>
         </button>

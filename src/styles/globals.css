@@ -474,3 +474,9 @@
         background: none !important;
     }
 }
+
+@media (width >= 768px) {
+    .md\:text-md-override {
+        background: none !important;
+    }
+}

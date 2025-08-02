@@ -1,52 +1,100 @@
-import React, { use, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
-export default function Project({ name, description, image, techStack }) {
-  const [gradientPosition, setGradientPosition] = useState('-110%');
+export default function Project({
+  name,
+  description,
+  image,
+  techStack,
+  hash,
+  index,
+  activeProject,
+  setActiveProject,
+}) {
+  const [isMobile, setIsMobile] = useState(false);
   const [hoverModifier, setHoverModifier] = useState(0);
   const [clickModifier, setClickModifier] = useState(0);
+  const projectRef = useRef(null);
+
+  useEffect(() => {
+    const onResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    onResize();
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (index === activeProject && projectRef.current) {
+      projectRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }, [activeProject, index]);
 
   return (
     <div
-      className="ease-out-back relative left-1/2 min-h-32 -translate-x-1/2 overflow-hidden rounded-lg transition-all duration-300"
-      onPointerEnter={() => {
-        setHoverModifier(2.5);
-        setGradientPosition('-15%');
-      }}
-      onPointerLeave={() => {
-        setHoverModifier(0);
-        setClickModifier(0);
-        setGradientPosition('-110%');
-      }}
-      onMouseDown={() => setClickModifier(2.5)}
-      onTouchStart={() => setClickModifier(2.5)}
-      onClick={() => setClickModifier(0)}
+      className="ease-out-back relative left-1/2 flex h-48 -translate-x-1/2 flex-col overflow-hidden rounded-lg transition-all duration-300"
       style={{
         width: `${100 + hoverModifier + clickModifier}%`,
+        willChange: 'width',
       }}
     >
+      <div ref={projectRef} className="absolute -top-52 left-0"></div>
       <div
-        className="pointer-events-none absolute inset-0 transition-all duration-300"
+        className="ease-out-back relative flex h-full w-full flex-grow cursor-pointer flex-col justify-between transition-all duration-300"
         style={{
-          scale: `1 ${2 - (100 + hoverModifier + clickModifier) / 100}`,
-          willChange: 'width transform',
-          background: `no-repeat center url(${image})`,
+          backgroundImage: `url(${image})`,
           backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          willChange: 'transform',
+        }}
+        onPointerEnter={() => setHoverModifier(2.5)}
+        onPointerLeave={() => {
+          setHoverModifier(0);
+          setClickModifier(0);
+        }}
+        onMouseDown={() => setClickModifier(2.5)}
+        onTouchStart={() => setClickModifier(2.5)}
+        onClick={() => {
+          window.location.hash = (index !== activeProject ? hash : 'projects');
+          setClickModifier(0);
         }}
       >
         <div
-          className="bg-orange-base ease-out-back absolute inset-0 transition-all duration-300"
+          className="bg-red-highlight ease-out-back h-full w-full p-2 text-sm text-white transition-all duration-300 md:px-4 md:text-lg"
           style={{
-            transform: `translateX(${gradientPosition}) skewX(-25deg)`,
-            width: '130%',
-            willChange: 'transform',
+            clipPath: `polygon(0 0, ${index === activeProject ? '110%' : '0'} 0, ${index === activeProject ? '100%' : '0'} 100%, 0 100%)`,
+            willChange: 'clip-path',
           }}
-        ></div>
+        >
+          <p>{description}</p>
+        </div>
       </div>
-      <button className="absolute inset-0 z-1 cursor-pointer flex-col items-start justify-center overflow-hidden bg-transparent px-4 md:px-8">
-        <p className="bg-red-highlight absolute bottom-0 left-0 w-full px-2 text-left align-text-bottom font-bold text-white md:px-4 md:text-lg">
+
+      <div className="ease-out-back z-1 flex w-full flex-row items-center justify-between bg-black px-2 py-1 font-bold text-white transition-all duration-300 md:px-4">
+        <a className="hover-highlight" content={name}>
           {name}
-        </p>
-      </button>
+        </a>
+        <div className="flex flex-row items-center space-x-2">
+          {techStack.map((value, index) => (
+            <spasn
+              key={index}
+              className="bg-red-highlight rounded-xs px-2 text-xs md:rounded-sm md:text-sm"
+            >
+              {value}
+            </spasn>
+          ))}
+          <span className="hover-highlight cursor-pointer" content="📂">
+            📁
+          </span>
+        </div>
+      </div>
     </div>
   );
 }

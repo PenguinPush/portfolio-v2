@@ -56,7 +56,6 @@ export default function AndrewPortrait({ getImagePath }) {
         }, 300);
       }
 
-      const isMobile = window.innerWidth < 768;
       const rect = containerRef.current.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 3;

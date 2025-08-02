@@ -23,7 +23,7 @@ export default function About({ isMobile, setEvilMode }) {
 
   return (
     <>
-      <div className="flex w-full justify-center">
+      <div className="flex w-full justify-center md:pt-8">
         <p
           className={`${isMobile ? '' : 'hover-underline-evil'} inline-block pt-2 text-xs italic md:pt-0 md:text-sm`}
           content="or check out my links!"

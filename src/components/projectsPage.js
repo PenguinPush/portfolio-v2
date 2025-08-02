@@ -1,8 +1,7 @@
-import React from 'react';
-
 import Project from '@/components/project';
 
-export default function ProjectsPage({ getImagePath }) {
+export default function ProjectsPage({ activeProject, setActiveProject, projectHashes, getImagePath }) {
+
   const projectData = [
     [
       'Cullergrader',
@@ -23,16 +22,16 @@ export default function ProjectsPage({ getImagePath }) {
       ['C++', 'Python', 'Arduino'],
     ],
     [
-      'Vivid Bedroom (Hatsune Miku Programming Contest)',
+      'Vivid Bedroom',
       'description',
       getImagePath('/images/projects/placeholder_3.png'),
-      ['HTML', 'CSS', 'Javascript', 'three.js', 'TextAlive'],
+      ['HTML', 'three.js', 'TextAlive'],
     ],
   ];
 
   return (
     <div className="p-2">
-      <div className="space-y-2">
+      <div className="space-y-2 flex flex-col">
         {projectData.map((value, index) => (
           <Project
             key={index}
@@ -40,6 +39,10 @@ export default function ProjectsPage({ getImagePath }) {
             description={projectData[index][1]}
             image={projectData[index][2]}
             techStack={projectData[index][3]}
+            hash={projectHashes[index]}
+            index={index}
+            activeProject={activeProject}
+            setActiveProject={setActiveProject}
           />
         ))}
       </div>
