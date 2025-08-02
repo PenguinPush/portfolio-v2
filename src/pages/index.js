@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, use } from 'react';
 import AboutPage from '@/components/aboutPage';
 import ProjectsPage from '@/components/projectsPage';
 import NavButtonPair from '@/components/navButtonPair';
@@ -13,7 +13,15 @@ const dmSans = DM_Sans({
   subsets: ['latin'],
 });
 
-const projectHashes = ['cullergrader', 'faunadex', 'physiotherapy', 'vivid'];
+const projectHashes = [
+  'cullergrader',
+  'faunadex',
+  'physiotherapy',
+  'vivid',
+  'vivid2',
+  'vivid3',
+  'vivid4',
+];
 
 export default function Main() {
   const aboutRef = useRef(null);
@@ -30,6 +38,8 @@ export default function Main() {
 
   const hoverMods = [hoverModifier, setHoverModifier];
   const clickMods = [clickModifier, setClickModifier];
+
+  let fromHash = null;
 
   const changePage = (page) => {
     if (page === 1.5) {
@@ -58,14 +68,20 @@ export default function Main() {
 
   useEffect(() => {
     const onHashChange = () => {
-      const id = window.location.hash.replace('#', '');
-      if (id === 'projects') {
+      const toHash = window.location.hash.replace('#', '').toLowerCase();
+
+      if (toHash === 'projects' && !projectHashes.includes(fromHash)) {
         changePage(1);
         setActiveProject(null);
-      } else if (projectHashes.includes(id) && activeProject !== projectHashes.indexOf(id)) {
+      } else if (
+        (projectHashes.includes(toHash) && activeProject !== projectHashes.indexOf(toHash)) ||
+        toHash === 'projects'
+      ) {
         changePage(1.5);
-        setActiveProject(projectHashes.indexOf(id));
+        setActiveProject(projectHashes.indexOf(toHash));
       } else changePage(0);
+
+      fromHash = toHash;
     };
 
     window.addEventListener('hashchange', onHashChange);

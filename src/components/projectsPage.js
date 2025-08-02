@@ -26,6 +26,21 @@ export default function ProjectsPage({ activeProject, setActiveProject, projectH
       'description',
       getImagePath('/images/projects/placeholder_3.png'),
       ['HTML', 'three.js', 'TextAlive'],
+    ],    [
+      'Vivid Bedroom',
+      'description',
+      getImagePath('/images/projects/placeholder_3.png'),
+      ['HTML', 'three.js', 'TextAlive'],
+    ],    [
+      'Vivid Bedroom',
+      'description',
+      getImagePath('/images/projects/placeholder_3.png'),
+      ['HTML', 'three.js', 'TextAlive'],
+    ],    [
+      'Vivid Bedroom',
+      'description',
+      getImagePath('/images/projects/placeholder_3.png'),
+      ['HTML', 'three.js', 'TextAlive'],
     ],
   ];
 

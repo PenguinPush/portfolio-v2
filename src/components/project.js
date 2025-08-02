@@ -14,6 +14,7 @@ export default function Project({
   const [hoverModifier, setHoverModifier] = useState(0);
   const [clickModifier, setClickModifier] = useState(0);
   const projectRef = useRef(null);
+  const scrollTargetRef = useRef(null);
 
   useEffect(() => {
     const onResize = () => {
@@ -29,23 +30,31 @@ export default function Project({
   }, []);
 
   useEffect(() => {
-    if (index === activeProject && projectRef.current) {
-      projectRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
+    if (index === activeProject && projectRef.current && scrollTargetRef.current) {
+      const rect = projectRef.current.getBoundingClientRect();
+      const margin = isMobile ? projectRef.current.offsetHeight : projectRef.current.offsetHeight / 2;
+      const isVisible =
+        rect.top >= margin &&
+        rect.bottom <= window.innerHeight - (isMobile ? margin * 2: margin);
+      if (!isVisible) {
+        scrollTargetRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
     }
   }, [activeProject, index]);
 
   return (
     <div
+      ref={projectRef}
       className="ease-out-back relative left-1/2 flex h-48 -translate-x-1/2 flex-col overflow-hidden rounded-lg transition-all duration-300"
       style={{
         width: `${100 + hoverModifier + clickModifier}%`,
         willChange: 'width',
       }}
     >
-      <div ref={projectRef} className="absolute -top-52 left-0"></div>
+      <div ref={scrollTargetRef} className="absolute -top-52 left-0"></div>
       <div
         className="ease-out-back relative flex h-full w-full flex-grow cursor-pointer flex-col justify-between transition-all duration-300"
         style={{
