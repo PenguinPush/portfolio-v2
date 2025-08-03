@@ -10,7 +10,6 @@ export default function Project({
   hash,
   index,
   activeProject,
-  setActiveProject,
 }) {
   const [isMobile, setIsMobile] = useState(false);
   const [hoverModifier, setHoverModifier] = useState(0);
@@ -86,7 +85,7 @@ export default function Project({
           }}
         >
           <p
-            className="ease-out-back transition-all duration-300"
+            className="relative ease-out-back transition-all duration-300"
             style={{
               width: `${100 / ((100 + hoverModifier + clickModifier) / 100)}%`,
             }}

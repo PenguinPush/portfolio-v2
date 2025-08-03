@@ -2,7 +2,6 @@ import Project from '@/components/project';
 
 export default function ProjectsPage({
   activeProject,
-  setActiveProject,
   projectHashes,
   getImagePath,
 }) {
@@ -40,7 +39,7 @@ export default function ProjectsPage({
       'https://github.com/PenguinPush/deltahacks-xi',
     ],
     [
-      '🎸 Vivid Bedroom',
+      '🎸 Vivid Bedroom (DEMO)',
       'the only one currently with a demo https://penguinpush.github.io/mikucontest-2024 i think its pretty awesome',
       getImagePath('/images/projects/miku.png'),
       ['HTML', 'three.js', 'TextAlive'],
@@ -80,7 +79,6 @@ export default function ProjectsPage({
             hash={projectHashes[index]}
             index={index}
             activeProject={activeProject}
-            setActiveProject={setActiveProject}
           />
         ))}
       </div>

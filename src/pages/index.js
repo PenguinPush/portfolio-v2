@@ -157,7 +157,6 @@ export default function Main() {
             >
               <ProjectsPage
                 activeProject={activeProject}
-                setActiveProject={setActiveProject}
                 projectHashes={projectHashes}
                 getImagePath={getImagePath}
               />
