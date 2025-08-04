@@ -7,6 +7,7 @@ export default function Project({
   techStack,
   demo,
   repo,
+  openMessage,
   hash,
   index,
   activeProject,
@@ -16,6 +17,10 @@ export default function Project({
   const [clickModifier, setClickModifier] = useState(0);
   const projectRef = useRef(null);
   const scrollTargetRef = useRef(null);
+
+  function isActiveProject() {
+    return index === activeProject;
+  }
 
   useEffect(() => {
     const onResize = () => {
@@ -31,7 +36,7 @@ export default function Project({
   }, []);
 
   useEffect(() => {
-    if (index === activeProject && projectRef.current && scrollTargetRef.current) {
+    if (isActiveProject() && projectRef.current && scrollTargetRef.current) {
       const rect = projectRef.current.getBoundingClientRect();
       const margin = isMobile
         ? projectRef.current.offsetHeight
@@ -45,12 +50,12 @@ export default function Project({
         });
       }
     }
-  }, [activeProject, index]);
+  }, [activeProject, index, isActiveProject, isMobile]);
 
   return (
     <div
       ref={projectRef}
-      className="ease-out-back relative left-1/2 flex h-48 -translate-x-1/2 flex-col overflow-hidden rounded-lg transition-all duration-300 md:h-64"
+      className="ease-out-back relative left-1/2 flex min-h-48 -translate-x-1/2 flex-col overflow-hidden rounded-lg transition-all duration-300 md:min-h-64"
       style={{
         width: `${100 + hoverModifier + clickModifier}%`,
         willChange: 'width',
@@ -58,7 +63,7 @@ export default function Project({
     >
       <div ref={scrollTargetRef} className="absolute -top-48 left-0"></div>
       <div
-        className="ease-out-back relative flex h-full w-full flex-grow cursor-pointer flex-col justify-between transition-all duration-300"
+        className="ease-out-back relative flex min-h-48 w-full flex-grow cursor-pointer flex-col justify-between transition-all duration-300 md:min-h-64"
         style={{
           backgroundImage: `url(${image})`,
           backgroundSize: 'cover',
@@ -73,19 +78,19 @@ export default function Project({
         onMouseDown={() => setClickModifier(2.5)}
         onTouchStart={() => setClickModifier(2.5)}
         onClick={() => {
-          window.location.hash = index !== activeProject ? hash : 'projects';
+          window.location.hash = !isActiveProject() ? hash : 'projects';
           setClickModifier(0);
         }}
       >
         <div
-          className="bg-red-highlight ease-out-back h-full w-full p-1 px-2 text-xs text-white transition-all duration-300 md:px-4 md:p-2 md:text-base"
+          className="bg-red-highlight ease-out-back min-h-48 w-full p-3 px-4 text-justify text-xs tracking-wide text-white transition-all duration-300 md:min-h-64 md:p-4 md:px-6 md:text-base"
           style={{
-            clipPath: `polygon(0 0, ${index === activeProject ? '110%' : '0'} 0, ${index === activeProject ? '100%' : '0'} 100%, 0 100%)`,
+            clipPath: `polygon(0 0, ${isActiveProject() ? '100%' : '0'} 0, ${isActiveProject() ? '100%' : '0'} 100%, 0 100%)`,
             willChange: 'clip-path',
           }}
         >
           <p
-            className="relative ease-out-back transition-all duration-300"
+            className="ease-out-back relative transition-all duration-300"
             style={{
               width: `${100 / ((100 + hoverModifier + clickModifier) / 100)}%`,
             }}
@@ -97,8 +102,8 @@ export default function Project({
 
       <div className="ease-out-back z-1 flex w-full flex-row items-center justify-between bg-black px-2 py-1 text-xs font-bold text-white transition-all duration-300 md:px-4 md:text-base">
         <h3>
-          <a className="hover-highlight" content={`${name} ↗`} href={demo} target="_blank">
-            {name} ↗
+          <a className="hover-highlight" content={`${!isActiveProject() ? name : name}`} href={demo} target="_blank">
+            {!isActiveProject() ? name : name}
           </a>
         </h3>
         <div className="flex flex-row items-center space-x-1 md:space-x-2">

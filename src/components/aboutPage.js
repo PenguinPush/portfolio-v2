@@ -35,7 +35,7 @@ export default function AboutPage({}) {
         <li className={diamondListClass}>
           recently, i&#39;ve...
           <p className={arrowListClass}>
-            built a{' '}
+            built an open source{' '}
             <a className="hover-highlight" content="💽 hashing tool" href="#cullergrader">
               💾 hashing tool
             </a>{' '}
