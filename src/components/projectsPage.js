@@ -8,9 +8,9 @@ export default function ProjectsPage({
   const projectData = [
     [
       '📸 Cullergrader',
-      'wait i promise this one is pretty cool it uses perceptual hashes to group images by similarity so you can easily sort through thousands of photos if youre like me and have the habit of taking too many photos at once',
-      getImagePath('/images/projects/placeholder.png'),
-      ['Java', 'Swing UI'],
+      'Like many photographers, I have the habit of taking the same shot multiple times and selecting the best one to keep. However, when going through thousands of photos, this process of culling images is time-consuming, and tools such as Czkawka can detect a few very similar images, but don\'t group somewhat similar bursts.',
+      getImagePath('/images/projects/cullergrader.png'),
+      ['Java', 'Swing UI', 'Actively Maintained'],
       'https://github.com/PenguinPush/cullergrader',
       'https://github.com/PenguinPush/cullergrader',
     ],

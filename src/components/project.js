@@ -78,7 +78,7 @@ export default function Project({
         }}
       >
         <div
-          className="bg-red-highlight ease-out-back h-full w-full p-2 text-sm text-white transition-all duration-300 md:px-4 md:text-lg"
+          className="bg-red-highlight ease-out-back h-full w-full p-1 px-2 text-xs text-white transition-all duration-300 md:px-4 md:p-2 md:text-base"
           style={{
             clipPath: `polygon(0 0, ${index === activeProject ? '110%' : '0'} 0, ${index === activeProject ? '100%' : '0'} 100%, 0 100%)`,
             willChange: 'clip-path',
@@ -97,8 +97,8 @@ export default function Project({
 
       <div className="ease-out-back z-1 flex w-full flex-row items-center justify-between bg-black px-2 py-1 text-xs font-bold text-white transition-all duration-300 md:px-4 md:text-base">
         <h3>
-          <a className="hover-highlight" content={`${name}`} href={demo} target="_blank">
-            {name}
+          <a className="hover-highlight" content={`${name} ↗`} href={demo} target="_blank">
+            {name} ↗
           </a>
         </h3>
         <div className="flex flex-row items-center space-x-1 md:space-x-2">
@@ -110,9 +110,9 @@ export default function Project({
               {value}
             </span>
           ))}
-          {/*<span className="hover-highlight cursor-pointer" content="📂">*/}
-          {/*  📁*/}
-          {/*</span>*/}
+          <a className="hover-highlight cursor-pointer" content="📂" href={repo} target="_blank">
+            📁
+          </a>
         </div>
       </div>
     </div>
