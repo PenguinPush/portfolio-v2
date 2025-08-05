@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export default function Project({
   name,
@@ -50,7 +50,7 @@ export default function Project({
         });
       }
     }
-  }, [activeProject, index, isActiveProject, isMobile]);
+  }, [activeProject, index, isMobile]);
 
   return (
     <div
@@ -85,7 +85,7 @@ export default function Project({
         <div
           className="bg-red-highlight ease-out-back min-h-48 w-full p-3 px-4 text-justify text-xs tracking-wide text-white transition-all duration-300 md:min-h-64 md:p-4 md:px-6 md:text-base"
           style={{
-            clipPath: `polygon(0 0, ${isActiveProject() ? '100%' : '0'} 0, ${isActiveProject() ? '100%' : '0'} 100%, 0 100%)`,
+            clipPath: `polygon(0 0, ${isActiveProject() ? '120%' : '0'} 0, ${isActiveProject() ? '100%' : '-20%'} 100%, 0 100%)`,
             willChange: 'clip-path',
           }}
         >
@@ -102,7 +102,12 @@ export default function Project({
 
       <div className="ease-out-back z-1 flex w-full flex-row items-center justify-between bg-black px-2 py-1 text-xs font-bold text-white transition-all duration-300 md:px-4 md:text-base">
         <h3>
-          <a className="hover-highlight" content={`${!isActiveProject() ? name : name}`} href={demo} target="_blank">
+          <a
+            className="hover-highlight"
+            content={`${!isActiveProject() ? name : name}`}
+            href={demo}
+            target="_blank"
+          >
             {!isActiveProject() ? name : name}
           </a>
         </h3>
