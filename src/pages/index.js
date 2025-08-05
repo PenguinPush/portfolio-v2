@@ -8,6 +8,7 @@ import NavButtonLarge from '@/components/navButtonLarge';
 import Footer from '@/components/footer';
 import { DM_Sans } from 'next/font/google';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -100,93 +101,95 @@ export default function Main() {
   }, [isMobile]);
 
   return (
-    <div
-      className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}
-    >
-      <div className="relative z-0 flex min-h-[100dvh] w-full flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
-        <BackgroundCircle isMobile={isMobile} />
-        <div className="flex flex-col items-center gap-2 px-4">
-          <div>
-            <h1
-              className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
-              onMouseDown={() => setClickModifier(2.5)}
-              onTouchStart={() => setClickModifier(2.5)}
-              onClick={() => {
-                window.location.hash = 'about';
-                setClickModifier(0);
-              }}
-            >
-              Andrew Dai
-            </h1>
+    <div>
+      <Head>
+        <title>Andrew Dai</title>
+      </Head>
+      <div
+        className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}
+      >
+        <div className="relative z-0 flex min-h-[100dvh] w-full flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
+          <BackgroundCircle isMobile={isMobile} />
+          <div className="flex flex-col items-center gap-2 px-4">
+            <div>
+              <h1
+                className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
+                onMouseDown={() => setClickModifier(2.5)}
+                onTouchStart={() => setClickModifier(2.5)}
+                onClick={() => {
+                  window.location.hash = 'about';
+                  setClickModifier(0);
+                }}
+              >
+                Andrew Dai
+              </h1>
+            </div>
+            <div className="flex h-8 w-full flex-row items-center">
+              <NavButtonPair hoverMods={hoverMods} clickMods={clickMods} pageState={pageState} />
+            </div>
           </div>
-          <div className="flex h-8 w-full flex-row items-center">
-            <NavButtonPair hoverMods={hoverMods} clickMods={clickMods} pageState={pageState} />
-          </div>
-        </div>
-        <div className="flex flex-grow flex-col gap-2">
-          <div className="flex flex-grow flex-col">
-            <div
-              ref={aboutRef}
-              className="flex-col gap-2"
-              style={{
-                display: pageState === 0 ? 'flex' : 'none',
-              }}
-            >
-              <AboutPage />
-              <div className="flex w-full justify-center">
-                <NavButtonLarge
-                  className="flex"
-                  buttonText={"see what else i've made"}
-                  targetPage={1}
-                  clickMods={clickMods}
-                />
+          <div className="flex flex-grow flex-col gap-2">
+            <div className="flex flex-grow flex-col">
+              <div
+                ref={aboutRef}
+                className="flex-col gap-2"
+                style={{
+                  display: pageState === 0 ? 'flex' : 'none',
+                }}
+              >
+                <AboutPage />
+                <div className="flex w-full justify-center">
+                  <NavButtonLarge
+                    className="flex"
+                    buttonText={"see what else i've made"}
+                    targetPage={1}
+                    clickMods={clickMods}
+                  />
+                </div>
+              </div>
+              <div
+                ref={projectsRef}
+                className="flex-col gap-2"
+                style={{
+                  display: pageState === 1 ? 'flex' : 'none',
+                }}
+              >
+                <ProjectsPage activeProject={activeProject} projectHashes={projectHashes} />
+                <div className="flex w-full justify-center">
+                  <NavButtonLarge
+                    className="flex"
+                    buttonText={'learn more about me'}
+                    targetPage={0}
+                    clickMods={clickMods}
+                    pageState={pageState}
+                  />
+                </div>
               </div>
             </div>
+            <Footer isMobile={isMobile} setEvilMode={setEvilMode} />
             <div
-              ref={projectsRef}
-              className="flex-col gap-2"
+              className="pointer-events-none absolute bottom-10 z-10 h-[60dvh] w-[45dvh] transition-all ease-out"
+              aria-hidden="true"
               style={{
-                display: pageState === 1 ? 'flex' : 'none',
+                transitionDuration: evilMode ? '3s' : '150ms',
+                left: evilMode ? 'calc(50% + 270px)' : '100vw',
+                animation: evilMode ? 'shake 3s step-start' : 'none',
+                imageRendering: 'pixelated',
+                willChange: evilMode ? 'transform' : 'auto',
               }}
             >
-              <ProjectsPage
-                activeProject={activeProject}
-                projectHashes={projectHashes}
+              <Image
+                src={'/images/big_evil_arrow.png'}
+                alt={`BIG EVIL ARROW`}
+                width={500}
+                height={500}
+                className="h-full w-full"
               />
-              <div className="flex w-full justify-center">
-                <NavButtonLarge
-                  className="flex"
-                  buttonText={'learn more about me'}
-                  targetPage={0}
-                  clickMods={clickMods}
-                  pageState={pageState}
-                />
-              </div>
             </div>
           </div>
-          <Footer isMobile={isMobile} setEvilMode={setEvilMode} />
-          <div
-            className="pointer-events-none absolute bottom-10 z-10 h-[60dvh] w-[45dvh] transition-all ease-out"
-            aria-hidden="true"
-            style={{
-              transitionDuration: evilMode ? '3s' : '150ms',
-              left: evilMode ? 'calc(50% + 270px)' : '100vw',
-              animation: evilMode ? 'shake 3s step-start' : 'none',
-              imageRendering: 'pixelated',
-              willChange: evilMode ? 'transform' : 'auto',
-            }}
-          >
-            <Image
-              src={'/images/big_evil_arrow.png'}
-              alt={`BIG EVIL ARROW`}
-              width={500}
-              height={500}
-              className="h-full w-full"
-            />
-          </div>
+          <div className="h-[65vw] md:h-0" aria-hidden="true"></div>
+          <AndrewPortrait aria-hidden="true" />
         </div>
-        <div className="h-[65vw] md:h-0" aria-hidden="true"></div>
-        <AndrewPortrait aria-hidden="true" />
       </div>
     </div>
   );

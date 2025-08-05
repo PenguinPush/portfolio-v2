@@ -4,7 +4,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <title>Andrew Dai</title>
         <meta name="description" content="Andrew Dai's Portfolio Website" />
       </Head>
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLMGFT43ML"></script>
