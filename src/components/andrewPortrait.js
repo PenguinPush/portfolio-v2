@@ -19,7 +19,7 @@ const portraits = [
   ],
 ];
 
-export default function AndrewPortrait({ getImagePath }) {
+export default function AndrewPortrait({ }) {
   const [activeIndex, setActiveIndex] = useState([0, 2]);
   const containerRef = useRef(null);
   const imageRefs = useRef({});
@@ -30,9 +30,9 @@ export default function AndrewPortrait({ getImagePath }) {
   useEffect(() => {
     portraits.flat().forEach((src) => {
       const img = new window.Image();
-      img.src = getImagePath(src);
+      img.src = src;
     });
-  }, [getImagePath]);
+  }, []);
 
   useEffect(() => {
     const onResize = () => {
@@ -111,7 +111,7 @@ export default function AndrewPortrait({ getImagePath }) {
           >
             <Image
               ref={(el) => (imageRefs.current[`${row}${col}`] = el)}
-              src={getImagePath(src)}
+              src={src}
               alt={`Andrew Dai ${row}, ${col}`}
               width={500}
               height={500}

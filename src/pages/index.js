@@ -99,12 +99,6 @@ export default function Main() {
     return () => window.removeEventListener('resize', onResize);
   }, [isMobile]);
 
-  const getImagePath = (path) => {
-    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    const basePath = process.env.NODE_ENV === 'production' ? '' : '';
-    return `${basePath}/${cleanPath}`;
-  };
-
   return (
     <div
       className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}
@@ -158,7 +152,6 @@ export default function Main() {
               <ProjectsPage
                 activeProject={activeProject}
                 projectHashes={projectHashes}
-                getImagePath={getImagePath}
               />
               <div className="flex w-full justify-center">
                 <NavButtonLarge
@@ -184,7 +177,7 @@ export default function Main() {
             }}
           >
             <Image
-              src={getImagePath('/images/big_evil_arrow.png')}
+              src={'/images/big_evil_arrow.png'}
               alt={`BIG EVIL ARROW`}
               width={500}
               height={500}
@@ -193,7 +186,7 @@ export default function Main() {
           </div>
         </div>
         <div className="h-[65vw] md:h-0" aria-hidden="true"></div>
-        <AndrewPortrait getImagePath={getImagePath} aria-hidden="true" />
+        <AndrewPortrait aria-hidden="true" />
       </div>
     </div>
   );
