@@ -101,7 +101,7 @@ export default function Main() {
 
   const getImagePath = (path) => {
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    const basePath = process.env.NODE_ENV === 'production' ? '/portfolio-v2' : '';
+    const basePath = process.env.NODE_ENV === 'production' ? '' : '';
     return `${basePath}/${cleanPath}`;
   };
 
