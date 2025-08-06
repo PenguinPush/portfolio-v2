@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const diamondListClass =
   'group ease-out-back diamond-list-decoration relative pr-2 transition duration-300 hover:translate-x-1 active:translate-x-1 md:pr-4';
 
@@ -36,25 +38,25 @@ export default function AboutPage({}) {
           recently, i&#39;ve...
           <p className={arrowListClass}>
             built an open source{' '}
-            <a className="hover-highlight-red" content="💽 hashing tool" href="#cullergrader">
+            <Link className="hover-highlight-red" content="💽 hashing tool" href="/projects/?project=cullergrader">
               💾 hashing tool
-            </a>{' '}
+            </Link>{' '}
             to group photos by visual similarity, saving photographers like me hours of culling
             photos
           </p>
           <p className={arrowListClass}>
             designed an animal species{' '}
-            <a className="hover-highlight-red" content="🐼️ classification pipeline" href="#faunadex">
+            <Link className="hover-highlight-red" content="🐼️ classification pipeline" href="/projects/?project=faunadex">
               🐻 classification pipeline
-            </a>{' '}
+            </Link>{' '}
             using visual descriptions + semantic search; can classify without individually training
             on photos of each species
           </p>
           <p className={arrowListClass}>
             made{' '}
-            <a className="hover-highlight-red" content="🦾 a tool" href="#physiotherapy">
+            <Link className="hover-highlight-red" content="🦾 a tool" href="/projects/?project=physiotherapy">
               💪 a tool
-            </a>{' '}
+            </Link>{' '}
             for home physiotherapy, using Nintendo Switch controllers to track movements & monitor
             heart rate (with the built-in IR Camera!)
           </p>

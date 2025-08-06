@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useAppContext } from '@/context/AppContext';
 import Image from 'next/image';
 
 const portraits = [
@@ -19,13 +20,11 @@ const portraits = [
   ],
 ];
 
-export default function AndrewPortrait({ }) {
+export default function AndrewPortrait({}) {
+  const { isMobile, portraitState, setPortraitState } = useAppContext();
   const [activeIndex, setActiveIndex] = useState([0, 2]);
   const containerRef = useRef(null);
   const imageRefs = useRef({});
-  const [isMobile, setIsMobile] = useState(false);
-  const [isDucked, setIsDucked] = useState(false);
-  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     portraits.flat().forEach((src) => {
@@ -35,24 +34,11 @@ export default function AndrewPortrait({ }) {
   }, []);
 
   useEffect(() => {
-    const onResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    onResize();
-    window.addEventListener('resize', onResize);
-
-    return () => {
-      window.removeEventListener('resize', onResize);
-    };
-  }, []);
-
-  useEffect(() => {
     const onPointerMove = (e) => {
       if (!containerRef.current) return;
-      if (!isActive) {
+      if (portraitState === 0) {
         setTimeout(() => {
-          setIsActive(true);
+          setPortraitState(1);
         }, 300);
       }
 
@@ -97,7 +83,7 @@ export default function AndrewPortrait({ }) {
       ref={containerRef}
       className="portrait-gradient-background md:bg-none-override pointer-events-none fixed bottom-0 left-[-40%] z-20 w-[180%] md:left-0 md:w-[35vw]"
       style={{
-        transform: `translateY(${isActive || isMobile  ? (isMobile || isDucked ? '62%' : '0%') : '100%'})`,
+        transform: `translateY(${portraitState !== 0 || isMobile ? (isMobile || portraitState === 2 ? '62%' : '0%') : '100%'})`,
         transition: 'transform 0.3s var(--ease-out)',
       }}
     >
@@ -121,7 +107,7 @@ export default function AndrewPortrait({ }) {
           </div>
         )),
       )}
-      <div onClick={() => setIsDucked(!isDucked)}>
+      <div onClick={() => setPortraitState((portraitState % 2) + 1)}>
         <div className="pointer-events-auto absolute top-[34%] left-[50%] z-30 h-[50%] w-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full md:cursor-pointer"></div>
         <div className="pointer-events-auto absolute bottom-[0%] left-[54%] z-30 h-[45%] w-[85%] -translate-x-1/2 rounded-t-full md:cursor-pointer"></div>
       </div>

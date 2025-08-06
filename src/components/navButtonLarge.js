@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
-const pageHashes = ['about', 'projects'];
+const pageUrls = ['/', '/projects'];
 const clickModifiers = [2.5, -2.5];
 
-export default function NavButtonLarge({ buttonText, targetPage, clickMods, changePage }) {
-  const [clickModifier, setClickModifier] = clickMods;
+export default function NavButtonLarge({ buttonText, targetPage, setClickModifier, router }) {
   const [buttonScale, setButtonScale] = useState(1);
   const [gradientPosition, setGradientPosition] = useState('-110%');
 
@@ -30,8 +29,8 @@ export default function NavButtonLarge({ buttonText, targetPage, clickMods, chan
       }}
       onClick={() => {
         setButtonScale(1.0);
-        window.location.hash = pageHashes[targetPage];
         setClickModifier(0);
+        router.push(pageUrls[targetPage])
       }}
     >
       <div

@@ -1,6 +1,40 @@
-import Project from '@/components/project';
+import React, { useEffect, useState } from 'react';
+import ProjectItem from '@/components/projectItem';
 
-export default function ProjectsPage({ activeProject, projectHashes }) {
+export default function ProjectsPage({ projectIds, isMobile, router }) {
+  const [projectRefs, setProjectRefs] = useState({});
+  const [scrollTargetRefs, setScrollTargetRefs] = useState({});
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    const project = router.query.project;
+
+    if (projectRefs[project] && scrollTargetRefs[project]) {
+      const projectRef = projectRefs[project];
+      const scrollTarget = scrollTargetRefs[project];
+
+      const rect = projectRef.getBoundingClientRect();
+      const margin = isMobile ? projectRef.offsetHeight : projectRef.offsetHeight / 2;
+      const isVisible =
+        rect.top >= margin && rect.bottom <= window.innerHeight - (isMobile ? margin * 2 : margin);
+
+      if (!isVisible) {
+        scrollTarget.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }
+  }, [router.isReady, router.query, isMobile, projectRefs, scrollTargetRefs]);
+
+  const handleProjectRefCallback = (hash, ref) => {
+    setProjectRefs((prev) => ({ ...prev, [hash]: ref }));
+  };
+
+  const handleScrollTargetCallback = (hash, ref) => {
+    setScrollTargetRefs((prev) => ({ ...prev, [hash]: ref }));
+  };
+
   const projectData = [
     [
       '📸 Cullergrader',
@@ -75,7 +109,7 @@ export default function ProjectsPage({ activeProject, projectHashes }) {
     <div className="p-2">
       <div className="flex flex-col space-y-2">
         {projectData.map((value, index) => (
-          <Project
+          <ProjectItem
             key={index}
             name={projectData[index][0]}
             description={projectData[index][1]}
@@ -84,9 +118,10 @@ export default function ProjectsPage({ activeProject, projectHashes }) {
             demo={projectData[index][4]}
             repo={projectData[index][5]}
             openMessage={projectData[index][6]}
-            hash={projectHashes[index]}
-            index={index}
-            activeProject={activeProject}
+            projectId={projectIds[index]}
+            router={router}
+            projectRefCallback={(ref) => handleProjectRefCallback(projectIds[index], ref)}
+            scrollTargetCallback={(ref) => handleScrollTargetCallback(projectIds[index], ref)}
           />
         ))}
       </div>

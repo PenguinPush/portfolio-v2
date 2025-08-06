@@ -1,10 +1,11 @@
+import { useAppContext } from '@/context/AppContext';
+
 const medians = [70, 30];
 const labelColors = ['bg-orange-base', 'bg-yellow-base'];
 const labelHeights = [1, 1];
 
-export default function NavButtonPair({ hoverMods, clickMods, pageState }) {
-  const [hoverModifier, setHoverModifier] = hoverMods;
-  const [clickModifier, setClickModifier] = clickMods;
+export default function NavButtonPair({ clickModifier, setClickModifier, router }) {
+  const { hoverModifier, setHoverModifier, pageState } = useAppContext();
 
   return (
     <>
@@ -29,8 +30,8 @@ export default function NavButtonPair({ hoverMods, clickMods, pageState }) {
           onMouseDown={() => setClickModifier(2.5)}
           onTouchStart={() => setClickModifier(2.5)}
           onClick={() => {
-            window.location.hash = 'about';
             setClickModifier(0);
+            router.push('/');
           }}
         >
           <i className={`text-md relative right-[5px] font-normal select-none`}>about</i>
@@ -57,9 +58,7 @@ export default function NavButtonPair({ hoverMods, clickMods, pageState }) {
           onMouseDown={() => setClickModifier(-2.5)}
           onTouchStart={() => setClickModifier(-2.5)}
           onClick={() => {
-            if (pageState !== 1) {
-              window.location.hash = 'projects';
-            }
+            router.push('/projects');
             setClickModifier(0);
           }}
         >
