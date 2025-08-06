@@ -78,11 +78,11 @@ export default function About({ isMobile, setEvilMode }) {
         <a
           className="hover-highlight"
           content="📜 resume"
-          href="https://penguinpush.github.io/PenguinPush/Andrew_Dai_Resume.pdf"
+          href="https://andrewd.ai/Andrew_Dai_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           onMouseEnter={() =>
-            setLinkMessage('penguinpush.github.io/PenguinPush/Andrew_Dai_Resume.pdf')
+            setLinkMessage('andrewd.ai/Andrew_Dai_Resume.pdf')
           }
           onMouseLeave={() => resetLinkMessage()}
         >
