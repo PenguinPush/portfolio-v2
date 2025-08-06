@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-
 import AboutPage from '@/components/aboutPage';
 import NavButtonLarge from '@/components/navButtonLarge';
 import Layout from '@/components/layout';
 import { useAppContext } from '@/context/AppContext';
-
 import { useRouter } from 'next/router';
 
 export default function Home() {

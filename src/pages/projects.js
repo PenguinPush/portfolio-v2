@@ -1,21 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-
 import ProjectsPage from '@/components/projectsPage';
 import NavButtonLarge from '@/components/navButtonLarge';
 import Layout from '@/components/layout';
 import { useAppContext } from '@/context/AppContext';
-
 import { useRouter } from 'next/router';
 
-const projectHashes = [
-  'cullergrader',
-  'faunadex',
-  'physiotherapy',
-  'pickle',
-  'miku',
-  'tabletablet',
-  'dylanai',
-];
 
 export default function Projects() {
   const projectsRef = useRef(null);
@@ -39,7 +28,7 @@ export default function Projects() {
       router={router}
     >
       <div ref={projectsRef} className="flex-col gap-2">
-        <ProjectsPage projectIds={projectHashes} isMobile={isMobile} router={router} />
+        <ProjectsPage router={router} />
         <div className="flex w-full justify-center">
           <NavButtonLarge
             className="flex"

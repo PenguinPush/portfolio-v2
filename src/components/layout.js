@@ -9,7 +9,6 @@ import { useAppContext } from '@/context/AppContext';
 import { DM_Sans } from 'next/font/google';
 import Image from 'next/image';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],

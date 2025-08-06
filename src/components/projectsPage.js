@@ -1,7 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import ProjectItem from '@/components/projectItem';
+import { useAppContext } from '@/context/AppContext';
 
-export default function ProjectsPage({ projectIds, isMobile, router }) {
+const projectIds = [
+  'cullergrader',
+  'faunadex',
+  'physiotherapy',
+  'pickle',
+  'miku',
+  'tabletablet',
+  'dylanai',
+];
+
+export default function ProjectsPage({ router }) {
+  const { isMobile } = useAppContext();
   const [projectRefs, setProjectRefs] = useState({});
   const [scrollTargetRefs, setScrollTargetRefs] = useState({});
 
