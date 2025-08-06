@@ -23,6 +23,9 @@ export default function Projects() {
   return (
     <Layout
       title="Andrew Dai - Projects"
+      description="Projects showcasing Andrew Dai's tech stack and problem-solving skills, ranging from passion projects to hackathon winners. All opened sourced on GitHub."
+      url="https://andrewd.ai/projects/"
+      image="https://andrewd.ai/images/projects_screenshot.jpeg"
       clickModifier={clickModifier}
       setClickModifier={setClickModifier}
       router={router}

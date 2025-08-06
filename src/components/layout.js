@@ -14,14 +14,36 @@ const dmSans = DM_Sans({
   subsets: ['latin'],
 });
 
-export default function Layout({ children, title, clickModifier, setClickModifier, router }) {
+export default function Layout({
+  children,
+  title,
+  description,
+  url,
+  image,
+  clickModifier,
+  setClickModifier,
+  router,
+}) {
   const { isMobile } = useAppContext();
   const [evilMode, setEvilMode] = useState(false);
 
   return (
     <div>
       <Head>
-        <title>{title || "Andrew Dai's Portfolio Site"}</title>
+        <title>{title}</title>
+        <meta name="title" content={title} />
+        <meta property="og:title" content={title} />
+        <meta property="twitter:title" content={title} />
+
+        <meta name="description" content={description} />
+        <meta name="og:description" content={description} />
+        <meta name="twitter:description" content={description} />
+
+        <meta name="og:url" content={url} />
+        <meta name="twitter:url" content={url} />
+
+        <meta name="og:image" content={image} />
+        <meta name="twitter:image" content={image} />
       </Head>
       <div
         className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}

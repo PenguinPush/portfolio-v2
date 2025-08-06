@@ -12,42 +12,7 @@ const projectIds = [
   'dylanai',
 ];
 
-export default function ProjectsPage({ router }) {
-  const { isMobile } = useAppContext();
-  const [projectRefs, setProjectRefs] = useState({});
-  const [scrollTargetRefs, setScrollTargetRefs] = useState({});
-
-  useEffect(() => {
-    if (!router.isReady) return;
-    const project = router.query.project;
-
-    if (projectRefs[project] && scrollTargetRefs[project]) {
-      const projectRef = projectRefs[project];
-      const scrollTarget = scrollTargetRefs[project];
-
-      const rect = projectRef.getBoundingClientRect();
-      const margin = isMobile ? projectRef.offsetHeight : projectRef.offsetHeight / 2;
-      const isVisible =
-        rect.top >= margin && rect.bottom <= window.innerHeight - (isMobile ? margin * 2 : margin);
-
-      if (!isVisible) {
-        scrollTarget.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      }
-    }
-  }, [router.isReady, router.query, isMobile, projectRefs, scrollTargetRefs]);
-
-  const handleProjectRefCallback = (hash, ref) => {
-    setProjectRefs((prev) => ({ ...prev, [hash]: ref }));
-  };
-
-  const handleScrollTargetCallback = (hash, ref) => {
-    setScrollTargetRefs((prev) => ({ ...prev, [hash]: ref }));
-  };
-
-  const projectData = [
+const projectData = [
     [
       '📸 Cullergrader',
       'Cullergrader uses a perceptual hashing algorithm to group photos by visual similarity to sort through images rapidly. ' +
@@ -63,7 +28,7 @@ export default function ProjectsPage({ router }) {
     [
       '🐻 FaunaDex',
       'Description under construction!',
-      '/images/projects/placeholder.png',
+      '/images/projects/faunadex.png',
       ['NumPy', 'GCP', 'OpenAI', 'React'],
       'https://github.com/PenguinPush/faunadex',
       'https://github.com/PenguinPush/faunadex',
@@ -116,6 +81,42 @@ export default function ProjectsPage({ router }) {
       '🤖 Open in Github',
     ],
   ];
+
+
+export default function ProjectsPage({ router }) {
+  const { isMobile } = useAppContext();
+  const [projectRefs, setProjectRefs] = useState({});
+  const [scrollTargetRefs, setScrollTargetRefs] = useState({});
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    const project = router.query.project;
+
+    if (projectRefs[project] && scrollTargetRefs[project]) {
+      const projectRef = projectRefs[project];
+      const scrollTarget = scrollTargetRefs[project];
+
+      const rect = projectRef.getBoundingClientRect();
+      const margin = isMobile ? projectRef.offsetHeight : projectRef.offsetHeight / 2;
+      const isVisible =
+        rect.top >= margin && rect.bottom <= window.innerHeight - (isMobile ? margin * 2 : margin);
+
+      if (!isVisible) {
+        scrollTarget.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }
+  }, [router.isReady, router.query, isMobile, projectRefs, scrollTargetRefs]);
+
+  const handleProjectRefCallback = (hash, ref) => {
+    setProjectRefs((prev) => ({ ...prev, [hash]: ref }));
+  };
+
+  const handleScrollTargetCallback = (hash, ref) => {
+    setScrollTargetRefs((prev) => ({ ...prev, [hash]: ref }));
+  };
 
   return (
     <div className="p-2">

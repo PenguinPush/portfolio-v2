@@ -13,29 +13,10 @@ export default function Document() {
         <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
         <link rel="manifest" href="/site.webmanifest" />
 
-        <meta name="title" content="Andrew Dai's Portfolio Site" />
-        <meta
-          name="description"
-          content="16-year-old programmer from Toronto with interests in photography, urban planning, and politics. Currently at 8x consecutive hackathon wins and counting."
-        />
-
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://andrewd.ai/" />
-        <meta property="og:title" content="Andrew Dai's Portfolio Site" />
-        <meta
-          property="og:description"
-          content="16-year-old programmer from Toronto with interests in photography, urban planning, and politics. Currently at 8x consecutive hackathon wins and counting."
-        />
-        <meta property="og:image" content="https://andrewd.ai/images/site_image.jpeg" />
-
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://andrewd.ai/" />
-        <meta property="twitter:title" content="Andrew Dai's Portfolio Site" />
-        <meta
-          property="twitter:description"
-          content="16-year-old programmer from Toronto with interests in photography, urban planning, and politics. Currently at 8x consecutive hackathon wins and counting."
-        />
-        <meta property="twitter:image" content="https://andrewd.ai/images/site_image.jpeg" />
+
+        <meta name="theme-color" content="#ffc01a" />
       </Head>
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLMGFT43ML"></script>
       <script
