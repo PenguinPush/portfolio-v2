@@ -38,7 +38,7 @@ export default function AboutPage({}) {
           recently, i&#39;ve...
           <p className={arrowListClass}>
             built an open source{' '}
-            <Link className="hover-highlight-red" content="💽 hashing tool" href="/projects/?project=cullergrader" rel="canonical">
+            <Link className="hover-highlight-red" content="💽 hashing tool" href="/projects/?project=cullergrader">
               💾 hashing tool
             </Link>{' '}
             to group photos by visual similarity, saving photographers like me hours of culling
@@ -46,7 +46,7 @@ export default function AboutPage({}) {
           </p>
           <p className={arrowListClass}>
             designed an animal species{' '}
-            <Link className="hover-highlight-red" content="🐼️ classification pipeline" href="/projects/?project=faunadex" rel="canonical">
+            <Link className="hover-highlight-red" content="🐼️ classification pipeline" href="/projects/?project=faunadex">
               🐻 classification pipeline
             </Link>{' '}
             using visual descriptions + semantic search; can classify without individually training
@@ -54,7 +54,7 @@ export default function AboutPage({}) {
           </p>
           <p className={arrowListClass}>
             made{' '}
-            <Link className="hover-highlight-red" content="🦾 a tool" href="/projects/?project=physiotherapy" rel="canonical">
+            <Link className="hover-highlight-red" content="🦾 a tool" href="/projects/?project=physiotherapy">
               💪 a tool
             </Link>{' '}
             for home physiotherapy, using Nintendo Switch controllers to track movements & monitor
