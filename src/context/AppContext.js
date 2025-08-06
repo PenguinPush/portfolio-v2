@@ -7,6 +7,8 @@ export function AppProvider({ children }) {
   const [hoverModifier, setHoverModifier] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [portraitState, setPortraitState] = useState(0);
+  const [activePortrait, setActivePortrait] = useState([0, 2]);
+  const [radiusVh, setRadiusVh] = useState(60);
 
   useEffect(() => {
     const onResize = () => {
@@ -32,6 +34,10 @@ export function AppProvider({ children }) {
         setPortraitState,
         hoverModifier,
         setHoverModifier,
+        activePortrait,
+        setActivePortrait,
+        radiusVh,
+        setRadiusVh,
       }}
     >
       {children}

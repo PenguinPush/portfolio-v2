@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useAppContext } from '@/context/AppContext';
 import Image from 'next/image';
 
@@ -21,8 +21,7 @@ const portraits = [
 ];
 
 export default function AndrewPortrait({}) {
-  const { isMobile, portraitState, setPortraitState } = useAppContext();
-  const [activeIndex, setActiveIndex] = useState([0, 2]);
+  const { isMobile, portraitState, setPortraitState, activePortrait, setActivePortrait } = useAppContext();
   const containerRef = useRef(null);
   const imageRefs = useRef({});
 
@@ -65,8 +64,8 @@ export default function AndrewPortrait({}) {
       if (dx < -rect.width / centerFactor) col = 0;
       else if (dx > rect.width / centerFactor) col = 2;
 
-      if (row !== activeIndex[0] || col !== activeIndex[1]) {
-        setActiveIndex([row, col]);
+      if (row !== activePortrait[0] || col !== activePortrait[1]) {
+        setActivePortrait([row, col]);
       }
     };
 
@@ -76,7 +75,7 @@ export default function AndrewPortrait({}) {
       window.removeEventListener('mousemove', onPointerMove);
       window.removeEventListener('touchmove', onPointerMove);
     };
-  }, [activeIndex]);
+  }, [activePortrait]);
 
   return (
     <div
@@ -92,7 +91,7 @@ export default function AndrewPortrait({}) {
           <div
             key={`${row}${col}`}
             style={{
-              display: activeIndex[0] === row && activeIndex[1] === col ? 'block' : 'none',
+              display: activePortrait[0] === row && activePortrait[1] === col ? 'block' : 'none',
             }}
           >
             <Image

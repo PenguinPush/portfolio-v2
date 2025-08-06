@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useAppContext } from '@/context/AppContext';
 
 const radiusDefault = 60;
 const radiusHover = 62;
@@ -15,8 +16,8 @@ const isMouseInCircle = (e, radiusVh) => {
   return distancePx <= radiusPx;
 };
 
-export default function BackgroundCircle({ isMobile }) {
-  const [radiusVh, setRadiusVh] = useState(60);
+export default function BackgroundCircle({}) {
+    const { isMobile, radiusVh, setRadiusVh } = useAppContext();
   const [mouseDown, setMouseDown] = useState(false);
 
   useEffect(() => {

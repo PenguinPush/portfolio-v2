@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react';
+import { useAppContext } from '@/context/AppContext';
 
 const defaultLinkMessage = 'or check out my links !';
 
-export default function About({ isMobile, setEvilMode }) {
+export default function About({ setEvilMode }) {
+  const { isMobile } = useAppContext();
   const [linkBoxText, setLinkBoxText] = useState('or check out my links !');
   const linkTimeout = useRef(null);
 
@@ -81,9 +83,7 @@ export default function About({ isMobile, setEvilMode }) {
           href="https://andrewd.ai/Andrew_Dai_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          onMouseEnter={() =>
-            setLinkMessage('andrewd.ai/Andrew_Dai_Resume.pdf')
-          }
+          onMouseEnter={() => setLinkMessage('andrewd.ai/Andrew_Dai_Resume.pdf')}
           onMouseLeave={() => resetLinkMessage()}
         >
           📃 resume

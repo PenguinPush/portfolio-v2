@@ -23,9 +23,7 @@ export default function Layout({
   image,
   clickModifier,
   setClickModifier,
-  router,
 }) {
-  const { isMobile } = useAppContext();
   const [evilMode, setEvilMode] = useState(false);
 
   return (
@@ -51,7 +49,7 @@ export default function Layout({
         className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}
       >
         <div className="relative z-0 flex min-h-[100dvh] w-full flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
-          <BackgroundCircle isMobile={isMobile} />
+          <BackgroundCircle />
           <div className="flex flex-col items-center gap-2 px-4">
             <Link
               className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
@@ -68,7 +66,7 @@ export default function Layout({
           </div>
           <div className="flex flex-grow flex-col gap-2">
             <div className="flex flex-grow flex-col">{children}</div>
-            <Footer isMobile={isMobile} setEvilMode={setEvilMode} />
+            <Footer setEvilMode={setEvilMode} />
             <div
               className="pointer-events-none absolute bottom-10 z-10 h-[60dvh] w-[45dvh] transition-all ease-out"
               aria-hidden="true"
