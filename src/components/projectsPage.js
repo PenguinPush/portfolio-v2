@@ -16,7 +16,7 @@ export default function ProjectsPage({ activeProject, projectHashes }) {
     ],
     [
       '🐻 FaunaDex',
-      'this one is cool but maybe i should deploy it somewhere so its actually usable and refine the pipeline part a bit, someone remind me to add a readme to the github',
+      'Description under construction!',
       '/images/projects/placeholder.png',
       ['NumPy', 'GCP', 'OpenAI', 'React'],
       'https://github.com/PenguinPush/faunadex',
@@ -25,7 +25,7 @@ export default function ProjectsPage({ activeProject, projectHashes }) {
     ],
     [
       '💪 Physiotherapy Tool',
-      'cant really deploy this one LOL but at least i can add the demo video https://devpost.com/software/the-exercists',
+      'Description under construction!',
       '/images/projects/physiotherapy.png',
       ['C++', 'Python', 'Arduino'],
       'https://github.com/iantang08/UTRAHacks2025',
@@ -34,7 +34,7 @@ export default function ProjectsPage({ activeProject, projectHashes }) {
     ],
     [
       '🗼 Pickle',
-      'this one is pretty awesome i can probably deploy this one too so you can like give the sms stuff a shot which i think would be kinda impressive',
+      'Description under construction!',
       '/images/projects/pickle.png',
       ['Flask', 'Twilio', 'MongoDB', 'Cohere'],
       'https://github.com/PenguinPush/deltahacks-xi',
@@ -43,7 +43,7 @@ export default function ProjectsPage({ activeProject, projectHashes }) {
     ],
     [
       '🎸 Vivid Bedroom (DEMO)',
-      'the only one currently with a demo https://penguinpush.github.io/mikucontest-2024 i think its pretty awesome',
+      'Description under construction!',
       '/images/projects/miku.png',
       ['HTML', 'three.js', 'TextAlive'],
       'https://penguinpush.github.io/mikucontest-2024',
@@ -52,7 +52,7 @@ export default function ProjectsPage({ activeProject, projectHashes }) {
     ],
     [
       '👉 TableTablet',
-      'tabletablet i can probably make downloadable but this also deserves a demo video tbh, i will make demo videos for all of them along with download links n stuff. should they be youtube or hosted here (implementing a video player sounds hard maybe just yt)',
+      'Description under construction!',
       '/images/projects/tabletablet.png',
       ['Python', 'MediaPipe', 'OpenCV'],
       'https://github.com/PenguinPush/cullergrader',
@@ -61,7 +61,8 @@ export default function ProjectsPage({ activeProject, projectHashes }) {
     ],
     [
       '🤖 DYLAN.AI',
-      'this one is really old and ill probably do a demo video with download link this is the one that uses voice commands and stuff its cool its cool',
+      'Description under construction!',
+
       '/images/projects/placeholder.png',
       ['OpenAI', 'Cohere', 'GCP'],
       'https://github.com/PenguinPush/DylanAI',
