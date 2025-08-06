@@ -103,7 +103,7 @@ export default function Main() {
   return (
     <div>
       <Head>
-        <title>Andrew Dai</title>
+        <title>Andrew Dai&#39;s Portfolio Site</title>
       </Head>
       <div
         className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}
