@@ -9,6 +9,7 @@ import { useAppContext } from '@/context/AppContext';
 import { DM_Sans } from 'next/font/google';
 import Image from 'next/image';
 import Head from 'next/head';
+import Link from 'next/link';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -45,7 +46,6 @@ export default function Layout({
 
         <meta name="og:image" content={image} />
         <meta name="twitter:image" content={image} />
-
       </Head>
       <div
         className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}
@@ -53,25 +53,17 @@ export default function Layout({
         <div className="relative z-0 flex min-h-[100dvh] w-full flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
           <BackgroundCircle isMobile={isMobile} />
           <div className="flex flex-col items-center gap-2 px-4">
-            <div>
-              <h1
-                className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
-                onMouseDown={() => setClickModifier(2.5)}
-                onTouchStart={() => setClickModifier(2.5)}
-                onClick={() => {
-                  router.push('/');
-                  setClickModifier(0);
-                }}
-              >
-                Andrew Dai
-              </h1>
-            </div>
+            <Link
+              className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
+              href="/"
+              onMouseDown={() => setClickModifier(2.5)}
+              onTouchStart={() => setClickModifier(2.5)}
+              onClick={() => setClickModifier(0)}
+            >
+              Andrew Dai
+            </Link>
             <div className="flex h-8 w-full flex-row items-center">
-              <NavButtonPair
-                clickModifier={clickModifier}
-                setClickModifier={setClickModifier}
-                router={router}
-              />
+              <NavButtonPair clickModifier={clickModifier} setClickModifier={setClickModifier} />
             </div>
           </div>
           <div className="flex flex-grow flex-col gap-2">

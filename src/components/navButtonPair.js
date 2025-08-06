@@ -1,10 +1,11 @@
 import { useAppContext } from '@/context/AppContext';
+import Link from 'next/link';
 
 const medians = [70, 30];
 const labelColors = ['bg-orange-base', 'bg-yellow-base'];
 const labelHeights = [1, 1];
 
-export default function NavButtonPair({ clickModifier, setClickModifier, router }) {
+export default function NavButtonPair({ clickModifier, setClickModifier }) {
   const { hoverModifier, setHoverModifier, pageState } = useAppContext();
 
   return (
@@ -23,19 +24,17 @@ export default function NavButtonPair({ clickModifier, setClickModifier, router 
             clipPath: `polygon(0 0, 100% 0, calc(100% - ${16 * labelHeights[pageState]}px) 100%, 0% 100%)`,
           }}
         ></div>
-        <button
-          className="relative z-1 h-full w-full cursor-pointer bg-transparent"
+        <Link
+          href="/"
+          className="relative z-1 flex h-full w-full cursor-pointer items-center justify-center bg-transparent"
           onPointerEnter={() => setHoverModifier(2.5)}
           onPointerLeave={() => setHoverModifier(0)}
           onMouseDown={() => setClickModifier(2.5)}
           onTouchStart={() => setClickModifier(2.5)}
-          onClick={() => {
-            setClickModifier(0);
-            router.push('/');
-          }}
+          onClick={() => setClickModifier(0)}
         >
-          <i className={`text-md relative right-[5px] font-normal select-none`}>about</i>
-        </button>
+          <i className="text-md relative right-[5px] font-normal select-none">about</i>
+        </Link>
       </div>
       <div
         className="ease-out-back relative flex transition-all duration-300"
@@ -51,19 +50,17 @@ export default function NavButtonPair({ clickModifier, setClickModifier, router 
             clipPath: `polygon(${16 * labelHeights[(pageState + 1) % 2]}px 0, 100% 0, 100% 100%, 0% 100%)`,
           }}
         ></div>
-        <button
-          className="relative z-1 h-full w-full cursor-pointer bg-transparent"
+        <Link
+          href="/projects"
+          className="relative z-1 flex h-full w-full cursor-pointer items-center justify-center bg-transparent"
           onPointerEnter={() => setHoverModifier(-2.5)}
           onPointerLeave={() => setHoverModifier(0)}
           onMouseDown={() => setClickModifier(-2.5)}
           onTouchStart={() => setClickModifier(-2.5)}
-          onClick={() => {
-            router.push('/projects');
-            setClickModifier(0);
-          }}
+          onClick={() => setClickModifier(0)}
         >
           <i className={`text-md relative left-[5px] font-normal select-none`}>projects</i>
-        </button>
+        </Link>
       </div>
     </>
   );

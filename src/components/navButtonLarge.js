@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 const pageUrls = ['/', '/projects'];
 const clickModifiers = [2.5, -2.5];
 
-export default function NavButtonLarge({ buttonText, targetPage, setClickModifier, router }) {
+export default function NavButtonLarge({ buttonText, targetPage, setClickModifier }) {
   const [buttonScale, setButtonScale] = useState(1);
   const [gradientPosition, setGradientPosition] = useState('-110%');
 
   return (
-    <div
-      className="relative flex h-12 w-[50%]"
+    <Link
+      className="relative z-1 flex h-12 w-[50%] cursor-pointer items-center justify-center bg-transparent"
+      href={pageUrls[targetPage]}
       onPointerEnter={() => {
         setButtonScale(1.05);
         setGradientPosition('-12.5%');
@@ -30,7 +32,6 @@ export default function NavButtonLarge({ buttonText, targetPage, setClickModifie
       onClick={() => {
         setButtonScale(1.0);
         setClickModifier(0);
-        router.push(pageUrls[targetPage])
       }}
     >
       <div
@@ -41,7 +42,7 @@ export default function NavButtonLarge({ buttonText, targetPage, setClickModifie
         }}
       >
         <div
-          className="bg-white ease-out-back absolute inset-0 transition-all duration-300"
+          className="ease-out-back absolute inset-0 bg-white transition-all duration-300"
           style={{
             transform: `translateX(${gradientPosition}) skewX(-25deg)`,
             width: '120%',
@@ -49,9 +50,7 @@ export default function NavButtonLarge({ buttonText, targetPage, setClickModifie
           }}
         ></div>
       </div>
-      <button className="relative z-1 h-full w-full cursor-pointer bg-transparent">
-        <i className="relative font-normal select-none md:text-lg">{buttonText}</i>
-      </button>
-    </div>
+      <i className="relative font-normal select-none md:text-lg">{buttonText}</i>
+    </Link>
   );
 }

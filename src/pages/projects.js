@@ -5,12 +5,10 @@ import Layout from '@/components/layout';
 import { useAppContext } from '@/context/AppContext';
 import { useRouter } from 'next/router';
 
-
 export default function Projects() {
   const projectsRef = useRef(null);
   const router = useRouter();
-  const { isMobile, setPageState } = useAppContext();
-
+  const { setPageState } = useAppContext();
   const [clickModifier, setClickModifier] = useState(0);
 
   useEffect(() => {
@@ -20,6 +18,7 @@ export default function Projects() {
     }
   }, [router.query]);
 
+
   return (
     <Layout
       title="Andrew Dai - Projects"
@@ -28,17 +27,15 @@ export default function Projects() {
       image="https://andrewd.ai/images/projects_screenshot.jpeg"
       clickModifier={clickModifier}
       setClickModifier={setClickModifier}
-      router={router}
     >
-      <div ref={projectsRef} className="flex-col gap-2">
-        <ProjectsPage router={router} />
+      <div ref={projectsRef} className="flex flex-col gap-2">
+        <ProjectsPage/>
         <div className="flex w-full justify-center">
           <NavButtonLarge
             className="flex"
             buttonText={'learn more about me'}
             targetPage={0}
             setClickModifier={setClickModifier}
-            router={router}
           />
         </div>
       </div>

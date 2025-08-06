@@ -30,7 +30,7 @@ export default function Home() {
       setClickModifier={setClickModifier}
       router={router}
     >
-      <div ref={aboutRef} className="flex-col gap-2">
+      <div ref={aboutRef} className="flex flex-col gap-2">
         <AboutPage />
         <div className="flex w-full justify-center">
           <NavButtonLarge
@@ -38,7 +38,6 @@ export default function Home() {
             buttonText={"see what else i've made"}
             targetPage={1}
             setClickModifier={setClickModifier}
-            router={router}
           />
         </div>
       </div>
