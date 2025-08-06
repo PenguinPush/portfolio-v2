@@ -8,10 +8,10 @@ export default function AboutPage({}) {
   return (
     <div className="p-2">
       <ul className="list-none space-y-1 pl-4 leading-relaxed md:pl-8">
-        <li className={diamondListClass}>
+        <h2 className={diamondListClass}>
           16-year-old programmer from Toronto with interests in{' '}
           <a
-            className="hover-highlight"
+            className="hover-highlight-red"
             content="📸 photography"
             href="https://www.instagram.com/penguinpush.photos"
             target="_blank"
@@ -25,18 +25,18 @@ export default function AboutPage({}) {
           {/*🌎*/}
           politics
           {/*</a>*/}.
-        </li>
-        <li className={diamondListClass}>
+        </h2>
+        <h2 className={diamondListClass}>
           stats breakdown:
           <p className={arrowListClass}>8x (consecutive) hackathon wins out of 13 attended</p>
           <p className={arrowListClass}>3 yrs of experience w/ Python and ML/AI libraries</p>
           <p className={arrowListClass}>6 yrs w/ object-oriented-programming, C#, &amp; Unity</p>
-        </li>
-        <li className={diamondListClass}>
+        </h2>
+        <h2 className={diamondListClass}>
           recently, i&#39;ve...
           <p className={arrowListClass}>
             built an open source{' '}
-            <a className="hover-highlight" content="💽 hashing tool" href="#cullergrader">
+            <a className="hover-highlight-red" content="💽 hashing tool" href="#cullergrader">
               💾 hashing tool
             </a>{' '}
             to group photos by visual similarity, saving photographers like me hours of culling
@@ -44,7 +44,7 @@ export default function AboutPage({}) {
           </p>
           <p className={arrowListClass}>
             designed an animal species{' '}
-            <a className="hover-highlight" content="🐼️ classification pipeline" href="#faunadex">
+            <a className="hover-highlight-red" content="🐼️ classification pipeline" href="#faunadex">
               🐻 classification pipeline
             </a>{' '}
             using visual descriptions + semantic search; can classify without individually training
@@ -52,19 +52,19 @@ export default function AboutPage({}) {
           </p>
           <p className={arrowListClass}>
             made{' '}
-            <a className="hover-highlight" content="🦾 a tool" href="#physiotherapy">
+            <a className="hover-highlight-red" content="🦾 a tool" href="#physiotherapy">
               💪 a tool
             </a>{' '}
             for home physiotherapy, using Nintendo Switch controllers to track movements & monitor
             heart rate (with the built-in IR Camera!)
           </p>
-        </li>
-        <li className={diamondListClass}>
+        </h2>
+        <h2 className={diamondListClass}>
           currently i&#39;m...
           <p className={arrowListClass}>
             {' '}
             <a
-              className="hover-highlight"
+              className="hover-highlight-red"
               content="Ontario Competitive Mathematics Committee"
               href="https://www.ontariocmc.ca/"
               target="_blank"
@@ -80,7 +80,7 @@ export default function AboutPage({}) {
             {/*</a>*/}
             {''}, hosting 100+ hackers
           </p>
-        </li>
+        </h2>
       </ul>
     </div>
   );

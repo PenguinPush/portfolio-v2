@@ -83,9 +83,9 @@ export default function Project({
         }}
       >
         <div
-          className="bg-red-highlight ease-out-back min-h-48 w-full p-3 px-4 text-justify text-xs tracking-wide text-white transition-all duration-300 md:min-h-64 md:p-4 md:px-6 md:text-base"
+          className="bg-red-highlight ease-out-back min-h-48 w-full p-3 px-4 text-xs tracking-wide text-white transition-all duration-300 md:min-h-64 md:p-4 md:px-6 md:text-base"
           style={{
-            clipPath: `polygon(0 0, ${isActiveProject() ? '120%' : '0'} 0, ${isActiveProject() ? '100%' : '-20%'} 100%, 0 100%)`,
+            clipPath: `polygon(0 0, ${isActiveProject() ? '115%' : '0'} 0, ${isActiveProject() ? '100%' : '-15%'} 100%, 0 100%)`,
             willChange: 'clip-path',
           }}
         >
@@ -100,15 +100,15 @@ export default function Project({
         </div>
       </div>
 
-      <div className="ease-out-back z-1 flex w-full flex-row items-center justify-between bg-black px-2 py-1 text-xs font-bold text-white transition-all duration-300 md:px-4 md:text-base">
+      <div className="ease-out-back z-1 flex w-full flex-row items-center justify-between bg-black px-2 py-1 text-sm font-bold text-white transition-all duration-300 md:px-4 md:text-lg">
         <h3>
           <a
-            className="hover-highlight"
-            content={`${!isActiveProject() ? name : name}`}
+            className="hover-highlight-blue"
+            content={`${!isActiveProject() ? name : openMessage}`}
             href={demo}
             target="_blank"
           >
-            {!isActiveProject() ? name : name}
+            {!isActiveProject() ? name : openMessage}
           </a>
         </h3>
         <div className="flex flex-row items-center space-x-1 md:space-x-2">
@@ -120,7 +120,7 @@ export default function Project({
               {value}
             </span>
           ))}
-          <a className="hover-highlight cursor-pointer" content="📂" href={repo} target="_blank">
+          <a className="hover-highlight-blue cursor-pointer" content="📂" href={repo} target="_blank">
             📁
           </a>
         </div>

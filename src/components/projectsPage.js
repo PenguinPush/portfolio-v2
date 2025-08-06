@@ -48,7 +48,7 @@ export default function ProjectsPage({ activeProject, projectHashes }) {
       ['HTML', 'three.js', 'TextAlive'],
       'https://penguinpush.github.io/mikucontest-2024',
       'https://github.com/PenguinPush/mikucontest-2024',
-      '🎸 Open Demo',
+      '🎸 Open Demo Site',
     ],
     [
       '👉 TableTablet',

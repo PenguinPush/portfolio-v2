@@ -43,7 +43,7 @@ export default function About({ isMobile, setEvilMode }) {
       </div>
       <div className="flex justify-center gap-4 text-xs md:items-end md:text-lg">
         <a
-          className="hover-highlight"
+          className="hover-highlight-red"
           content="💌 email"
           href="mailto:andrewdai.dev@gmail.com"
           target="_blank"
@@ -54,7 +54,7 @@ export default function About({ isMobile, setEvilMode }) {
           📧 email
         </a>
         <a
-          className="hover-highlight"
+          className="hover-highlight-red"
           content="🦑 github"
           href="https://github.com/PenguinPush"
           target="_blank"
@@ -65,7 +65,7 @@ export default function About({ isMobile, setEvilMode }) {
           🐙 github
         </a>
         <a
-          className="hover-highlight"
+          className="hover-highlight-red"
           content="⛓️‍💥 linkedin"
           href="https://www.linkedin.com/in/andrew-dai-dev"
           target="_blank"
@@ -76,7 +76,7 @@ export default function About({ isMobile, setEvilMode }) {
           🔗 linkedin
         </a>{' '}
         <a
-          className="hover-highlight"
+          className="hover-highlight-red"
           content="📜 resume"
           href="https://andrewd.ai/Andrew_Dai_Resume.pdf"
           target="_blank"
@@ -89,7 +89,7 @@ export default function About({ isMobile, setEvilMode }) {
           📃 resume
         </a>{' '}
         <a
-          className="hover-highlight"
+          className="hover-highlight-red"
           content="📂 repo"
           href="https://github.com/PenguinPush/portfolio-v2"
           target="_blank"

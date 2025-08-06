@@ -123,7 +123,7 @@
     }
 }
 
-.hover-highlight {
+.hover-highlight-red {
     position: relative;
     cursor: pointer;
     text-decoration: underline;
@@ -131,7 +131,7 @@
     font-weight: bold;
 }
 
-.hover-highlight::before {
+.hover-highlight-red::before {
     content: attr(content);
     text-decoration: underline;
     position: absolute;
@@ -149,7 +149,37 @@
     will-change: clip-path;
 }
 
-.hover-highlight:hover::before {
+.hover-highlight-red:hover::before {
+    clip-path: inset(0 0 0 0)
+}
+
+.hover-highlight-blue {
+    position: relative;
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.hover-highlight-blue::before {
+    content: attr(content);
+    text-decoration: underline;
+    position: absolute;
+    text-align: center;
+    left: -2px;
+    bottom: 0;
+    height: 100%;
+    width: calc(100% + 4px);
+    clip-path: inset(0 100% 0 0);
+    color: var(--color-black);
+    background-color: var(--color-blue-highlight);
+    transition: clip-path 0.3s var(--ease-out-back);
+    z-index: 1;
+    pointer-events: none;
+    will-change: clip-path;
+}
+
+.hover-highlight-blue:hover::before {
     clip-path: inset(0 0 0 0)
 }
 

@@ -120,6 +120,16 @@ export default function Main() {
                   window.location.hash = 'about';
                   setClickModifier(0);
                 }}
+                          onMouseEnter={() => {
+            if (!isMobile) {
+              setEvilMode(true);
+            }
+          }}
+          onMouseLeave={() => {
+            if (!isMobile) {
+              setEvilMode(false);
+            }
+          }}
               >
                 Andrew Dai
               </h1>
