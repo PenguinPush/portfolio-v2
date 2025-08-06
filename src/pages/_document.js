@@ -13,10 +13,6 @@ export default function Document() {
         <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
         <link rel="manifest" href="/site.webmanifest" />
 
-        <link rel="canonical" href="https://andrewd.ai/" />
-        <link rel="canonical" href="https://andrewd.ai/projects" />
-        <link rel="canonical" href="https://andrewd.ai/Andrew_Dai_Resume.pdf" />
-
         <meta property="og:type" content="website" />
         <meta property="twitter:card" content="summary_large_image" />
 

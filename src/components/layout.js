@@ -41,9 +41,11 @@ export default function Layout({
 
         <meta name="og:url" content={url} />
         <meta name="twitter:url" content={url} />
+        <link rel="canonical" href={url} />
 
         <meta name="og:image" content={image} />
         <meta name="twitter:image" content={image} />
+
       </Head>
       <div
         className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}
