@@ -24,6 +24,7 @@ export default function Layout({
   clickModifier,
   setClickModifier,
 }) {
+  const { isMobile } = useAppContext();
   const [evilMode, setEvilMode] = useState(false);
 
   return (
@@ -54,6 +55,16 @@ export default function Layout({
             <Link
               className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
               href="/"
+              onMouseEnter={() => {
+                if (!isMobile) {
+                  setEvilMode(true);
+                }
+              }}
+              onMouseLeave={() => {
+                if (!isMobile) {
+                  setEvilMode(false);
+                }
+              }}
               onMouseDown={() => setClickModifier(2.5)}
               onTouchStart={() => setClickModifier(2.5)}
               onClick={() => setClickModifier(0)}
