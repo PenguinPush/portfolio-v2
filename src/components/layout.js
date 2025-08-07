@@ -58,7 +58,7 @@ export default function Layout({
               onTouchStart={() => setClickModifier(2.5)}
               onClick={() => setClickModifier(0)}
             >
-              Andrew Dai
+              <h1>Andrew Dai</h1>
             </Link>
             <div className="flex h-8 w-full flex-row items-center">
               <NavButtonPair clickModifier={clickModifier} setClickModifier={setClickModifier} />
