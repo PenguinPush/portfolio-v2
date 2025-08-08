@@ -47,7 +47,7 @@ export default function Layout({
         <meta name="twitter:image" content={image} />
       </Head>
       <div
-        className={`${dmSans.className} dotted-background-yellow w-screen flex min-h-[100dvh] items-start justify-center overflow-y-auto overscroll-contain font-normal text-black`}
+        className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] w-screen items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}
       >
         <div className="relative z-0 flex min-h-[100dvh] flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
           <BackgroundCircle />
@@ -73,7 +73,7 @@ export default function Layout({
             </Link>
             <div className="flex h-8 w-full flex-row items-center">
               <NavButtonPair clickModifier={clickModifier} setClickModifier={setClickModifier} />
-              <div className="relative h-8 overflow-hidden rounded-lg ml-2">
+              <div className="relative ml-2 h-8 overflow-hidden rounded-lg">
                 <Image
                   src="https://pvbc.e.hackclub.app/3e192ddb-70fb-4738-8b8d-e4feeef64a15?label=visitors&style=flat-square&color=fc9f01&labelColor=ffc01a"
                   alt="page visitors"
