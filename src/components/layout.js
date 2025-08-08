@@ -47,9 +47,9 @@ export default function Layout({
         <meta name="twitter:image" content={image} />
       </Head>
       <div
-        className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}
+        className={`${dmSans.className} dotted-background-yellow w-screen flex min-h-[100dvh] items-start justify-center overflow-y-auto overscroll-contain font-normal text-black`}
       >
-        <div className="relative z-0 flex min-h-[100dvh] w-full flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
+        <div className="relative z-0 flex min-h-[100dvh] flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
           <BackgroundCircle />
           <div className="flex flex-col items-center gap-2 px-4">
             <Link
@@ -73,6 +73,18 @@ export default function Layout({
             </Link>
             <div className="flex h-8 w-full flex-row items-center">
               <NavButtonPair clickModifier={clickModifier} setClickModifier={setClickModifier} />
+              <div className="relative h-8 overflow-hidden rounded-lg ml-2">
+                <Image
+                  src="https://pvbc.e.hackclub.app/3e192ddb-70fb-4738-8b8d-e4feeef64a15?label=visitors&style=flat-square&color=fc9f01&labelColor=ffc01a"
+                  alt="page visitors"
+                  width="1000"
+                  height="1000"
+                  style={{
+                    height: '100%',
+                    width: 'auto',
+                  }}
+                />
+              </div>
             </div>
           </div>
           <div className="flex flex-grow flex-col gap-2">
