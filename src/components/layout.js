@@ -73,18 +73,6 @@ export default function Layout({
             </Link>
             <div className="flex h-8 w-full flex-row items-center">
               <NavButtonPair clickModifier={clickModifier} setClickModifier={setClickModifier} />
-              <div className="relative ml-2 h-8 overflow-hidden rounded-lg">
-                <Image
-                  src="https://pvbc.e.hackclub.app/3e192ddb-70fb-4738-8b8d-e4feeef64a15?label=visitors&style=flat-square&color=fc9f01&labelColor=ffc01a"
-                  alt="page visitors"
-                  width="1000"
-                  height="1000"
-                  style={{
-                    height: '100%',
-                    width: 'auto',
-                  }}
-                />
-              </div>
             </div>
           </div>
           <div className="flex flex-grow flex-col gap-2">
