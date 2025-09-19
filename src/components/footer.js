@@ -3,7 +3,7 @@ import { useAppContext } from '@/context/AppContext';
 
 const defaultLinkMessage = 'or check out my links !';
 
-export default function About({ setEvilMode }) {
+export default function About() {
   const { isMobile } = useAppContext();
   const [linkBoxText, setLinkBoxText] = useState('or check out my links !');
   const linkTimeout = useRef(null);
@@ -29,16 +29,6 @@ export default function About({ setEvilMode }) {
         <p
           className={`${isMobile ? '' : 'hover-underline-evil'} inline-block pt-2 text-xs italic md:pt-0 md:text-sm`}
           content="or check out my links!"
-          onMouseEnter={() => {
-            if (!isMobile) {
-              setEvilMode(true);
-            }
-          }}
-          onMouseLeave={() => {
-            if (!isMobile) {
-              setEvilMode(false);
-            }
-          }}
         >
           {linkBoxText}
         </p>

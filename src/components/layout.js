@@ -24,9 +24,6 @@ export default function Layout({
   clickModifier,
   setClickModifier,
 }) {
-  const { isMobile } = useAppContext();
-  const [evilMode, setEvilMode] = useState(false);
-
   return (
     <div>
       <Head>
@@ -49,22 +46,12 @@ export default function Layout({
       <div
         className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] w-screen items-start justify-center overflow-x-hidden overflow-y-auto overscroll-contain font-normal text-black`}
       >
-        <div className="relative z-0 flex min-h-[100dvh] flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[720px] md:p-12 md:text-lg md:tracking-normal">
+        <div className="relative z-0 flex min-h-[100dvh] flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[740px] md:p-12 md:text-lg md:tracking-normal">
           <BackgroundCircle />
           <div className="flex flex-col items-center gap-2 px-4">
             <Link
               className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
               href="/"
-              onMouseEnter={() => {
-                if (!isMobile) {
-                  setEvilMode(true);
-                }
-              }}
-              onMouseLeave={() => {
-                if (!isMobile) {
-                  setEvilMode(false);
-                }
-              }}
               onMouseDown={() => setClickModifier(2.5)}
               onTouchStart={() => setClickModifier(2.5)}
               onClick={() => setClickModifier(0)}
@@ -77,16 +64,13 @@ export default function Layout({
           </div>
           <div className="flex flex-grow flex-col gap-2">
             <div className="flex flex-grow flex-col">{children}</div>
-            <Footer setEvilMode={setEvilMode} />
+            <Footer/>
             <div
               className="pointer-events-none absolute bottom-10 z-10 h-[60dvh] w-[45dvh] transition-all ease-out"
               aria-hidden="true"
               style={{
-                transitionDuration: evilMode ? '3s' : '150ms',
-                left: evilMode ? 'calc(50% + 270px)' : '100vw',
-                animation: evilMode ? 'shake 3s step-start' : 'none',
+                left: 'calc(50% + 270px)',
                 imageRendering: 'pixelated',
-                willChange: evilMode ? 'transform' : 'auto',
               }}
             >
               <Image

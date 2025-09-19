@@ -30,7 +30,7 @@ export default function AboutPage({}) {
         </h2>
         <h2 className={diamondListClass}>
           stats breakdown:
-          <p className={arrowListClass}>8x (consecutive) hackathon wins out of 13 attended</p>
+          <p className={arrowListClass}>9x (consecutive) hackathon wins out of 14 attended</p>
           <p className={arrowListClass}>3 yrs of experience w/ Python and ML/AI libraries</p>
           <p className={arrowListClass}>6 yrs w/ object-oriented-programming, C#, &amp; Unity</p>
         </h2>
@@ -38,7 +38,11 @@ export default function AboutPage({}) {
           recently, i&#39;ve...
           <p className={arrowListClass}>
             built an open source{' '}
-            <Link className="hover-highlight-red" content="💽 hashing tool" href="/projects/#cullergrader">
+            <Link
+              className="hover-highlight-red"
+              content="💽 hashing tool"
+              href="/projects/#cullergrader"
+            >
               💾 hashing tool
             </Link>{' '}
             to group photos by visual similarity, saving photographers like me hours of culling
@@ -46,7 +50,11 @@ export default function AboutPage({}) {
           </p>
           <p className={arrowListClass}>
             designed an animal species{' '}
-            <Link className="hover-highlight-red" content="🐼️ classification pipeline" href="/projects/#faunadex">
+            <Link
+              className="hover-highlight-red"
+              content="🐼️ classification pipeline"
+              href="/projects/#faunadex"
+            >
               🐻 classification pipeline
             </Link>{' '}
             using visual descriptions + semantic search; can classify without individually training
@@ -54,7 +62,11 @@ export default function AboutPage({}) {
           </p>
           <p className={arrowListClass}>
             made{' '}
-            <Link className="hover-highlight-red" content="🦾 a tool" href="/projects/#physiotherapy">
+            <Link
+              className="hover-highlight-red"
+              content="🦾 a tool"
+              href="/projects/#physiotherapy"
+            >
               💪 a tool
             </Link>{' '}
             for home physiotherapy, using Nintendo Switch controllers to track movements & monitor
@@ -63,6 +75,18 @@ export default function AboutPage({}) {
         </h2>
         <h2 className={diamondListClass}>
           currently i&#39;m...
+          <p className={arrowListClass}>
+            head organizer @ {' '}
+            <a
+              className="hover-highlight-red"
+              content="JAMHacks"
+              href="https://www.jamhacks.ca/"
+              target="_blank"
+            >
+              JAMHacks
+            </a>{''}
+            , Canada&#39;s largest high school hackathon
+          </p>
           <p className={arrowListClass}>
             {' '}
             <a
@@ -75,13 +99,7 @@ export default function AboutPage({}) {
             </a>{' '}
             sponsorship lead
           </p>
-          <p className={arrowListClass}>president and exec of my school&#39;s CS and math clubs</p>
-          <p className={arrowListClass}>
-            head organizer @ {/*<a className="hover-highlight" content="hack::peel">*/}
-            hack::peel
-            {/*</a>*/}
-            {''}, hosting 100+ hackers
-          </p>
+          <p className={arrowListClass}>leading my school&#39;s prefects, raising $6,500+ for charity annually</p>
         </h2>
       </ul>
     </div>
