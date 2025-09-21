@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-
 import BackgroundCircle from '@/components/backgroundCircle';
 import AndrewPortrait from '@/components/andrewPortrait';
 import NavButtonPair from '@/components/navButtonPair';
 import Footer from '@/components/footer';
-import { useAppContext } from '@/context/AppContext';
 
 import { DM_Sans } from 'next/font/google';
 import Image from 'next/image';

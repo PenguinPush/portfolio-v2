@@ -1,10 +1,8 @@
 import React, { useState, useRef } from 'react';
-import { useAppContext } from '@/context/AppContext';
 
 const defaultLinkMessage = 'or check out my links !';
 
 export default function About() {
-  const { isMobile } = useAppContext();
   const [linkBoxText, setLinkBoxText] = useState('or check out my links !');
   const linkTimeout = useRef(null);
 
@@ -27,7 +25,7 @@ export default function About() {
     <>
       <div className="flex w-full justify-center md:pt-8 items-center">
         <p
-          className={`${isMobile ? '' : 'hover-underline-evil'} inline-block pt-2 text-xs italic md:pt-0 md:text-sm`}
+          className={`underline inline-block pt-2 text-xs italic md:pt-0 md:text-sm`}
           content="or check out my links!"
         >
           {linkBoxText}
@@ -59,7 +57,7 @@ export default function About() {
         <a
           className="hover-highlight-red"
           content="⛓️‍💥 linkedin"
-          href="https://www.linkedin.com/in/andrew-dai-dev"
+          href="https://www.linkedin.com/in/andrew-dai-dev/"
           target="_blank"
           rel="noopener noreferrer"
           onMouseEnter={() => setLinkMessage('linkedin.com/in/andrew-dai-dev')}
@@ -77,17 +75,6 @@ export default function About() {
           onMouseLeave={() => resetLinkMessage()}
         >
           📃 resume
-        </a>{' '}
-        <a
-          className="hover-highlight-red"
-          content="📂 repo"
-          href="https://github.com/PenguinPush/portfolio-v2"
-          target="_blank"
-          rel="noopener noreferrer"
-          onMouseEnter={() => setLinkMessage('github.com/PenguinPush/portfolio-v2')}
-          onMouseLeave={() => resetLinkMessage()}
-        >
-          📁 repo
         </a>
       </div>
     </>
