@@ -11,7 +11,7 @@ export default function AboutPage({}) {
     <div className="p-2">
       <ul className="list-none space-y-1 pl-4 leading-relaxed md:pl-8">
         <h2 className={diamondListClass}>
-          16-year-old programmer from Toronto with interests in{' '}
+          17-year-old programmer from Toronto with interests in{' '}
           <a
             className="hover-highlight-red"
             content="📸 photography"
@@ -30,7 +30,7 @@ export default function AboutPage({}) {
         </h2>
         <h2 className={diamondListClass}>
           stats breakdown:
-          <p className={arrowListClass}>9x (consecutive) hackathon wins out of 14 attended</p>
+          <p className={arrowListClass}>10x (consecutive) hackathon wins out of 15 attended</p>
           <p className={arrowListClass}>3 yrs of experience w/ Python and ML/AI libraries</p>
           <p className={arrowListClass}>6 yrs w/ object-oriented-programming, C#, &amp; Unity</p>
         </h2>
