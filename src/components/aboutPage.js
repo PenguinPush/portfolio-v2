@@ -29,10 +29,42 @@ export default function AboutPage({}) {
           {/*</a>*/}.
         </h2>
         <h2 className={diamondListClass}>
-          stats breakdown:
-          <p className={arrowListClass}>10x (consecutive) hackathon wins out of 15 attended</p>
-          <p className={arrowListClass}>3 yrs of experience w/ Python and ML/AI libraries</p>
-          <p className={arrowListClass}>6 yrs w/ object-oriented-programming, C#, &amp; Unity</p>
+          currently i&#39;m...
+          <p className={arrowListClass}>
+            head organizer @{' '}
+            <a
+              className="hover-highlight-red"
+              content="🍇 JAMHacks"
+              href="/projects/#jamhacks"
+              target="_blank"
+            >
+              🍇 JAMHacks
+            </a>
+            {''}, Canada&#39;s largest high school hackathon, with the{' '}
+            <a
+              className="hover-highlight-red"
+              content="🛠 University of Waterloo"
+              href="https://uwaterloo.ca/engineering/"
+            >
+              🛠️ University of Waterloo
+            </a>
+            {''}
+          </p>
+          <p className={arrowListClass}>
+            {' '}
+            <a
+              className="hover-highlight-red"
+              content="🧮 Ontario Competitive Mathematics Committee"
+              href="https://www.ontariocmc.ca/"
+              target="_blank"
+            >
+              🧮 Ontario Competitive Mathematics Committee
+            </a>{' '}
+            sponsorship lead
+          </p>
+          <p className={arrowListClass}>
+            raising $7,000+ for charity annually through school spirit events
+          </p>
         </h2>
         <h2 className={diamondListClass}>
           recently, i&#39;ve...
@@ -62,11 +94,7 @@ export default function AboutPage({}) {
           </p>
           <p className={arrowListClass}>
             made{' '}
-            <Link
-              className="hover-highlight-red"
-              content="🦾 a tool"
-              href="/projects/#physiotherapy"
-            >
+            <Link className="hover-highlight-red" content="🦾 a tool" href="/projects/#workflow">
               💪 a tool
             </Link>{' '}
             for home physiotherapy, using Nintendo Switch controllers to track movements & monitor
@@ -74,32 +102,10 @@ export default function AboutPage({}) {
           </p>
         </h2>
         <h2 className={diamondListClass}>
-          currently i&#39;m...
-          <p className={arrowListClass}>
-            head organizer @ {' '}
-            <a
-              className="hover-highlight-red"
-              content="JAMHacks"
-              href="https://www.jamhacks.ca/"
-              target="_blank"
-            >
-              JAMHacks
-            </a>{''}
-            , Canada&#39;s largest high school hackathon
-          </p>
-          <p className={arrowListClass}>
-            {' '}
-            <a
-              className="hover-highlight-red"
-              content="Ontario Competitive Mathematics Committee"
-              href="https://www.ontariocmc.ca/"
-              target="_blank"
-            >
-              Ontario Competitive Mathematics Committee
-            </a>{' '}
-            sponsorship lead
-          </p>
-          <p className={arrowListClass}>leading my school&#39;s prefects, raising $6,500+ for charity annually</p>
+          stats breakdown:
+          <p className={arrowListClass}>10x (consecutive) hackathon wins out of 15 attended</p>
+          <p className={arrowListClass}>3 yrs of experience w/ Python and ML/AI libraries</p>
+          <p className={arrowListClass}>6 yrs w/ object-oriented-programming, C#, &amp; Unity</p>
         </h2>
       </ul>
     </div>

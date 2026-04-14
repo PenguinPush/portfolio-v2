@@ -8,7 +8,6 @@ export default function ProjectItem({
   description,
   techStack,
   demo,
-  repo,
   openMessage,
   projectId,
 }) {
@@ -123,15 +122,6 @@ export default function ProjectItem({
               {value}
             </span>
           ))}
-          <a
-            className="hover-highlight-blue cursor-pointer"
-            content="📂"
-            href={repo}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            📁
-          </a>
         </div>
       </div>
     </div>

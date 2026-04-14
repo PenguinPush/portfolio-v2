@@ -1,56 +1,70 @@
 import ProjectItem from '@/components/projectItem';
 
 const projectIds = [
+  'jamhacks',
   'cullergrader',
-  'faunadex',
-  'pickle',
+  'workflow',
+  'tmun',
   'miku',
-  'tabletablet',
+  'faunadex',
+  'goose',
 ];
 
 const projectData = [
+  [
+    '🍇 JAMHacks',
+    "JAMHacks is Canada's largest high school hackathon, ",
+    ['Hackathon', 'University of Waterloo'],
+    'https://jamhacks.ca',
+    '🍇 Visit jamhacks.ca',
+  ],
   [
     '📸 Cullergrader',
     'Cullergrader uses a perceptual hashing algorithm to group photos by visual similarity to sort through images rapidly. ' +
       'As a photographer with the habit of taking the same shot many times, selecting my best takes is often a time consuming process (especially with thousands of photos!). ' +
       'Unable to find a suitable tool, I built Cullergrader to solve this problem, saving me hours at a time going through photos. ' +
       'Cullergrader is now available on Github as an open-source project, which I plan to actively maintain and accept contributions for to improve it as a tool for the photography community.',
-    ['Java', 'Swing UI', 'Actively Maintained'],
-    'https://github.com/PenguinPush/cullergrader',
+    ['Open Source', 'Actively Maintained'],
     'https://github.com/PenguinPush/cullergrader',
     '📸 Open in Github',
   ],
   [
+    '⚙️ Protosynthesis',
+    'Description under construction!',
+    ['Moorcheh.ai RAG', 'Gemini Agent'],
+    'https://devpost.com/software/protosynthesis',
+    '⚙️ Open in Devpost',
+  ],
+  [
+    '🇺🇳 Toronto Model United Nations',
+    'Cullergrader uses a perceptual hashing algorithm to group photos by visual similarity to sort through images rapidly. ' +
+      'As a photographer with the habit of taking the same shot many times, selecting my best takes is often a time consuming process (especially with thousands of photos!). ' +
+      'Unable to find a suitable tool, I built Cullergrader to solve this problem, saving me hours at a time going through photos. ' +
+      'Cullergrader is now available on Github as an open-source project, which I plan to actively maintain and accept contributions for to improve it as a tool for the photography community.',
+    ['7k+ visits/mo', 'Actively Maintained'],
+    'https://tmun.ca',
+    '📸 Visit TMUN Site',
+  ],
+  [
+    '🎸 Vivid Bedroom',
+    'Description udner construction!',
+    ['HTML', 'three.js', 'TextAlive'],
+    'https://penguinpush.github.io/mikucontest-2024',
+    '🎸 Visit Site',
+  ],
+  [
     '🐻 FaunaDex',
     'Description under construction!',
-    ['NumPy', 'GCP', 'OpenAI', 'React'],
-    'https://github.com/PenguinPush/faunadex',
+    ['NumPy', 'Google Cloud Platform', 'OpenAI'],
     'https://github.com/PenguinPush/faunadex',
     '🐻 Open in Github',
   ],
   [
-    '🗼 Pickle',
+    '🪿 Carl Friedrich Goose',
     'Description under construction!',
-    ['Flask', 'Twilio', 'MongoDB', 'Cohere'],
-    'https://github.com/PenguinPush/deltahacks-xi',
-    'https://github.com/PenguinPush/deltahacks-xi',
-    '🗼 Open in Github',
-  ],
-  [
-    '🎸 Vivid Bedroom',
-    'Description under construction!',
-    ['HTML', 'three.js', 'TextAlive'],
-    'https://penguinpush.github.io/mikucontest-2024',
-    'https://github.com/PenguinPush/mikucontest-2024',
-    '🎸 Open Demo Site',
-  ],
-  [
-    '👉 TableTablet',
-    'Description under construction!',
-    ['Python', 'MediaPipe', 'OpenCV'],
-    'https://github.com/PenguinPush/cullergrader',
-    'https://github.com/PenguinPush/cullergrader',
-    '👉 Open in Github',
+    ['Hack the North', 'Redis', 'LaTeX'],
+    'https://devpost.com/software/carl-friedrich-goose',
+    '🪿 Open in Devpost',
   ],
 ];
 
