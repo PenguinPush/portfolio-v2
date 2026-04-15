@@ -16,6 +16,8 @@
 
 html, body {
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
@@ -188,26 +190,25 @@ html, body {
 
 .dotted-background-yellow {
     background-color: var(--color-yellow-base);
-    background-image: radial-gradient(var(--color-orange-base) 1px, transparent 1px);
-    background-size: 16px 16px;
+    background-image: radial-gradient(var(--color-orange-base) 2px, transparent 2px);
+    background-size: 24px 24px;
 }
 
 .dotted-background-tan {
     background-color: var(--color-tan-dark);
-    background-image: radial-gradient(var(--color-tan-base) 1px, transparent 1px);
-    background-size: 16px 16px;
+    background-image: radial-gradient(var(--color-tan-base) 2px, transparent 2px);
+    background-size: 24px 24px;
 }
 
 .dotted-background-white {
     background-color: var(--color-off-white);
     background-image: linear-gradient(var(--color-white) 1px, transparent 1px),
     linear-gradient(90deg, var(--color-white) 1px, transparent 1px);
-    background-size: 16px 16px;
+    background-size: 24px 24px;
 }
 
 .arrow-list-decoration {
     position: relative;
-    will-change: transform;
 }
 
 .arrow-list-decoration::before {
@@ -215,6 +216,7 @@ html, body {
     font-weight: bold;
     position: absolute;
     left: -1.5rem;
+    will-change: transform;
 }
 
 .arrow-list-decoration:hover::before {
@@ -223,7 +225,6 @@ html, body {
 
 .diamond-list-decoration {
     position: relative;
-    will-change: transform;
 }
 
 .diamond-list-decoration::before {
@@ -232,6 +233,7 @@ html, body {
     position: absolute;
     left: -1.5rem;
     transition: transform 0.3s var(--ease-out-back);
+    will-change: transform;
 }
 
 .diamond-list-decoration:hover::before {

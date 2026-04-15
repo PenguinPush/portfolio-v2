@@ -3,12 +3,12 @@ import AndrewPortrait from '@/components/andrewPortrait';
 import NavButtonPair from '@/components/navButtonPair';
 import Footer from '@/components/footer';
 
-import { DM_Sans } from 'next/font/google';
+import { Nunito_Sans } from 'next/font/google';
 import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
 
-const dmSans = DM_Sans({
+const dmSans = Nunito_Sans({
   subsets: ['latin'],
 });
 
@@ -43,11 +43,11 @@ export default function Layout({
       <div
         className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] w-screen items-start justify-center overflow-x-hidden overflow-y-auto overscroll-auto font-normal text-black`}
       >
-        <div className="relative z-0 flex min-h-[100dvh] flex-col gap-2 p-4 text-sm tracking-tight md:max-w-[740px] md:p-12 md:text-lg md:tracking-normal">
+        <div className="relative z-0 flex min-h-[100dvh] flex-col gap-2 p-4 text-sm tracking-wide md:max-w-[740px] md:p-12 md:text-lg md:tracking-wider">
           <BackgroundCircle />
           <div className="flex flex-col items-center gap-2 px-4">
             <Link
-              className="hover-underline cursor-pointer text-center text-6xl font-black tracking-tighter text-nowrap"
+              className="hover-underline cursor-pointer text-center text-6xl font-extrabold tracking-tight text-nowrap"
               href="/"
               onMouseDown={() => setClickModifier(2.5)}
               onTouchStart={() => setClickModifier(2.5)}
@@ -61,9 +61,9 @@ export default function Layout({
           </div>
           <div className="flex flex-grow flex-col gap-2">
             <div className="flex flex-grow flex-col">{children}</div>
-            <Footer/>
+            <Footer />
             <div
-              className="pointer-events-none absolute bottom-10 z-10 h-[60dvh] w-[45dvh] transition-all ease-out"
+              className="pointer-events-none absolute bottom-10 z-10 h-0 xl:h-[60dvh] w-[45dvh] transition-all ease-out"
               aria-hidden="true"
               style={{
                 left: 'calc(50% + 270px)',
@@ -75,7 +75,8 @@ export default function Layout({
                 alt={`BIG EVIL ARROW`}
                 width={500}
                 height={500}
-                className="h-full w-full"
+                className="h-full w-full xl:block"
+                aria-hidden="true"
               />
             </div>
           </div>

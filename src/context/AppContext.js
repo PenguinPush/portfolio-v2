@@ -6,6 +6,7 @@ export function AppProvider({ children }) {
   const [pageState, setPageState] = useState(0);
   const [hoverModifier, setHoverModifier] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
   const [portraitState, setPortraitState] = useState(0);
   const [activePortrait, setActivePortrait] = useState([0, 2]);
   const [radiusVh, setRadiusVh] = useState(60);
@@ -13,6 +14,7 @@ export function AppProvider({ children }) {
   useEffect(() => {
     const onResize = () => {
       setIsMobile(window.innerWidth < 768);
+      setIsTablet(window.innerWidth < 1280);
     };
 
     onResize();
@@ -30,6 +32,8 @@ export function AppProvider({ children }) {
         setPageState,
         isMobile,
         setIsMobile,
+        isTablet,
+        setIsTablet,
         portraitState,
         setPortraitState,
         hoverModifier,

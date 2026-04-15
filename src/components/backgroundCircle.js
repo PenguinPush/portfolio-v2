@@ -4,6 +4,7 @@ import { useAppContext } from '@/context/AppContext';
 const radiusDefault = 60;
 const radiusHover = 62;
 const radiusClick = 62.5;
+const radiusTabletMod = 10;
 
 const isMouseInCircle = (e, radiusVh) => {
   const { clientX, clientY } = e;
@@ -17,7 +18,7 @@ const isMouseInCircle = (e, radiusVh) => {
 };
 
 export default function BackgroundCircle({}) {
-    const { isMobile, radiusVh, setRadiusVh } = useAppContext();
+    const { isMobile, isTablet, radiusVh, setRadiusVh } = useAppContext();
   const [mouseDown, setMouseDown] = useState(false);
 
   useEffect(() => {
@@ -61,7 +62,7 @@ export default function BackgroundCircle({}) {
       <div
         className="dotted-background-white ease-out-back pointer-events-none fixed top-0 left-1/2 -z-10 h-full w-full -translate-x-1/2 transition-[clip-path] duration-300"
         style={{
-          clipPath: `${isMobile ? '' : `circle(${radiusVh}vh at 50% 50%)`}`,
+          clipPath: `${isMobile ? '' : `circle(${radiusVh + (isTablet ? radiusTabletMod : 0)}vh at 50% 50%)`}`,
           willChange: 'clip-path',
         }}
       ></div>
