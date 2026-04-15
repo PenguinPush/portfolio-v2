@@ -14,10 +14,8 @@
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);;
 }
 
-html, body {
+body {
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
@@ -151,7 +149,6 @@ html, body {
     transition: clip-path 0.3s var(--ease-out-back);
     z-index: 1;
     pointer-events: none;
-    will-change: clip-path;
 }
 
 .hover-highlight-red:hover::before {
@@ -181,7 +178,6 @@ html, body {
     transition: clip-path 0.3s var(--ease-out-back);
     z-index: 1;
     pointer-events: none;
-    will-change: clip-path;
 }
 
 .hover-highlight-blue:hover::before {
@@ -216,7 +212,6 @@ html, body {
     font-weight: bold;
     position: absolute;
     left: -1.5rem;
-    will-change: transform;
 }
 
 .arrow-list-decoration:hover::before {
@@ -233,7 +228,6 @@ html, body {
     position: absolute;
     left: -1.5rem;
     transition: transform 0.3s var(--ease-out-back);
-    will-change: transform;
 }
 
 .diamond-list-decoration:hover::before {

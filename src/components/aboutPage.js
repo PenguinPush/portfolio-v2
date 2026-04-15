@@ -9,17 +9,17 @@ const arrowListClass =
 export default function AboutPage({}) {
   return (
     <div className="p-2">
-      <ul className="list-none space-y-2 px-4 leading-relaxed md:space-y-4 md:pr-0 md:pl-8">
+      <ul className="list-none space-y-4 px-4 leading-relaxed md:pr-0 md:pl-8">
         <h2 className={diamondListClass}>
           17-year-old programmer from Toronto with interests in{' '}
-          <a
+          <Link
             className="hover-highlight-red"
             content="📸 photography"
             href="https://www.instagram.com/penguinpush.photos"
             target="_blank"
           >
             📷 photography
-          </a>
+          </Link>
           , {/*<a className="hover-highlight" content="🌆 urban planning">*/}
           {/*🏙️*/}
           urban planning
@@ -32,17 +32,18 @@ export default function AboutPage({}) {
           <strong>currently i&#39;m...</strong>
           <p className={arrowListClass}>
             head organizer @{' '}
-            <a className="hover-highlight-red" content="🍇 JAMHacks" href="/projects/#jamhacks">
+            <Link className="hover-highlight-red" content="🍇 JAMHacks" href="/projects/#jamhacks">
               🍇 JAMHacks
-            </a>
+            </Link>
             {''}, Canada&#39;s largest high school hackathon, with the{' '}
-            <a
+            <Link
               className="hover-highlight-red"
               content="🛠️ University of Waterloo"
               href="https://uwaterloo.ca/engineering/"
+              target="_blank"
             >
               🛠️ University of Waterloo
-            </a>
+            </Link>
             {''}
           </p>
           <p className={arrowListClass}>
@@ -76,7 +77,7 @@ export default function AboutPage({}) {
             photos
           </p>
           <p className={arrowListClass}>
-            designed an animal {' '}
+            designed an animal{' '}
             <Link
               className="hover-highlight-red"
               content="🐼️ classification pipeline"

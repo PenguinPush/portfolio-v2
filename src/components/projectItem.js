@@ -105,7 +105,7 @@ export default function ProjectItem({
 
       <div className="z-1 flex flex-row items-center justify-between bg-black px-3 py-1 text-sm font-bold text-white md:px-4 md:text-lg">
         <h3>
-          <a
+          <Link
             className="hover-highlight-blue"
             content={`${!isActiveProject ? name : openMessage}`}
             href={demo}
@@ -113,7 +113,7 @@ export default function ProjectItem({
             rel="noopener noreferrer"
           >
             {!isActiveProject ? name : openMessage}
-          </a>
+          </Link>
         </h3>
         <div className="flex flex-row flex-wrap items-center justify-end gap-x-1">
           {techStack.map((value, index) => (
