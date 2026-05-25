@@ -35,7 +35,7 @@ export default function AboutPage({}) {
             <Link className="hover-highlight-red" content="🍇 JAMHacks" href="/projects/#jamhacks">
               🍇 JAMHacks
             </Link>
-            {''}, Canada&#39;s largest high school hackathon, by +41.5% hackers as it's head
+            {''}, Canada&#39;s largest high school hackathon, by +41.5% hackers as it&#39;s head
             organizer (and full-stack dev)
           </p>
           <p className={arrowListClass}>
