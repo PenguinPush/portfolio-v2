@@ -1,6 +1,6 @@
 import ProjectItem from '@/components/projectItem';
 
-const projectIds = ['jamhacks', 'cullergrader', 'faunadex', 'workflow', 'tmun', 'goose', 'miku'];
+const projectIds = ['jamhacks', 'cullergrader', 'faunadex', 'workflow', 'quantum', 'tmun', 'goose', 'miku'];
 const projectData = [
   [
     '🍇 JAMHacks',
@@ -45,6 +45,16 @@ const projectData = [
     '⚙️ Open in Devpost',
   ],
   [
+    '🔑 Quantum Key Distribution',
+    [
+      "Quantum Key Distribution is an encryption method used by governments around the world to securely transmit data by encoding it in the superposition of polarized light.",
+      'This project recreates that system by rotating motorized half/quarter-waveplates and polarizers to send bits in a manner that destroys the data if intercepted.',
+    ],
+    ['Arduino', 'Quantum Mehcanics'],
+    'https://youtu.be/hVg9TDSrWFY',
+    '🔑 Watch My Demo',
+  ],
+  [
     '🌎 TMUN',
     [
       "Toronto Model United Nations (TMUN) is Canada's largest high-schooler-run Model UN conference, featuring 800+ students across delegates and staff.",
@@ -58,7 +68,7 @@ const projectData = [
     '🪿 Carl Friedrich Goose',
     [
       'Meet Carl Friedrich Goose, a robotic STEM tutor who can read and write diagrams, equations, and graphs on a virtual whiteboard!',
-      "Powering his conversational voice agent with Vapi and Gemini, and bringing him to life with motors and speakers, Carl can easily handle university-level math, physics, and chemistry problems like a champ!",
+      'Powering his conversational voice agent with Vapi and Gemini, and bringing him to life with motors and speakers, Carl can easily handle university-level math, physics, and chemistry problems like a champ!',
     ],
     ['Hack the North', 'Vapi', 'Redis'],
     'https://devpost.com/software/carl-friedrich-goose',
