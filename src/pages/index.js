@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <Layout
       title="Andrew Dai's Portfolio Site"
-      description="16-year-old programmer from Toronto with interests in photography, urban planning, and politics. Currently at 8x consecutive hackathon wins and counting."
+      description="17-year-old programmer from Toronto with interests in photography, urban planning, and politics. Currently at 10x consecutive hackathon wins and counting."
       url="https://andrewd.ai/"
       image="https://andrewd.ai/images/home_screenshot.jpeg"
       clickModifier={clickModifier}
