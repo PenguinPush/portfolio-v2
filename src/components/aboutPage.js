@@ -30,16 +30,16 @@ export default function AboutPage({}) {
         </h2>
         <h2 className={diamondListClass}>
           <strong>currently i&#39;m...</strong>
-          <p className={arrowListClass}>
-            organizing Canada&#39;s largest AI hackathon with{' '}
-            <Link
-              className="hover-highlight-red"
-              content="📊 UW DSC"
-              href="/projects/#cullergrader"
-            >
-              📈 UW DSC
-            </Link>{' '}
-          </p>
+          {/*<p className={arrowListClass}>*/}
+          {/*  organizing Canada&#39;s largest AI hackathon with{' '}*/}
+          {/*  <Link*/}
+          {/*    className="hover-highlight-red"*/}
+          {/*    content="📊 UW DSC"*/}
+          {/*    href="/projects/#cullergrader"*/}
+          {/*  >*/}
+          {/*    📈 UW DSC*/}
+          {/*  </Link>{' '}*/}
+          {/*</p>*/}
 
           <p className={arrowListClass}>
             building an open source{' '}
@@ -85,17 +85,17 @@ export default function AboutPage({}) {
             </Link>
             {''} for prototyping
           </p>
-          <p className={arrowListClass}>
-            automated{' '}
-            <Link
-              className="hover-highlight-red"
-              content="🏸 badminton scoring"
-              href="/projects/#badminton"
-            >
-              🏸 badminton scoring
-            </Link>
-            {''} using a physics-informed CV model
-          </p>
+          {/*<p className={arrowListClass}>*/}
+          {/*  automated{' '}*/}
+          {/*  <Link*/}
+          {/*    className="hover-highlight-red"*/}
+          {/*    content="🏸 badminton scoring"*/}
+          {/*    href="/projects/#badminton"*/}
+          {/*  >*/}
+          {/*    🏸 badminton scoring*/}
+          {/*  </Link>*/}
+          {/*  {''} using a physics-informed CV model*/}
+          {/*</p>*/}
           <p className={arrowListClass}>
             replicated{' '}
             <Link
