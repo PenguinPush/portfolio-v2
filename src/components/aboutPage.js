@@ -4,14 +4,14 @@ const diamondListClass =
   'group ease-out-back diamond-list-decoration relative pr-2 transition duration-300 hover:translate-x-1 active:translate-x-1 md:pr-4';
 
 const arrowListClass =
-  'group ease-out-back arrow-list-decoration relative translate-x-4 transition duration-300 hover:translate-x-5 active:translate-x-5';
+  'group ease-out-back arrow-list-decoration relative translate-x-4 m-1 transition duration-300 hover:translate-x-5 active:translate-x-5';
 
 export default function AboutPage({}) {
   return (
     <div className="p-2">
       <ul className="list-none space-y-4 px-4 leading-relaxed md:pr-0 md:pl-8">
         <h2 className={diamondListClass}>
-          CS student @ Waterloo who builds and scales to impact many: interested in{' '}
+          CS student @ UWaterloo who builds to impact lots of people: interested in{' '}
           <Link
             className="hover-highlight-red"
             content="📸 photography"
@@ -31,13 +31,16 @@ export default function AboutPage({}) {
         <h2 className={diamondListClass}>
           <strong>currently i&#39;m...</strong>
           <p className={arrowListClass}>
-            scaling{' '}
-            <Link className="hover-highlight-red" content="🍇 JAMHacks" href="/projects/#jamhacks">
-              🍇 JAMHacks
-            </Link>
-            {''}, Canada&#39;s largest high school hackathon, by +41.5% hackers as it&#39;s head
-            organizer (and full-stack dev)
+            organizing Canada&#39;s largest AI hackathon with{' '}
+            <Link
+              className="hover-highlight-red"
+              content="📊 UW DSC"
+              href="/projects/#cullergrader"
+            >
+              📈 UW DSC
+            </Link>{' '}
           </p>
+
           <p className={arrowListClass}>
             building an open source{' '}
             <Link
@@ -47,63 +50,69 @@ export default function AboutPage({}) {
             >
               💾 hashing tool
             </Link>{' '}
-            to group photos by visual similarity, saving photographers like me hours of sorting
+            to group photos by visual similarity, saving photographers hours of sorting
           </p>
         </h2>
         <h2 className={diamondListClass}>
           <strong>recently, i&#39;ve...</strong>
           <p className={arrowListClass}>
-            organized an overnight hackathon at{' '}
-            <Link
-              className="hover-highlight-red"
-              content="🟨 YCombinator HQ"
-              href="https://events.ycombinator.com/metorial-yc25"
-              target="_blank"
-            >
-              🟧 YCombinator HQ
-            </Link>{' '}
-            in collaboration with Metorial (YC F25)
+            scaled{' '}
+            <Link className="hover-highlight-red" content="🍇 JAMHacks" href="/projects/#jamhacks">
+              🍇 JAMHacks
+            </Link>
+            {''}, Canada&#39;s largest high school hackathon, by +42% hackers as it&#39;s head
+            organizer & lead software engineer
           </p>
           <p className={arrowListClass}>
-            designed an animal{' '}
+            built a semantic animal{' '}
             <Link
               className="hover-highlight-red"
-              content="🐼️ classification pipeline"
+              content="🐼️ identification pipeline"
               href="/projects/#faunadex"
             >
-              🐻 classification pipeline
+              🐻 identification pipeline
             </Link>{' '}
-            using semantic search; classifies without species-specific photo training
+            using vector searches; classifying 9,000+ species without per-animal training
           </p>
           <p className={arrowListClass}>
-            made an agentic tool to visually build{' '}
+            made a blender-inspired{' '}
             <Link
               className="hover-highlight-red"
-              content="⚙️ API workflows"
+              content="⚙️ agentic workflow builder"
               href="/projects/#workflow"
             >
-              ⚙️ API workflows
+              ⚙️ agentic workflow builder
             </Link>
-            {''}, powered by Gemini agents and a high-speed RAG system
+            {''} for prototyping
           </p>
           <p className={arrowListClass}>
-            replicated the same{' '}
+            automated{' '}
             <Link
               className="hover-highlight-red"
-              content="🔑 quantum encryption method"
+              content="🏸 badminton scoring"
+              href="/projects/#badminton"
+            >
+              🏸 badminton scoring
+            </Link>
+            {''} using a physics-informed CV model
+          </p>
+          <p className={arrowListClass}>
+            replicated{' '}
+            <Link
+              className="hover-highlight-red"
+              content="🔑 quantum key distribution"
               href="/projects/#quantum"
             >
-              🔑 quantum encryption method
+              🔑 quantum key distribution
             </Link>
-            {''} that governments use for national security, just for fun
+            {''}, an unbreakable cryptography method, in my bedroom
           </p>
         </h2>
         <h2 className={diamondListClass}>
           <strong>stats breakdown:</strong>
-          <p className={arrowListClass}>10x (consecutive) hackathon wins out of 18 attended</p>
-          <p className={arrowListClass}>AIME &#39;25 qualifier, top 0.8% CEMC Cayley, COMC 54/80</p>
-          <p className={arrowListClass}>3 yrs of experience w/ Python and ML/AI libraries</p>
-          <p className={arrowListClass}>6 yrs w/ object-oriented-programming, C#, &amp; Unity</p>
+          <p className={arrowListClass}>10x hackathons won (in a row), 4 organized, 3 judged</p>
+          <p className={arrowListClass}>AIME &#39;25 qualifier, Ivy League Model UN champion, 1560 SAT</p>
+          <p className={arrowListClass}>programming since age 9, shipping games on the Google Play Store</p>
         </h2>
       </ul>
     </div>
