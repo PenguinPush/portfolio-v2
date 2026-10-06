@@ -30,6 +30,7 @@ const projectData = [
     ],
     ['Computer Vision', 'Vector Search'],
     'https://faunadex.andrewd.ai/',
+    '🐻 View Demo',
   ],
   [
     '📸 Cullergrader',
