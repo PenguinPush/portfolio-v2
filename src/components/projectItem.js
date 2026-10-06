@@ -1,67 +1,131 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { useAppContext } from '@/context/AppContext';
 import Link from 'next/link';
 import Image from 'next/image';
-import posthog from 'posthog-js';
-import posthogLogger from '@/lib/posthogLogger';
 
-const isPostHogConfigured = Boolean(
-  process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN && process.env.NEXT_PUBLIC_POSTHOG_HOST,
-);
+export default function ProjectItem({
+  name,
+  description,
+  techStack,
+  demo,
+  openMessage,
+  projectId,
+}) {
+  const { isMobile } = useAppContext();
+  const [hoverModifier, setHoverModifier] = useState(0);
+  const [clickModifier, setClickModifier] = useState(0);
+  const [isActiveProject, setIsActiveProject] = useState(false);
+  const projectRef = useRef(null);
+  const scrollTargetRef = useRef(null);
 
-export default function ProjectItem({ name, description, techStack, demo, projectId }) {
+  useEffect(() => {
+    updateActiveProject();
+  }, [updateActiveProject]);
+
+  function updateActiveProject() {
+    setIsActiveProject(window.location.hash === `#${projectId}`);
+  }
+
+  useEffect(() => {
+    if (isActiveProject && projectRef.current && scrollTargetRef.current) {
+      const rect = projectRef.current.getBoundingClientRect();
+      const margin = isMobile
+        ? projectRef.current.offsetHeight
+        : projectRef.current.offsetHeight / 2;
+      const isVisible =
+        rect.top >= margin && rect.bottom <= window.innerHeight - (isMobile ? margin * 2 : margin);
+
+      if (!isVisible) {
+        scrollTargetRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }
+  }, [isMobile, isActiveProject]);
+
   return (
-    <article
-      id={projectId}
-      className="group ease-out-back relative left-1/2 flex w-full min-w-0 -translate-x-1/2 scroll-mt-48 flex-col overflow-hidden rounded-2xl transition-[width] duration-300 hover:z-10 hover:w-[102.5%] active:w-[105%] motion-reduce:transition-none"
-      aria-labelledby={`${projectId}-title`}
+    <div
+      ref={projectRef}
+      className="ease-out-back relative left-1/2 flex min-h-48 -translate-x-1/2 flex-col overflow-hidden rounded-2xl transition-all duration-300 md:min-h-52"
+      style={{
+        width: `${100 + hoverModifier + clickModifier}%`,
+        willChange: 'width',
+      }}
     >
+      <div ref={scrollTargetRef} className="absolute -top-48 left-0"></div>
       <Link
-        href={`/projects/#${projectId}`}
-        aria-label={`View ${name}`}
-        className="focus-visible:outline-blue-highlight block overflow-hidden focus-visible:outline-2 focus-visible:-outline-offset-2"
+        className="ease-out-back relative flex min-h-48 w-full flex-grow cursor-pointer flex-col justify-between transition-all duration-300 md:min-h-52"
+        href={!isActiveProject ? `/projects/#${projectId}` : '/projects'}
+        onPointerEnter={() => setHoverModifier(2.5)}
+        onPointerLeave={() => {
+          setHoverModifier(0);
+          setClickModifier(0);
+        }}
+        onMouseDown={() => setClickModifier(2.5)}
+        onTouchStart={() => setClickModifier(2.5)}
+        onClick={() => {
+          setClickModifier(0);
+          updateActiveProject();
+        }}
+        scroll={false}
       >
         <Image
           src={`/images/projects/${projectId}.png`}
-          className="ease-out-back h-48 w-full object-cover transition-transform duration-300 group-hover:scale-[1.025] group-active:scale-[1.05] motion-reduce:transition-none md:h-52"
+          className="ease-out-back absolute inset-0 h-full w-full object-cover transition-transform duration-300"
           alt={name}
+          style={{
+            transform: `scale(${1 + (hoverModifier + clickModifier) / 100})`,
+            willChange: 'transform',
+          }}
           loading="lazy"
           width="1000"
           height="500"
         />
+
+        <div
+          className="bg-red-highlight ease-out-back min-h-48 w-full p-3 px-4 text-xs text-white transition-all duration-300 md:min-h-52 md:p-4 md:px-6 md:text-base"
+          style={{
+            clipPath: `polygon(0 0, ${isActiveProject ? '115%' : '0'} 0, ${isActiveProject ? '100%' : '-15%'} 100%, 0 100%)`,
+            willChange: 'clip-path',
+          }}
+        >
+          <div
+            className="ease-out-back relative flex flex-col gap-4 transition-all duration-300"
+            style={{
+              width: `${100 / ((100 + hoverModifier + clickModifier) / 100)}%`,
+            }}
+          >
+            {description.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
       </Link>
-      <div hidden>
-        {description.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
-        ))}
-      </div>
-      <div className="relative z-1 flex flex-grow flex-col items-start justify-between gap-1 bg-black px-3 py-2 text-sm font-bold text-white md:text-base">
-        <h3 id={`${projectId}-title`}>
+
+      <div className="z-1 flex flex-row items-center justify-between bg-black px-3 py-1 text-sm font-bold text-white md:px-4 md:text-lg">
+        <h3>
           <Link
             className="hover-highlight-blue"
-            content={name}
+            content={`${!isActiveProject ? name : openMessage}`}
             href={demo}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => {
-              if (isPostHogConfigured) {
-                posthog.capture('project_demo_opened', { project_id: projectId });
-                posthogLogger.info('portfolio project demo opened', { project_id: projectId });
-              }
-            }}
           >
-            {name}
+            {!isActiveProject ? name : openMessage}
           </Link>
         </h3>
-        <div className="flex flex-wrap items-center gap-1">
+        <div className="flex flex-row flex-wrap items-center justify-end gap-x-1">
           {techStack.map((value, index) => (
             <span
               key={index}
-              className="bg-red-highlight rounded-xs px-1 text-xs md:rounded-sm md:px-1.5 md:text-sm"
+              className="bg-red-highlight rounded-xs px-1 text-xs text-nowrap md:rounded-sm md:px-1.5 md:text-sm"
             >
               {value}
             </span>
           ))}
         </div>
       </div>
-    </article>
+    </div>
   );
 }
