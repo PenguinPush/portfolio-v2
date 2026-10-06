@@ -1,6 +1,11 @@
 import React, { useState, useRef } from 'react';
+import posthog from 'posthog-js';
+import posthogLogger from '@/lib/posthogLogger';
 
 const defaultLinkMessage = 'or check out my links !';
+const isPostHogConfigured = Boolean(
+  process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN && process.env.NEXT_PUBLIC_POSTHOG_HOST,
+);
 
 export default function About() {
   const [linkBoxText, setLinkBoxText] = useState('or check out my links !');
@@ -19,6 +24,13 @@ export default function About() {
       setLinkBoxText(defaultLinkMessage);
       linkTimeout.current = null;
     }, 70);
+  };
+
+  const captureContactLink = (channel) => {
+    if (isPostHogConfigured) {
+      posthog.capture('contact_link_clicked', { channel });
+      posthogLogger.info('portfolio contact link clicked', { channel });
+    }
   };
 
   return (
@@ -40,6 +52,7 @@ export default function About() {
           rel="noopener noreferrer"
           onMouseEnter={() => setLinkMessage('andrewdai.dev@gmail.com')}
           onMouseLeave={() => resetLinkMessage()}
+          onClick={() => captureContactLink('email')}
         >
           📧 email
         </a>
@@ -51,6 +64,7 @@ export default function About() {
           rel="noopener noreferrer"
           onMouseEnter={() => setLinkMessage('github.com/PenguinPush')}
           onMouseLeave={() => resetLinkMessage()}
+          onClick={() => captureContactLink('github')}
         >
           🐙 github
         </a>
@@ -62,6 +76,7 @@ export default function About() {
           rel="noopener noreferrer"
           onMouseEnter={() => setLinkMessage('linkedin.com/in/andrew-dai-dev')}
           onMouseLeave={() => resetLinkMessage()}
+          onClick={() => captureContactLink('linkedin')}
         >
           🔗 linkedin
         </a>{' '}
@@ -73,6 +88,7 @@ export default function About() {
           rel="noopener noreferrer"
           onMouseEnter={() => setLinkMessage('andrewd.ai/Andrew_Dai_Resume.pdf')}
           onMouseLeave={() => resetLinkMessage()}
+          onClick={() => captureContactLink('resume')}
         >
           📃 resume
         </a>
