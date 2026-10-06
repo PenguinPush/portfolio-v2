@@ -41,7 +41,7 @@ export default function Layout({
         <meta name="twitter:image" content={image} />
       </Head>
       <div
-        className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] w-screen items-start justify-center overflow-x-hidden overflow-y-auto overscroll-auto font-normal text-black`}
+        className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] w-screen items-start justify-center overflow-x-hidden overflow-y-auto overscroll-auto scroll-smooth motion-reduce:scroll-auto font-normal text-black`}
       >
         <div className="relative z-0 flex min-h-[100dvh] flex-col gap-2 p-4 text-sm tracking-wide md:w-full md:min-w-0 md:max-w-[786px] md:p-12 md:text-lg md:tracking-wider">
           <BackgroundCircle />
