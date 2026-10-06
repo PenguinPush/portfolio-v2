@@ -1,6 +1,15 @@
 import ProjectItem from '@/components/projectItem';
 
-const projectIds = ['jamhacks', 'cullergrader', 'faunadex', 'workflow', 'quantum', 'tmun', 'goose', 'miku'];
+const projectIds = [
+  'jamhacks',
+  'faunadex',
+  'cullergrader',
+  'workflow',
+  'quantum',
+  'tmun',
+  'goose',
+  'miku',
+];
 const projectData = [
   [
     '🍇 JAMHacks',
@@ -14,6 +23,15 @@ const projectData = [
     '🍇 Visit jamhacks.ca',
   ],
   [
+    '🐻 FaunaDex',
+    [
+      'FaunaDex performs semantic species retrieval on animal photos by matching visual descriptions with a vector search. Instead of lengthy training on individual photos of each species, the database can be expanded simply by adding more embeddings.',
+      "As of writing, FaunaDex supports 9,641 species, 366% more than Google SpeciesNet's 2,066. I've also published the animal datasets on HuggingFace, where it has a combined 100+ downloads.",
+    ],
+    ['Computer Vision', 'Vector Search'],
+    'https://faunadex.andrewd.ai/',
+  ],
+  [
     '📸 Cullergrader',
     [
       'Cullergrader is an open-source personal project which uses a perceptual hash to efficiently group similar photos of the same subject.',
@@ -23,16 +41,6 @@ const projectData = [
     ['Open Source', 'Actively Maintained'],
     'https://github.com/PenguinPush/cullergrader',
     '📸 Open in Github',
-  ],
-  [
-    '🐻 FaunaDex',
-    [
-      "FaunaDex's species classification model avoids training models on huge amounts of each species' images by instead matching the generalized image description with the species' embedding in a vector search.",
-      "Whereas Google's SpeciesNet supports 2066 different species, FaunaDex has been able to confidently classify 3159 different species (more than a 50% boost!).",
-    ],
-    ['Computer Vision', 'Vector Search'],
-    'https://github.com/PenguinPush/faunadex',
-    '🐻 Open in Github',
   ],
   [
     '⚙️ Protosynthesis',
@@ -47,7 +55,7 @@ const projectData = [
   [
     '🔑 Quantum Key Distribution',
     [
-      "Quantum Key Distribution is an encryption method used by governments around the world to securely transmit data by encoding it in the superposition of polarized light.",
+      'Quantum Key Distribution is an encryption method used by governments around the world to securely transmit data by encoding it in the superposition of polarized light.',
       'This project recreates that system by rotating motorized half/quarter-waveplates and polarizers to send bits in a manner that destroys the data if intercepted.',
     ],
     ['Arduino', 'Quantum Mehcanics'],
