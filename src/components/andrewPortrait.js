@@ -80,7 +80,7 @@ export default function AndrewPortrait({}) {
   return (
     <div
       ref={containerRef}
-      className="portrait-gradient-background md:bg-none-override pointer-events-none fixed bottom-0 left-[-40%] z-20 w-[180%] md:left-0 md:w-[35vw]"
+      className="portrait-gradient-background md:bg-none-override pointer-events-none fixed bottom-0 left-[-40%] z-20 w-[180%] md:left-0 md:w-[32vw]"
       style={{
         transform: `translateY(${portraitState !== 0 || isMobile ? (isMobile || portraitState === 2 ? '62%' : '0%') : '100%'})`,
         transition: 'transform 0.3s var(--ease-out)',
