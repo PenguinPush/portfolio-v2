@@ -17,7 +17,7 @@ export default function ProjectItem({ name, description, techStack, demo, projec
       <Link
         href={`/projects/#${projectId}`}
         aria-label={`View ${name}`}
-        className="focus-visible:outline-blue-highlight block overflow-hidden focus-visible:outline-2 focus-visible:-outline-offset-2"
+        className="block overflow-hidden"
       >
         <Image
           src={`/images/projects/${projectId}.png`}
@@ -33,10 +33,10 @@ export default function ProjectItem({ name, description, techStack, demo, projec
           <p key={index}>{paragraph}</p>
         ))}
       </div>
-      <div className="relative z-1 flex flex-grow flex-col items-start justify-between gap-1 bg-black px-3 py-2 text-sm font-bold text-white md:text-base">
+      <div className="relative md:items-center z-1 flex flex-grow flex-col items-start justify-between gap-1 bg-black px-3 py-2 text-sm font-bold text-white md:text-lg">
         <h3 id={`${projectId}-title`}>
           <Link
-            className="hover-highlight-blue"
+            className="hover-highlight-red"
             content={name}
             href={demo}
             target="_blank"
@@ -51,16 +51,16 @@ export default function ProjectItem({ name, description, techStack, demo, projec
             {name}
           </Link>
         </h3>
-        <div className="flex flex-wrap items-center gap-1">
-          {techStack.map((value, index) => (
-            <span
-              key={index}
-              className="bg-red-highlight rounded-xs px-1 text-xs md:rounded-sm md:px-1.5 md:text-sm"
-            >
-              {value}
-            </span>
-          ))}
-        </div>
+        {/*<div className="flex flex-wrap items-center gap-1">*/}
+        {/*  {techStack.map((value, index) => (*/}
+        {/*    <span*/}
+        {/*      key={index}*/}
+        {/*      className="bg-red-highlight rounded-xs px-1 text-xs md:rounded-sm md:px-1.5 md:text-sm"*/}
+        {/*    >*/}
+        {/*      {value}*/}
+        {/*    </span>*/}
+        {/*  ))}*/}
+        {/*</div>*/}
       </div>
     </article>
   );

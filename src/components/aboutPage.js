@@ -35,7 +35,8 @@ export default function AboutPage({}) {
             <Link
               className="hover-highlight-red"
               content="📊 UW DSC"
-              href="/projects/#cullergrader"
+              href="https://www.uwdatascience.ca/"
+              target="_blank"
             >
               📈 UW DSC
             </Link>{' '}
@@ -111,8 +112,12 @@ export default function AboutPage({}) {
         <h2 className={diamondListClass}>
           <strong>stats breakdown:</strong>
           <p className={arrowListClass}>10x hackathons won (in a row), 4 organized, 3 judged</p>
-          <p className={arrowListClass}>AIME &#39;25 qualifier, Ivy League Model UN champion, 1560 SAT</p>
-          <p className={arrowListClass}>programming since age 9, shipping games on the Google Play Store</p>
+          <p className={arrowListClass}>
+            AIME &#39;25 qualifier, Ivy League Model UN champion, 1560 SAT
+          </p>
+          <p className={arrowListClass}>
+            programming since age 9, shipping games on the Google Play Store
+          </p>
         </h2>
       </ul>
     </div>

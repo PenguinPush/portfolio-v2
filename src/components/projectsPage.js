@@ -88,7 +88,7 @@ const projectData = [
 
 export default function ProjectsPage() {
   return (
-    <div className="grid w-full min-w-0 grid-cols-1 gap-2 p-2 md:grid-cols-2">
+    <div className="grid w-full min-w-0 grid-cols-1 md:gap-4 gap-2 p-2 md:grid-cols-2">
       {projectData.map((project, index) => (
         <ProjectItem
           key={projectIds[index]}
