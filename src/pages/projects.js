@@ -5,9 +5,6 @@ import Layout from '@/components/layout';
 import { useAppContext } from '@/context/AppContext';
 import { useRouter } from 'next/router';
 
-import SpeechBubble from '@/components/speechBubble';
-
-
 export default function Projects() {
   const projectsRef = useRef(null);
   const router = useRouter();
@@ -20,7 +17,6 @@ export default function Projects() {
       setPageState(1);
     }
   }, [router.query]);
-
 
   return (
     <Layout
@@ -42,7 +38,6 @@ export default function Projects() {
           />
         </div>
       </div>
-      <SpeechBubble />
     </Layout>
   );
 }

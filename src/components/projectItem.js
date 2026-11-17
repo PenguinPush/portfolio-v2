@@ -1,43 +1,117 @@
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import posthog from 'posthog-js';
 import posthogLogger from '@/lib/posthogLogger';
+import { useAppContext } from '@/context/AppContext';
 
 const isPostHogConfigured = Boolean(
   process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN && process.env.NEXT_PUBLIC_POSTHOG_HOST,
 );
 
-export default function ProjectItem({ name, description, techStack, demo, projectId }) {
+export default function ProjectItem({
+  name,
+  description,
+  techStack,
+  demo,
+  openMessage,
+  projectId,
+}) {
+  const { isMobile } = useAppContext();
+  const router = useRouter();
+  const [hoverModifier, setHoverModifier] = useState(0);
+  const [clickModifier, setClickModifier] = useState(0);
+  const projectRef = useRef(null);
+  const scrollTargetRef = useRef(null);
+
+  // the url hash is the source of truth, so opening another project closes this one
+  const isActiveProject = router.asPath.endsWith(`#${projectId}`);
+
+  useEffect(() => {
+    if (isActiveProject && projectRef.current && scrollTargetRef.current) {
+      const rect = projectRef.current.getBoundingClientRect();
+      const margin = isMobile
+        ? projectRef.current.offsetHeight
+        : projectRef.current.offsetHeight / 2;
+      const isVisible =
+        rect.top >= margin && rect.bottom <= window.innerHeight - (isMobile ? margin * 2 : margin);
+
+      if (!isVisible) {
+        scrollTargetRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }
+  }, [isMobile, isActiveProject]);
+
   return (
     <article
+      ref={projectRef}
       id={projectId}
-      className="group ease-out-back relative left-1/2 flex w-full min-w-0 -translate-x-1/2 scroll-mt-48 flex-col overflow-hidden rounded-2xl transition-[width] duration-300 hover:z-10 hover:w-[102.5%] active:w-[105%] motion-reduce:transition-none"
+      className="ease-out-back relative left-1/2 flex min-h-48 -translate-x-1/2 flex-col overflow-hidden rounded-2xl transition-all duration-300 md:min-h-52"
+      style={{
+        width: `${100 + hoverModifier + clickModifier}%`,
+        willChange: 'width',
+      }}
       aria-labelledby={`${projectId}-title`}
     >
+      <div ref={scrollTargetRef} className="absolute -top-48 left-0"></div>
       <Link
-        href={`/projects/#${projectId}`}
+        className="ease-out-back relative flex min-h-48 w-full flex-grow cursor-pointer flex-col justify-between transition-all duration-300 md:min-h-52"
+        href={!isActiveProject ? `/projects/#${projectId}` : '/projects'}
         aria-label={`View ${name}`}
-        className="block overflow-hidden"
+        draggable={false}
+        onPointerEnter={() => setHoverModifier(2.5)}
+        onPointerLeave={() => {
+          setHoverModifier(0);
+          setClickModifier(0);
+        }}
+        onMouseDown={() => setClickModifier(2.5)}
+        onTouchStart={() => setClickModifier(2.5)}
+        onClick={() => setClickModifier(0)}
+        scroll={false}
       >
         <Image
           src={`/images/projects/${projectId}.png`}
-          className="ease-out-back h-48 w-full object-cover transition-transform duration-300 group-hover:scale-[1.025] group-active:scale-[1.05] motion-reduce:transition-none md:h-52"
+          className="ease-out-back absolute inset-0 h-full w-full object-cover transition-transform duration-300"
           alt={name}
+          draggable={false}
+          style={{
+            transform: `scale(${1 + (hoverModifier + clickModifier) / 100})`,
+            willChange: 'transform',
+          }}
           loading="lazy"
           width="1000"
           height="500"
         />
+
+        <div
+          className="bg-red-highlight ease-out-back min-h-48 w-full p-3 px-4 text-xs text-white transition-all duration-300 md:min-h-52 md:p-4 md:px-6 md:text-base"
+          style={{
+            clipPath: `polygon(0 0, ${isActiveProject ? '115%' : '0'} 0, ${isActiveProject ? '100%' : '-15%'} 100%, 0 100%)`,
+            willChange: 'clip-path',
+          }}
+        >
+          <div
+            className="ease-out-back relative flex flex-col gap-4 transition-all duration-300"
+            style={{
+              width: `${100 / ((100 + hoverModifier + clickModifier) / 100)}%`,
+            }}
+          >
+            {description.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
       </Link>
-      <div hidden>
-        {description.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
-        ))}
-      </div>
-      <div className="relative z-1 flex flex-grow flex-col items-start justify-between gap-1 bg-black px-3 py-2 text-sm font-bold text-white md:items-center md:text-lg">
+
+      <div className="z-1 flex flex-row items-center justify-between bg-black px-3 py-1 text-sm font-bold text-white md:px-4 md:text-lg">
         <h3 id={`${projectId}-title`}>
           <Link
             className="hover-highlight-red"
-            content={name}
+            content={isActiveProject ? openMessage : name}
             href={demo}
             target="_blank"
             rel="noopener noreferrer"
@@ -48,7 +122,7 @@ export default function ProjectItem({ name, description, techStack, demo, projec
               }
             }}
           >
-            {name}
+            {isActiveProject ? openMessage : name}
           </Link>
         </h3>
         {/*<div className="flex flex-wrap items-center gap-1">*/}
