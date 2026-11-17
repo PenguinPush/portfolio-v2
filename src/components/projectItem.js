@@ -24,8 +24,6 @@ export default function ProjectItem({
   const [clickModifier, setClickModifier] = useState(0);
   const projectRef = useRef(null);
   const scrollTargetRef = useRef(null);
-
-  // the url hash is the source of truth, so opening another project closes this one
   const isActiveProject = router.asPath.endsWith(`#${projectId}`);
 
   useEffect(() => {
@@ -50,16 +48,16 @@ export default function ProjectItem({
     <article
       ref={projectRef}
       id={projectId}
-      className="ease-out-back relative left-1/2 flex min-h-48 -translate-x-1/2 flex-col overflow-hidden rounded-2xl transition-all duration-300 md:min-h-52"
+      className="ease-out-back relative left-1/2 flex min-h-48 -translate-x-1/2 flex-col overflow-hidden rounded-2xl transition-[width] duration-300 md:min-h-52"
       style={{
         width: `${100 + hoverModifier + clickModifier}%`,
-        willChange: 'width',
+        willChange: 'width, height',
       }}
       aria-labelledby={`${projectId}-title`}
     >
       <div ref={scrollTargetRef} className="absolute -top-48 left-0"></div>
       <Link
-        className="ease-out-back relative flex min-h-48 w-full flex-grow cursor-pointer flex-col justify-between transition-all duration-300 md:min-h-52"
+        className={`ease-out-back relative flex w-full cursor-pointer flex-col justify-between overflow-hidden transition-[height] duration-300 ${isActiveProject ? 'h-96 md:h-104' : 'h-48 md:h-52'}`}
         href={!isActiveProject ? `/projects/#${projectId}` : '/projects'}
         aria-label={`View ${name}`}
         draggable={false}
@@ -88,14 +86,14 @@ export default function ProjectItem({
         />
 
         <div
-          className="bg-red-highlight ease-out-back min-h-48 w-full p-3 px-4 text-xs text-white transition-all duration-300 md:min-h-52 md:p-4 md:px-6 md:text-base"
+          className="bg-red-highlight ease-out-back min-h-48 w-full shrink-0 flex-grow p-3 px-4 text-xs text-white transition-[clip-path] duration-300 md:min-h-52 md:p-4 md:px-6 md:text-base"
           style={{
             clipPath: `polygon(0 0, ${isActiveProject ? '115%' : '0'} 0, ${isActiveProject ? '100%' : '-15%'} 100%, 0 100%)`,
             willChange: 'clip-path',
           }}
         >
           <div
-            className="ease-out-back relative flex flex-col gap-4 transition-all duration-300"
+            className="ease-out-back relative flex flex-col gap-4 transition-[width] duration-300"
             style={{
               width: `${100 / ((100 + hoverModifier + clickModifier) / 100)}%`,
             }}

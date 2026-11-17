@@ -102,7 +102,7 @@ export default function About() {
           onMouseLeave={() => resetLinkMessage()}
           onClick={() => captureContactLink('devpost')}
         >
-          💻 resume
+          💻 devpost
         </a>
       </div>
     </>
