@@ -47,15 +47,15 @@ export default function ProjectItem({
   return (
     <div
       ref={projectRef}
-      className="ease-out-back relative left-1/2 flex min-h-48 -translate-x-1/2 flex-col overflow-hidden rounded-2xl transition-all duration-300 md:min-h-52"
+      className="ease-out-back relative left-1/2 flex h-55 -translate-x-1/2 flex-col overflow-hidden rounded-2xl transition-all duration-300 md:h-65"
       style={{
         width: `${100 + hoverModifier + clickModifier}%`,
         willChange: 'width',
       }}
     >
-      <div ref={scrollTargetRef} className="absolute -top-48 left-0"></div>
+      <div ref={scrollTargetRef} className="absolute -top-44 left-0"></div>
       <Link
-        className="ease-out-back relative flex min-h-48 w-full flex-grow cursor-pointer flex-col justify-between transition-all duration-300 md:min-h-52"
+        className="ease-out-back relative flex h-48 w-full flex-grow cursor-pointer flex-col justify-between transition-all duration-300 md:h-56"
         href={!isActiveProject ? `/projects/#${projectId}` : '/projects'}
         onPointerEnter={() => setHoverModifier(2.5)}
         onPointerLeave={() => {
@@ -84,14 +84,14 @@ export default function ProjectItem({
         />
 
         <div
-          className="bg-red-highlight ease-out-back min-h-48 w-full p-3 px-4 text-xs text-white transition-all duration-300 md:min-h-52 md:p-4 md:px-6 md:text-base"
+          className="bg-red-highlight ease-out-back h-full w-full p-3 px-4 text-xs text-white transition-all duration-300 md:p-4 md:px-6 md:text-base"
           style={{
             clipPath: `polygon(0 0, ${isActiveProject ? '115%' : '0'} 0, ${isActiveProject ? '100%' : '-15%'} 100%, 0 100%)`,
             willChange: 'clip-path',
           }}
         >
           <div
-            className="ease-out-back relative flex flex-col gap-4 transition-all duration-300"
+            className="ease-out-back relative flex flex-col gap-4 transition-all duration-300 leading-tight"
             style={{
               width: `${100 / ((100 + hoverModifier + clickModifier) / 100)}%`,
             }}
@@ -103,10 +103,10 @@ export default function ProjectItem({
         </div>
       </Link>
 
-      <div className="z-1 flex flex-row items-center justify-between bg-black px-3 py-1 text-sm font-bold text-white md:px-4 md:text-lg">
+      <div className="z-1 flex flex-row items-center justify-between h-7 md:h-9 bg-black px-3 py-1 text-sm font-bold text-white md:px-4 md:text-lg">
         <h3>
           <Link
-            className="hover-highlight-blue"
+            className="hover-highlight-red"
             content={`${!isActiveProject ? name : openMessage}`}
             href={demo}
             target="_blank"
@@ -115,7 +115,7 @@ export default function ProjectItem({
             {!isActiveProject ? name : openMessage}
           </Link>
         </h3>
-        <div className="flex flex-row flex-wrap items-center justify-end gap-x-1">
+        {/*<div className="flex flex-row flex-wrap items-center justify-end gap-x-1">
           {techStack.map((value, index) => (
             <span
               key={index}
@@ -124,7 +124,7 @@ export default function ProjectItem({
               {value}
             </span>
           ))}
-        </div>
+        </div>*/}
       </div>
     </div>
   );
