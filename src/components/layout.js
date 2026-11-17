@@ -7,7 +7,6 @@ import { Nunito_Sans } from 'next/font/google';
 import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
-import SpeechBubble from '@/components/speechBubble';
 
 const dmSans = Nunito_Sans({
   subsets: ['latin'],
@@ -83,13 +82,6 @@ export default function Layout({
           </div>
           <div className="h-[65vw] md:h-0" aria-hidden="true"></div>
           <AndrewPortrait aria-hidden="true" />
-          <SpeechBubble header="hello there!" body={[
-            'welcome to my portfolio.',
-            'welcome to my portfolio.',
-            'welcome to my portfolio.',
-            'welcome to my portfolio.',
-            'welcome to my portfolio.'
-          ]} />
         </div>
       </div>
     </div>

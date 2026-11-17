@@ -19,12 +19,10 @@ const isMouseInCircle = (e, radiusVh) => {
 
 export default function BackgroundCircle({}) {
   const { isMobile, isTablet } = useAppContext();
-  // Local state: hover/click changes only re-render this component, not the whole page
   const [radiusVh, setRadiusVh] = useState(radiusDefault);
   const radiusRef = useRef(radiusDefault);
   const mouseDownRef = useRef(false);
 
-  // Listeners are registered once and read the latest values through refs
   useEffect(() => {
     const setRadius = (r) => {
       radiusRef.current = r;
@@ -59,24 +57,12 @@ export default function BackgroundCircle({}) {
     };
   }, []);
 
-  if (isMobile) {
-    return (
-      <div className="dotted-background-white pointer-events-none fixed inset-0 -z-10 h-full w-full" />
-    );
-  }
-
-  // A fixed-size circle animated with transform: scale (GPU-composited) instead of clip-path (full repaint)
-  const baseRadius = radiusDefault + (isTablet ? radiusTabletMod : 0);
-  const scale = (radiusVh + (isTablet ? radiusTabletMod : 0)) / baseRadius;
-
   return (
     <div
-      className="dotted-background-white ease-out-back pointer-events-none fixed top-1/2 left-1/2 -z-10 rounded-full transition-transform duration-300"
+      className="dotted-background-white ease-out-back pointer-events-none fixed top-0 left-1/2 -z-10 h-full w-full -translate-x-1/2 transition-[clip-path] duration-300"
       style={{
-        width: `${baseRadius * 2}vh`,
-        height: `${baseRadius * 2}vh`,
-        transform: `translate(-50%, -50%) scale(${scale})`,
-        willChange: 'transform',
+        clipPath: `${isMobile ? '' : `circle(${radiusVh + (isTablet ? radiusTabletMod : 0)}vh at 50% 50%)`}`,
+        willChange: 'clip-path',
       }}
     />
   );

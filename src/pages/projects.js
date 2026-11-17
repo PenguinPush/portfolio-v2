@@ -5,6 +5,8 @@ import Layout from '@/components/layout';
 import { useAppContext } from '@/context/AppContext';
 import { useRouter } from 'next/router';
 
+import SpeechBubble from '@/components/speechBubble';
+
 
 export default function Projects() {
   const projectsRef = useRef(null);
@@ -40,6 +42,7 @@ export default function Projects() {
           />
         </div>
       </div>
+      <SpeechBubble />
     </Layout>
   );
 }

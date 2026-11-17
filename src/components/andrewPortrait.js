@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAppContext } from '@/context/AppContext';
 import Image from 'next/image';
 
@@ -20,24 +20,20 @@ const portraits = [
   ],
 ];
 
-export const portraitCenter = { x: 1 / 2, y: 1 / 3 };
-
-export function getPortraitPosition(isMobile, portraitState) {
-  const width = isMobile ? 180 : 32;
-  const left = isMobile ? -40 : 0;
-  const translateY = isMobile || portraitState === 2 ? 62 : portraitState === 0 ? 100 : 0;
-  return {
-    translateY: `${translateY}%`,
-    centerX: `${left + width * portraitCenter.x}vw`,
-    centerY: `calc(100% + ${width * (portraitCenter.y - 1 + translateY / 100)}vw)`,
-  };
-}
+const portraitCenter = { x: 1 / 2, y: 1 / 3 };
 
 export default function AndrewPortrait({}) {
-  const { isMobile, portraitState, setPortraitState, activePortrait, setActivePortrait } = useAppContext();
+  const { isMobile, portraitState, setPortraitState } = useAppContext();
+  // Kept local (not in context) so cursor-driven direction changes only re-render the portrait
+  const [activePortrait, setActivePortrait] = useState([0, 2]);
   const containerRef = useRef(null);
   const imageRefs = useRef({});
-  const position = getPortraitPosition(isMobile, portraitState);
+  const translateY = isMobile || portraitState === 2 ? 62 : portraitState === 0 ? 100 : 0;
+
+  // The pointer listener is registered once, so it reads the latest values through refs
+  const latest = useRef({ isMobile, portraitState, activePortrait });
+  latest.current = { isMobile, portraitState, activePortrait };
+  const wakeTimeout = useRef(null);
 
   useEffect(() => {
     portraits.flat().forEach((src) => {
@@ -49,8 +45,11 @@ export default function AndrewPortrait({}) {
   useEffect(() => {
     const onPointerMove = (e) => {
       if (!containerRef.current) return;
-      if (portraitState === 0) {
-        setTimeout(() => {
+      const { isMobile, portraitState, activePortrait } = latest.current;
+
+      // Schedule at most one wake-up, instead of one per pointer event
+      if (portraitState === 0 && wakeTimeout.current === null) {
+        wakeTimeout.current = setTimeout(() => {
           setPortraitState(1);
         }, 300);
       }
@@ -88,15 +87,17 @@ export default function AndrewPortrait({}) {
     return () => {
       window.removeEventListener('mousemove', onPointerMove);
       window.removeEventListener('touchmove', onPointerMove);
+      clearTimeout(wakeTimeout.current);
+      wakeTimeout.current = null;
     };
-  }, [activePortrait]);
+  }, [setPortraitState]);
 
   return (
     <div
       ref={containerRef}
       className="portrait-gradient-background md:bg-none-override pointer-events-none fixed bottom-0 left-[-40%] z-20 w-[180%] md:left-0 md:w-[32vw]"
       style={{
-        transform: `translateY(${position.translateY})`,
+        transform: `translateY(${translateY}%)`,
         transition: 'transform 0.3s var(--ease-out)',
       }}
     >

@@ -22,7 +22,6 @@ export function AppProvider({ children }) {
     };
   }, []);
 
-  // Memoized so consumers only re-render when one of these values actually changes
   const value = useMemo(
     () => ({
       pageState,
