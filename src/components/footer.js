@@ -35,9 +35,9 @@ export default function About() {
 
   return (
     <>
-      <div className="flex w-full justify-center md:pt-8 items-center">
+      <div className="flex w-full items-center justify-center md:pt-8">
         <p
-          className={`underline inline-block pt-2 text-xs italic md:pt-0 md:text-sm`}
+          className={`inline-block pt-2 text-xs italic underline md:pt-0 md:text-sm`}
           content="or check out my links!"
         >
           {linkBoxText}
@@ -91,6 +91,18 @@ export default function About() {
           onClick={() => captureContactLink('resume')}
         >
           📃 resume
+        </a>
+        <a
+          className="hover-highlight-red"
+          content="💼 devpost"
+          href="https://devpost.com/andrew-dai-dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={() => setLinkMessage('devpost.com/andrew-dai-dev')}
+          onMouseLeave={() => resetLinkMessage()}
+          onClick={() => captureContactLink('resume')}
+        >
+          💻 devpost
         </a>
       </div>
     </>

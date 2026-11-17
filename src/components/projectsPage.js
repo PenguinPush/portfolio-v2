@@ -4,11 +4,14 @@ const projectIds = [
   'jamhacks',
   'faunadex',
   'cullergrader',
-  'workflow',
+  'protosynthesis',
   'quantum',
   'tmun',
   'goose',
   'miku',
+  'pickle',
+  'physiotherapy',
+  'tabletablet',
 ];
 const projectData = [
   [
@@ -92,6 +95,34 @@ const projectData = [
     ['3D-Modelled', 'three.js', 'TextAlive'],
     'https://penguinpush.github.io/mikucontest-2024',
     '🎸 Visit Site',
+  ],
+  [
+    '🗼 Pickle',
+    ['Pickle '],
+    ['Flask', 'Twilio', 'MongoDB', 'Cohere'],
+    'https://github.com/PenguinPush/deltahacks-xi',
+    '🗼 Open in Github',
+  ],
+  [
+    '🗼 Physiotherapy',
+    ['Pickle '],
+    ['Flask', 'Twilio', 'MongoDB', 'Cohere'],
+    'https://github.com/PenguinPush/deltahacks-xi',
+    '🗼 Open in Github',
+  ],
+  [
+    '💪 Physiotherapy Tool',
+    ['Description under construction!'],
+    ['C++', 'Python', 'Arduino'],
+    'https://github.com/iantang08/UTRAHacks2025',
+    '💪 Open in Github',
+  ],
+  [
+    '👉 TableTablet',
+    ['Description under construction!'],
+    ['Python', 'MediaPipe', 'OpenCV'],
+    'https://github.com/antpoo/webcam-tablet',
+    '👉 Open in Github',
   ],
 ];
 
