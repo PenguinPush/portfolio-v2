@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useAppContext } from '@/context/AppContext';
 import Link from 'next/link';
 
@@ -6,7 +7,8 @@ const labelColors = ['bg-orange-base', 'bg-yellow-base'];
 const labelHeights = [1, 1];
 
 export default function NavButtonPair({ clickModifier, setClickModifier }) {
-  const { hoverModifier, setHoverModifier, pageState } = useAppContext();
+  const { pageState } = useAppContext();
+  const [hoverModifier, setHoverModifier] = useState(0);
 
   return (
     <>
