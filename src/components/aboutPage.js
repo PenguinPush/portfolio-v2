@@ -91,7 +91,7 @@ export default function AboutPage({}) {
             <Link
               className="hover-highlight-red"
               content="🏸 badminton scoring"
-              href="/projects/#badminton"
+              href="/projects/#goodminton"
             >
               🏸 badminton scoring
             </Link>
