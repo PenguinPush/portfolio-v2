@@ -80,7 +80,7 @@ export default function AboutPage({}) {
             <Link
               className="hover-highlight-red"
               content="⚙️ agentic workflow builder"
-              href="/projects/#workflow"
+              href="/projects/#protosynthesis"
             >
               ⚙️ agentic workflow builder
             </Link>
