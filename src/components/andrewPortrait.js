@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAppContext } from '@/context/AppContext';
 import Image from 'next/image';
 
@@ -21,9 +21,14 @@ const portraits = [
 ];
 
 export default function AndrewPortrait({}) {
-  const { isMobile, portraitState, setPortraitState, activePortrait, setActivePortrait } = useAppContext();
+  const { isMobile, portraitState, setPortraitState } = useAppContext();
+  const [activePortrait, setActivePortrait] = useState([0, 2]);
   const containerRef = useRef(null);
   const imageRefs = useRef({});
+
+  const latest = useRef({ isMobile, portraitState, activePortrait });
+  latest.current = { isMobile, portraitState, activePortrait };
+  const wakeTimeout = useRef(null);
 
   useEffect(() => {
     portraits.flat().forEach((src) => {
@@ -35,8 +40,11 @@ export default function AndrewPortrait({}) {
   useEffect(() => {
     const onPointerMove = (e) => {
       if (!containerRef.current) return;
-      if (portraitState === 0) {
-        setTimeout(() => {
+      const { isMobile, portraitState, activePortrait } = latest.current;
+
+      // Schedule at most one wake-up, instead of one per pointer event
+      if (portraitState === 0 && wakeTimeout.current === null) {
+        wakeTimeout.current = setTimeout(() => {
           setPortraitState(1);
         }, 300);
       }
@@ -74,15 +82,17 @@ export default function AndrewPortrait({}) {
     return () => {
       window.removeEventListener('mousemove', onPointerMove);
       window.removeEventListener('touchmove', onPointerMove);
+      clearTimeout(wakeTimeout.current);
+      wakeTimeout.current = null;
     };
-  }, [activePortrait]);
+  }, [setPortraitState]);
 
   return (
     <div
       ref={containerRef}
       className="portrait-gradient-background md:bg-none-override pointer-events-none fixed bottom-0 left-[-40%] z-20 w-[180%] md:left-0 md:w-[32vw]"
       style={{
-        transform: `translateY(${portraitState !== 0 || isMobile ? (isMobile || portraitState === 2 ? '62%' : '0%') : '100%'})`,
+        transform: `translateY(${isMobile || portraitState === 2 ? 62 : portraitState === 0 ? 100 : 0}%)`,
         transition: 'transform 0.3s var(--ease-out)',
       }}
     >

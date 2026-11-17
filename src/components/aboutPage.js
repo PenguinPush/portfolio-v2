@@ -30,16 +30,17 @@ export default function AboutPage({}) {
         </h2>
         <h2 className={diamondListClass}>
           <strong>currently i&#39;m...</strong>
-          {/*<p className={arrowListClass}>*/}
-          {/*  organizing Canada&#39;s largest AI hackathon with{' '}*/}
-          {/*  <Link*/}
-          {/*    className="hover-highlight-red"*/}
-          {/*    content="📊 UW DSC"*/}
-          {/*    href="/projects/#cullergrader"*/}
-          {/*  >*/}
-          {/*    📈 UW DSC*/}
-          {/*  </Link>{' '}*/}
-          {/*</p>*/}
+          <p className={arrowListClass}>
+            organizing Canada&#39;s largest AI hackathon with{' '}
+            <Link
+              className="hover-highlight-red"
+              content="📊 UW DSC"
+              href="https://www.uwdatascience.ca/"
+              target="_blank"
+            >
+              📈 UW DSC
+            </Link>{' '}
+          </p>
 
           <p className={arrowListClass}>
             building an open source{' '}
@@ -85,17 +86,17 @@ export default function AboutPage({}) {
             </Link>
             {''} for prototyping
           </p>
-          {/*<p className={arrowListClass}>*/}
-          {/*  automated{' '}*/}
-          {/*  <Link*/}
-          {/*    className="hover-highlight-red"*/}
-          {/*    content="🏸 badminton scoring"*/}
-          {/*    href="/projects/#badminton"*/}
-          {/*  >*/}
-          {/*    🏸 badminton scoring*/}
-          {/*  </Link>*/}
-          {/*  {''} using a physics-informed CV model*/}
-          {/*</p>*/}
+          <p className={arrowListClass}>
+            automated{' '}
+            <Link
+              className="hover-highlight-red"
+              content="🏸 badminton scoring"
+              href="/projects/#badminton"
+            >
+              🏸 badminton scoring
+            </Link>
+            {''} using a physics-informed CV model
+          </p>
           <p className={arrowListClass}>
             replicated{' '}
             <Link
@@ -111,12 +112,8 @@ export default function AboutPage({}) {
         <h2 className={diamondListClass}>
           <strong>stats breakdown:</strong>
           <p className={arrowListClass}>10x hackathons won (in a row), 4 organized, 3 judged</p>
-          <p className={arrowListClass}>
-            AIME &#39;25 qualifier, Ivy League Model UN champion, 1560 SAT
-          </p>
-          <p className={arrowListClass}>
-            programming since age 9, shipping games on the Google Play Store
-          </p>
+          <p className={arrowListClass}>AIME &#39;25 qualifier, Ivy League Model UN champion, 1560 SAT</p>
+          <p className={arrowListClass}>programming since age 9, shipping games on the Google Play Store</p>
         </h2>
       </ul>
     </div>

@@ -18,7 +18,6 @@ export default function Projects() {
     }
   }, [router.query]);
 
-
   return (
     <Layout
       title="Andrew Dai - Projects"
@@ -29,7 +28,7 @@ export default function Projects() {
       setClickModifier={setClickModifier}
     >
       <div ref={projectsRef} className="flex flex-col gap-2">
-        <ProjectsPage/>
+        <ProjectsPage />
         <div className="flex w-full justify-center">
           <NavButtonLarge
             className="flex"

@@ -35,9 +35,9 @@ export default function About() {
 
   return (
     <>
-      <div className="flex w-full items-center justify-center md:pt-8">
+      <div className="flex w-full justify-center md:pt-8 items-center">
         <p
-          className={`inline-block pt-2 text-xs italic underline md:pt-0 md:text-sm`}
+          className={`underline inline-block pt-2 text-xs italic md:pt-0 md:text-sm`}
           content="or check out my links!"
         >
           {linkBoxText}
@@ -79,7 +79,7 @@ export default function About() {
           onClick={() => captureContactLink('linkedin')}
         >
           🔗 linkedin
-        </a>{' '}
+        </a>
         <a
           className="hover-highlight-red"
           content="📜 resume"

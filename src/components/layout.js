@@ -63,7 +63,7 @@ export default function Layout({
             <div className="flex flex-grow flex-col">{children}</div>
             <Footer />
             <div
-              className="pointer-events-none absolute bottom-10 z-10 h-0 xl:h-[60dvh] w-[45dvh] transition-all ease-out"
+              className="pointer-events-none absolute bottom-10 z-10 h-0 w-[45dvh] transition-all ease-out xl:h-[60dvh]"
               aria-hidden="true"
               style={{
                 left: 'calc(50% + 270px)',
