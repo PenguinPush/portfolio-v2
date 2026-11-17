@@ -5,6 +5,7 @@ import Layout from '@/components/layout';
 import { useAppContext } from '@/context/AppContext';
 import { useRouter } from 'next/router';
 
+
 export default function Projects() {
   const projectsRef = useRef(null);
   const router = useRouter();
@@ -29,7 +30,7 @@ export default function Projects() {
       setClickModifier={setClickModifier}
     >
       <div ref={projectsRef} className="flex flex-col gap-2">
-        <ProjectsPage/>
+        <ProjectsPage />
         <div className="flex w-full justify-center">
           <NavButtonLarge
             className="flex"

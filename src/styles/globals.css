@@ -16,6 +16,7 @@
 
 html {
     scroll-behavior: smooth;
+    background-color: var(--color-yellow-base);
 }
 
 @media (prefers-reduced-motion: reduce) {

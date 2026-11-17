@@ -20,10 +20,24 @@ const portraits = [
   ],
 ];
 
+export const portraitCenter = { x: 1 / 2, y: 1 / 3 };
+
+export function getPortraitPosition(isMobile, portraitState) {
+  const width = isMobile ? 180 : 32;
+  const left = isMobile ? -40 : 0;
+  const translateY = isMobile || portraitState === 2 ? 62 : portraitState === 0 ? 100 : 0;
+  return {
+    translateY: `${translateY}%`,
+    centerX: `${left + width * portraitCenter.x}vw`,
+    centerY: `calc(100% + ${width * (portraitCenter.y - 1 + translateY / 100)}vw)`,
+  };
+}
+
 export default function AndrewPortrait({}) {
   const { isMobile, portraitState, setPortraitState, activePortrait, setActivePortrait } = useAppContext();
   const containerRef = useRef(null);
   const imageRefs = useRef({});
+  const position = getPortraitPosition(isMobile, portraitState);
 
   useEffect(() => {
     portraits.flat().forEach((src) => {
@@ -42,8 +56,8 @@ export default function AndrewPortrait({}) {
       }
 
       const rect = containerRef.current.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 3;
+      const centerX = rect.left + rect.width * portraitCenter.x;
+      const centerY = rect.top + rect.height * portraitCenter.y;
 
       const centerFactor = isMobile ? 12 : 8;
 
@@ -82,7 +96,7 @@ export default function AndrewPortrait({}) {
       ref={containerRef}
       className="portrait-gradient-background md:bg-none-override pointer-events-none fixed bottom-0 left-[-40%] z-20 w-[180%] md:left-0 md:w-[32vw]"
       style={{
-        transform: `translateY(${portraitState !== 0 || isMobile ? (isMobile || portraitState === 2 ? '62%' : '0%') : '100%'})`,
+        transform: `translateY(${position.translateY})`,
         transition: 'transform 0.3s var(--ease-out)',
       }}
     >

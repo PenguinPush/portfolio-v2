@@ -7,6 +7,7 @@ import { Nunito_Sans } from 'next/font/google';
 import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
+import SpeechBubble from '@/components/speechBubble';
 
 const dmSans = Nunito_Sans({
   subsets: ['latin'],
@@ -41,9 +42,9 @@ export default function Layout({
         <meta name="twitter:image" content={image} />
       </Head>
       <div
-        className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] w-screen items-start justify-center overflow-x-hidden overflow-y-auto overscroll-auto scroll-smooth motion-reduce:scroll-auto font-normal text-black`}
+        className={`${dmSans.className} dotted-background-yellow flex min-h-[100dvh] w-full items-start justify-center overflow-x-hidden overflow-y-auto overscroll-auto scroll-smooth font-normal text-black motion-reduce:scroll-auto`}
       >
-        <div className="relative z-0 flex min-h-[100dvh] flex-col gap-2 p-4 text-sm tracking-wide md:w-full md:min-w-0 md:max-w-[786px] md:p-12 md:text-lg md:tracking-wider">
+        <div className="relative z-0 flex min-h-[100dvh] flex-col gap-2 p-4 text-sm tracking-wide md:w-full md:max-w-[786px] md:min-w-0 md:p-12 md:text-lg md:tracking-wider">
           <BackgroundCircle />
           <div className="flex flex-col items-center gap-2 px-4">
             <Link
@@ -63,7 +64,7 @@ export default function Layout({
             <div className="flex flex-grow flex-col">{children}</div>
             <Footer />
             <div
-              className="pointer-events-none absolute bottom-10 z-10 h-0 xl:h-[60dvh] w-[45dvh] transition-all ease-out"
+              className="pointer-events-none absolute bottom-10 z-10 h-0 w-[45dvh] transition-all ease-out xl:h-[60dvh]"
               aria-hidden="true"
               style={{
                 left: 'calc(50% + 270px)',
@@ -82,6 +83,13 @@ export default function Layout({
           </div>
           <div className="h-[65vw] md:h-0" aria-hidden="true"></div>
           <AndrewPortrait aria-hidden="true" />
+          <SpeechBubble header="hello there!" body={[
+            'welcome to my portfolio.',
+            'welcome to my portfolio.',
+            'welcome to my portfolio.',
+            'welcome to my portfolio.',
+            'welcome to my portfolio.'
+          ]} />
         </div>
       </div>
     </div>

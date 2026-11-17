@@ -33,7 +33,7 @@ export default function ProjectItem({ name, description, techStack, demo, projec
           <p key={index}>{paragraph}</p>
         ))}
       </div>
-      <div className="relative md:items-center z-1 flex flex-grow flex-col items-start justify-between gap-1 bg-black px-3 py-2 text-sm font-bold text-white md:text-lg">
+      <div className="relative z-1 flex flex-grow flex-col items-start justify-between gap-1 bg-black px-3 py-2 text-sm font-bold text-white md:items-center md:text-lg">
         <h3 id={`${projectId}-title`}>
           <Link
             className="hover-highlight-red"
