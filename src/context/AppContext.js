@@ -1,12 +1,15 @@
-import { createContext, useState, useContext, useEffect, useMemo } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 
 const AppContext = createContext();
 
 export function AppProvider({ children }) {
   const [pageState, setPageState] = useState(0);
+  const [hoverModifier, setHoverModifier] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   const [portraitState, setPortraitState] = useState(0);
+  const [activePortrait, setActivePortrait] = useState([0, 2]);
+  const [radiusVh, setRadiusVh] = useState(60);
 
   useEffect(() => {
     const onResize = () => {
@@ -22,21 +25,28 @@ export function AppProvider({ children }) {
     };
   }, []);
 
-  const value = useMemo(
-    () => ({
-      pageState,
-      setPageState,
-      isMobile,
-      setIsMobile,
-      isTablet,
-      setIsTablet,
-      portraitState,
-      setPortraitState,
-    }),
-    [pageState, isMobile, isTablet, portraitState],
+  return (
+    <AppContext.Provider
+      value={{
+        pageState,
+        setPageState,
+        isMobile,
+        setIsMobile,
+        isTablet,
+        setIsTablet,
+        portraitState,
+        setPortraitState,
+        hoverModifier,
+        setHoverModifier,
+        activePortrait,
+        setActivePortrait,
+        radiusVh,
+        setRadiusVh,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
   );
-
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
 
 export function useAppContext() {
